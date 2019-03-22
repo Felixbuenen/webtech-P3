@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Felixbuenen/webtech-P3#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "sqlite": "^3.0.3"
   }
 }
