@@ -5,19 +5,32 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <script type="text/javascript" src="../script/index.js" ></script>
     </head>
     <body>
+
+        <!-- Account menu overlay -->
+        <section id="menu-overlay">
+            <a href="javascript:void(0)" id="close-btn">&times;</a>
+            <section id="menu-overlay__content">
+                <h1>Hallo</h1>
+                <ul>
+                    <li><a>Ga naar hier</a></li>
+                    <li><a>Ga naar hier aajsf </a></li>
+                    <li><a>Ga naar hiera akdsj ljf sakf </a></li>
+                </ul>
+            </section>
+        </section>
+
         <header>
             <section id="header-top">
-                <h1 id="header-logo">logo</h1>
+                <img id="logo-img" src="../images/logo.png" />
                 <button id="account-btn"><img src="../images/account.png"/></button>
             </section>
             
             <section id="search-section">
                 <form id="search-form">
-                    <input type="text" id="search-form__input"/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
-                    
-
+                    <input type="text" id="search-form__input" placeholder="Search..."/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
                 </form>
                 <div id="search-form__filter-menu"> 
                     <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="all"  checked> All </input>
