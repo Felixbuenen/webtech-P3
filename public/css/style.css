@@ -167,4 +167,20 @@ main {
     display: inline-block;
     vertical-align: middle;
     width: 80px;
+    z-index: 0;
+}
+
+#shopping-bag-btn span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    background: -webkit-radial-gradient( rgb(255, 100, 100), rgb(182, 0, 0));
+    color: white;
+    z-index: 1;
+    bottom: 0px;
+    right: 0px;
+    line-height: 30px;
+    text-align: center;
 }
