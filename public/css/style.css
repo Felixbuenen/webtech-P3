@@ -121,16 +121,24 @@ main {
 
 }
 
-#account-btn {
+#account-section {
     position: absolute;
     right: 0px;
-    top: 50%;
+    top: 0px;
     display: inline-block;
+}
 
+#account-section p {
+    text-align: center;
+    margin: 0px;
+}
+
+#account-btn {
 	background: none;
 	border: none;
     cursor: pointer;
-    transform: translate(0%, -50%);
+    vertical-align: middle;
+    transform: translate(0%, 0%);
 }
 
 #account-btn img {
