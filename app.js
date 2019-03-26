@@ -1,4 +1,5 @@
 const express = require('express')
+const db = require("./app/database.js");
 const app = express()
 const port = 8050
 
