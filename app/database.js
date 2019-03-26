@@ -16,9 +16,9 @@ db.serialize(function() {
     }
 
     // example query
-    /*db.each("SELECT firstName, lastName, email, password FROM Users", (err, row) => {
-        console.log("- " + row.rowid + " " + row.firstName + " " + row.lastName + " " + row.email + " " + row.password);
-    });*/
+    db.each("SELECT name FROM Publishers, Books WHERE Publishers.rowid = Books.publisherID AND Books.title = 'Harry Potter and the Prisoner'", (err, row) => {
+        console.log("The publisher of Harry Potter and the Prisoner is: " + row.name);
+    })
 })
 
 db.close();
@@ -110,7 +110,7 @@ function initAuthors() {
 function initPublishers() {
     db.run("CREATE TABLE Publishers (name TEXT, country TEXT, city TEXT)");
 
-    let stmt = db.prepare("INSERT INTO Authors VALUES (?,?,?)");
+    let stmt = db.prepare("INSERT INTO Publishers VALUES (?,?,?)");
 
     // example data
     stmt.run("Bloomsbury", "England", "London");
