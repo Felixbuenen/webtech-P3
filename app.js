@@ -7,7 +7,14 @@ const expressSession = require("express-session");
 // register session middleware
 app.use(expressSession({ secret: "some-safe-secret" }));
 
-app.post("/login", (req, res) => {
+// register static file serving
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (req, res) => {
+  res.sendfile(__dirname + "/public/html/index.html");
+});
+
+/*app.post("/login", (req, res) => {
   res.send("<p>Logged in</p>");
   res.end();
 });
@@ -18,6 +25,6 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/public/html/debugLogin.html");
-});
+});*/
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
