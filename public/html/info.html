@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Webshop</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/bookInfo.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script type="text/javascript" src="../script/index.js" ></script>
+    </head>
+    <body>
+
+        <!-- Account menu overlay -->
+        <section id="menu-overlay">
+            <a href="javascript:void(0)" id="close-btn">&times;</a>
+            <section id="menu-overlay__content">
+                <h1>Hallo</h1>
+                <ul>
+                    <li><a>Ga naar hier</a></li>
+                    <li><a>Ga naar hier aajsf </a></li>
+                    <li><a>Ga naar hiera akdsj ljf sakf </a></li>
+                </ul>
+            </section>
+        </section>
+
+        <header>
+            <section id="header-top">
+                <img id="logo-img" src="../images/logo.png" />
+                <section id="account-section">
+                    <button id="account-btn"><img src="../images/account.png"/></button>
+                    <p>Account</p>
+                </section>
+            </section>
+            
+            <section id="search-section">
+                <form id="search-form">
+                    <input type="text" id="search-form__input" placeholder="Search..."/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
+                </form>
+                <div id="search-form__filter-menu"> 
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="all"  checked> All </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="book"> Book </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="author"> Author </input>
+                </div>
+            </section>
+        </header>
+        <nav id="main-navigation">
+            <ul>
+                <li>Books</li>
+                <li>Authors</li>
+                <li>About</li>
+            </ul>
+        </nav>
+        <main>
+            <button id="shopping-bag-btn">
+                <img src="../images/shopping-bag.png" />
+                <span>0</span>
+            </button>
+            <section id="book-header">
+                    <img src="../images/hp_debugimage.jpg" />
+                    <h1>Harry Potter and the Philosopher's stone</h1>
+                    <a>J.K. Rowling</a>
+            </section>
+
+            <button id="buy-btn">Buy</button>
+
+            <h2>More info</h2>
+            <ul>
+                <li>Uitgever: Potternmore</li>
+                <li>Lengte: 228 pagina's</li>
+                <li>Taal: Nederlands</li>
+            </ul>
+
+            <h2>Reviews</h2>
+            <article class="book-review">
+                <article class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </article>
+                <h3>"Meh..."</h3>
+                <h4>Anonymous, 22 February 2018</h4>
+                <p>Ik vond niet zo leuk.</p>
+            </article>
+
+            <article class="book-review">
+                    <article class="star-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </article>
+                    <h3>"Very nice"</h3>
+                    <h4>Dirk, 12 April 2014</h4>
+                    <p>Super duper</p>
+                </article>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>

@@ -178,16 +178,14 @@ main {
     position: sticky;
     float: right;
     top: 15px;
-
     padding: 0;
-
     z-index: 1;
 }
 
 #shopping-bag-btn img {
     display: inline-block;
     vertical-align: middle;
-    width: 80px;
+    width: 60px;
     z-index: 0;
     border-radius: 50%;
     box-shadow: 0 0 20px 0px;

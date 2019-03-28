@@ -1,0 +1,50 @@
+#book-header {
+    height: 200px;
+}
+
+#book-header img {
+    height: 100%;
+    float: left;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+#book-header h1 a {
+    float: right;
+}
+
+#buy-btn {
+    width: 100%;
+    background: white;
+	border: none;
+    cursor: pointer;
+
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.book-review {
+    border: 2px solid black;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.book-review h3 {
+    display: inline;
+}
+
+.book-review h4 {
+    color: rgb(77, 77, 77);
+    margin: 3px 0px;
+}
+
+.star-rating {
+    display: inline;
+    margin-right: 5px;
+}
+
+.checked {
+    color: rgb(219, 231, 45);
+}
