@@ -3,14 +3,18 @@ const db = require("./app/database.js");
 const app = express();
 const port = 8050;
 const expressSession = require("express-session");
-const bodyParser = require("body-parser"); // VRAGEN: MAG DIT GEBRUIKT WORDEN?
+const bodyParser = require("body-parser"); 
 
 // register session middleware
-app.use(expressSession({ secret: "some-safe-secret" }));
+app.use(expressSession({ 
+  secret: "some-safe-secret",
+  resave: true,
+  saveUninitialized: true
+ }));
 
 // register static file serving
-//app.use(express.static(__dirname + "/public/html"));
-//app.use(express.static(__dirname + "/public/css"));
+app.use(express.static(__dirname + "/public/"));
+app.use(express.static(__dirname + "/public/html"));
 
 // register body / json parser middleware
 app.use(
@@ -20,6 +24,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
+/*
 app.get("/", (req, res) => {
   if (req.session.name) {
     res.send("<p>Welcome " + req.session.name + "</p>");
@@ -39,6 +44,7 @@ app.get("/debugLogin.html", (req, res) => {
 
   //   res.sendfile(__dirname + "/public/html/index.html");
 });
+*/
 
 app.post("/login", (req, res) => {
   req.session.name = req.body.name;
