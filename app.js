@@ -29,31 +29,8 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public/"));
 app.use(express.static(__dirname + "/public/html"));
 
+// register dynamic content javascript generation router
 app.use("/dhtml", dcRouter);
-
-
-
-/*
-app.get("/", (req, res) => {
-  if (req.session.name) {
-    res.send("<p>Welcome " + req.session.name + "</p>");
-  } else {
-    res.send("<p>You are not logged in</p>");
-  }
-
-  //   res.sendfile(__dirname + "/public/html/index.html");
-});
-
-app.get("/debugLogin.html", (req, res) => {
-  if (req.session.name) {
-    res.send("<p>Already logged in as " + req.session.name + "</p>");
-  } else {
-    res.sendfile(__dirname + "/public/html/debugLogin.html");
-  }
-
-  //   res.sendfile(__dirname + "/public/html/index.html");
-});
-*/
 
 app.post("/login", (req, res) => {
   req.session.name = req.body.name;
