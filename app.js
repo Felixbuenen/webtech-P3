@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("./app/database.js");
+const dcRouter = require("./app/dc-router");
 const app = express();
 const port = 8050;
 const expressSession = require("express-session");
@@ -9,12 +10,12 @@ const bodyParser = require("body-parser");
 app.use(expressSession({ 
   secret: "some-safe-secret",
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 5 * 24 * 60 * 60 * 1000 // 5 days
+  }
  }));
-
-// register static file serving
-app.use(express.static(__dirname + "/public/"));
-app.use(express.static(__dirname + "/public/html"));
 
 // register body / json parser middleware
 app.use(
@@ -23,6 +24,14 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+// register static file serving
+app.use(express.static(__dirname + "/public/"));
+app.use(express.static(__dirname + "/public/html"));
+
+app.use("/dhtml", dcRouter);
+
+
 
 /*
 app.get("/", (req, res) => {

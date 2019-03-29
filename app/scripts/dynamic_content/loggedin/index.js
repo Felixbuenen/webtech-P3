@@ -1,10 +1,10 @@
 window.addEventListener("load", setupIndex, false);
 
 function setupIndex() {
+    // if logged in, show name
     let accountBtn = document.getElementById("account-btn");
-    accountBtn.addEventListener("click", openAccountMenu, false);
-
     let closeBtn = document.getElementById("close-btn");
+    accountBtn.addEventListener("click", openAccountMenu, false);
     closeBtn.addEventListener("click", closeAccountMenu, false);
 }
 
@@ -18,3 +18,4 @@ function closeAccountMenu() {
     let panel = document.getElementById("menu-overlay");
     panel.style.width = "0%";
 }
+
