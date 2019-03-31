@@ -10,10 +10,10 @@ function setupFilterWindowEvent() {
 
 function openFilterMenu() {
   let panel = document.getElementById("search-filter-menu");
-  panel.style.width = "70%";
+  panel.style.display = "inline-block";
 }
 
 function closeFilterMenu() {
   let panel = document.getElementById("search-filter-menu");
-  panel.style.width = "0%";
+  panel.style.display = "none";
 }

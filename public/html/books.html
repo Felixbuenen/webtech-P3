@@ -30,6 +30,40 @@
             </section>
         </section>
 
+        <header>
+            <section id="header-top">
+                <img id="logo-img" src="../images/logo.png" />
+                <section id="account-section">
+                    <button id="account-btn"><img src="../images/account.png"/></button>
+                    <p>Account</p>
+                </section>
+            </section>
+            
+            <section id="search-section">
+                <form id="search-form">
+                    <input type="text" id="search-form__input" placeholder="Search..."/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
+                </form>
+                <div id="search-form__filter-menu"> 
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="all"  checked> All </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="book"> Book </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="author"> Author </input>
+                </div>
+            </section>
+        </header>
+        <nav id="main-navigation">
+            <ul>
+                <li>Books</li>
+                <li>Authors</li>
+                <li>About</li>
+            </ul>
+        </nav>
+
+        <main>
+            <button id="shopping-bag-btn">
+                <img src="../images/shopping-bag.png" />
+                <span>0</span>
+            </button>
+
         <!-- Search filter menu overlay -->
         <section id="search-filter-menu">
             <a href="javascript:void(0)" id="close-btn-filter-menu" class="close-btn close-btn__left-panel">&times;</a>
@@ -68,40 +102,7 @@
             </section>
         </section>
 
-        <header>
-            <section id="header-top">
-                <img id="logo-img" src="../images/logo.png" />
-                <section id="account-section">
-                    <button id="account-btn"><img src="../images/account.png"/></button>
-                    <p>Account</p>
-                </section>
-            </section>
-            
-            <section id="search-section">
-                <form id="search-form">
-                    <input type="text" id="search-form__input" placeholder="Search..."/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
-                </form>
-                <div id="search-form__filter-menu"> 
-                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="all"  checked> All </input>
-                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="book"> Book </input>
-                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="author"> Author </input>
-                </div>
-            </section>
-        </header>
-        <nav id="main-navigation">
-            <ul>
-                <li>Books</li>
-                <li>Authors</li>
-                <li>About</li>
-            </ul>
-        </nav>
-
-        <main>
-            <button id="shopping-bag-btn">
-                <img src="../images/shopping-bag.png" />
-                <span>0</span>
-            </button>
-
+        <section id="book-results-main">
             <h1>Search results for:</h1>
             <span id="search-query">Harry Potter</span>
             <h2>In: All</h2>
@@ -116,8 +117,9 @@
                     <h2>J.K. Rowling</h2>
                     <h1>Harry Potter and the Philosopher's Stone</h1>
                     <!--HIER KOMT DE RATING-->
-                    (8) <!--AANTAL REVIEWS-->
+                    <article class="book-item__rating">(8)</article> <!--AANTAL REVIEWS-->
                     <p class="book-item__price">14,99</p>
+                    <button id="order-btn">Order</button>
                 </section>
             </article>
 
@@ -132,6 +134,7 @@
                 </ul>
                 <a id="search-result-page-menu__right">></a>
             </section>
+        </section>
         </main>
         <footer>
 

@@ -1,4 +1,5 @@
 #filter-btn {
+  display: inline-block;
   background-color: rgb(135, 135, 182);
   width: 100%;
   padding: 15px;
@@ -63,12 +64,18 @@
   padding: 8px;
 }
 
+#book-results-main {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
 .book-item {
   position: relative;
   width: 100%;
   height: auto;
   border: 1px solid rgb(85, 85, 85);
-  overflow: auto;
+  overflow: hidden;
   margin: 10px 0px;
 }
 
@@ -76,7 +83,8 @@
   position: absolute;
   text-align: center;
   display: inline-block;
-  width: 30%;
+  max-width: 90%;
+  max-height: 90%;
   padding: 5%;
   left: 0px;
   top: 50%;
@@ -107,7 +115,24 @@
   color: rgb(134, 26, 26);
   font-size: 23px;
   font-weight: bold;
-  margin-bottom: 0px;
+  margin: 10px 0px 0px 0px;
+}
+
+.book-item__rating {
+  display: block;
+  margin: 10px 0px;
+}
+
+#order-btn {
+  position: absolute;
+  display: none;
+  background-color: rgb(255, 230, 89);
+  border-radius: 10%;
+  border: 1px solid rgb(141, 132, 49);
+  bottom: 5%;
+  right: 5%;
+  font-size: 15px;
+  padding: 10px;
 }
 
 #search-result-page-menu {
@@ -144,4 +169,42 @@
 
 .current-search-page {
   background-color: white !important;
+}
+
+@media only screen and (min-width: 1000px) {
+  #filter-btn {
+    display: none;
+  }
+
+  #search-filter-menu {
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    margin-right: 3%;
+  }
+
+  #search-filter-menu__content {
+    top: 0px;
+  }
+
+  #book-results-main {
+    top: 0px;
+    width: 60%;
+    display: inline-block;
+    margin-left: 3%;
+  }
+
+  #close-btn-filter-menu {
+    display: none;
+  }
+
+  .book-item__price {
+    display: inline;
+    text-align: left;
+  }
+
+  #order-btn {
+    display: inline-block;
+  }
 }
