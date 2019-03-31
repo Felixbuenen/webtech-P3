@@ -1,0 +1,52 @@
+#filter-btn {
+  background-color: rgb(135, 135, 182);
+  width: 100%;
+  padding: 15px;
+}
+
+.book-item {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border: 2px solid black;
+  overflow: auto;
+  margin: 10px 0px;
+}
+
+.book-item img {
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+  width: 30%;
+  padding: 5%;
+  left: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.book-item section {
+  position: relative;
+  text-align: left;
+  float: right;
+  display: inline-block;
+  width: 53%;
+  padding: 5% 5% 5% 0%;
+}
+
+.book-item h1 {
+  font-size: 23px;
+  margin: 13px 0px;
+}
+
+.book-item h2 {
+  font-size: 14px;
+  margin-top: 0px;
+}
+
+.book-item__price {
+  text-align: right;
+  color: rgb(134, 26, 26);
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
