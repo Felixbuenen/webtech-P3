@@ -79,14 +79,22 @@ main {
   margin: 35px;
 }
 
-#close-btn {
+.close-btn {
   position: absolute;
-  top: 20px;
-  left: 30px;
   font-size: 60px;
   text-decoration: none;
 
   color: rgb(182, 182, 182);
+}
+
+.close-btn__left-panel {
+  top: 20px;
+  right: 30px;
+}
+
+.close-btn__right-panel {
+  top: 20px;
+  left: 30px;
 }
 
 #logo-img {

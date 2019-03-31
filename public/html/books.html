@@ -7,18 +7,19 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/books.css" />
         <script type="text/javascript" src="dhtml/index.js" ></script>
+        <script type="text/javascript" src="../scripts/books.js"></script>
     </head>
     <body>
         <!-- login screen overlay -->
         <section id="login-screen-overlay-background">
             <section id="login-screen-overlay">
-
+                <a href="javascript:void(0)" id="close-btn-login" class="close-btn close-btn__left-panel">&times;</a>
             </section>
         </section>
 
         <!-- Account menu overlay -->
         <section id="menu-overlay">
-            <a href="javascript:void(0)" id="close-btn">&times;</a>
+            <a href="javascript:void(0)" id="close-btn-account-menu" class="close-btn close-btn__right-panel">&times;</a>
             <section id="menu-overlay__content">
                 <h1>Hallo</h1>
                 <ul>
@@ -31,38 +32,39 @@
 
         <!-- Search filter menu overlay -->
         <section id="search-filter-menu">
+            <a href="javascript:void(0)" id="close-btn-filter-menu" class="close-btn close-btn__left-panel">&times;</a>
             <section id="search-filter-menu__content">
-                    <h1>Filters</h1>    
-                    <section class="search-filter-menu__content__filter">
-                        <h2>Price</h2>
-                        <input type="number" name="price-range" value="5"/>
-                    </section>
-                    <section class="search-filter-menu__content__filter">
-                        <h2>Genre</h2>
-                        <ul>
-                            <li>
-                                <input type="checkbox" value="fantasy" name="fantasy">
-                                <label for="fantasy">Fantasy</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="horror" name="horror">
-                                <label for="horror">Horror</label>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="search-filter-menu__content__filter">
-                        <h2>Publisher</h2>
-                        <ul>
-                            <li>
-                                <input type="checkbox" value="bloomsbury" name="bloomsbury">
-                                <label for="bloomsbury">Bloomsbury</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" value="chilton" name="chilton">
-                                <label for="chilton">Chilton</label>
-                            </li>
-                        </ul>
-                    </section>
+                <h1>Filters</h1>    
+                <section class="search-filter-menu__content__filter">
+                    <h1>Price</h1>
+                    <input type="number" name="price-range" value="5"/>
+                </section>
+                <section class="search-filter-menu__content__filter">
+                    <h1>Genre</h1>
+                    <ul>
+                        <li>
+                            <input type="checkbox" value="fantasy" name="fantasy">
+                            <label for="fantasy">Fantasy</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="horror" name="horror">
+                            <label for="horror">Horror</label>
+                        </li>
+                    </ul>
+                </section>
+                <section class="search-filter-menu__content__filter">
+                    <h1>Publisher</h1>
+                    <ul>
+                        <li>
+                            <input type="checkbox" value="bloomsbury" name="bloomsbury">
+                            <label for="bloomsbury">Bloomsbury</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="chilton" name="chilton">
+                            <label for="chilton">Chilton</label>
+                        </li>
+                    </ul>
+                </section>
             </section>
         </section>
 
