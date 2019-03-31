@@ -2,13 +2,45 @@
   background-color: rgb(135, 135, 182);
   width: 100%;
   padding: 15px;
+  margin: 20px 0px;
+}
+
+#search-filter-menu {
+  height: 100%;
+  width: 70%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow-x: visible;
+  transition: 0.2s;
+  text-align: center;
+}
+
+#search-filter-menu__content {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 15px;
+}
+
+.search-filter-menu__content__filter input {
+  height: 20px;
+  color: black;
+  margin: 0;
+}
+
+.search-filter-menu__content__filter ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .book-item {
   position: relative;
   width: 100%;
   height: auto;
-  border: 2px solid black;
+  border: 1px solid rgb(85, 85, 85);
   overflow: auto;
   margin: 10px 0px;
 }
@@ -49,4 +81,40 @@
   font-size: 23px;
   font-weight: bold;
   margin-bottom: 0px;
+}
+
+#search-result-page-menu {
+  border: 1px solid rgb(85, 85, 85);
+  padding: 15px;
+  margin: 25px 0px;
+}
+
+#search-result-page-menu ul {
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+}
+
+#search-result-page-menu ul li {
+  display: inline;
+  background-color: rgb(122, 122, 122);
+  padding: 5px;
+  border-radius: 30%;
+}
+
+#search-result-page-menu__left {
+  display: inline;
+  background-color: rgb(93, 93, 155);
+  padding: 5px;
+  border-radius: 30%;
+}
+#search-result-page-menu__right {
+  display: inline;
+  background-color: rgb(93, 93, 155);
+  padding: 5px;
+  border-radius: 30%;
+}
+
+.current-search-page {
+  background-color: white !important;
 }

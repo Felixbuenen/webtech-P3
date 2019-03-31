@@ -29,6 +29,43 @@
             </section>
         </section>
 
+        <!-- Search filter menu overlay -->
+        <section id="search-filter-menu">
+            <section id="search-filter-menu__content">
+                    <h1>Filters</h1>    
+                    <section class="search-filter-menu__content__filter">
+                        <h2>Price</h2>
+                        <input type="number" name="price-range" value="5"/>
+                    </section>
+                    <section class="search-filter-menu__content__filter">
+                        <h2>Genre</h2>
+                        <ul>
+                            <li>
+                                <input type="checkbox" value="fantasy" name="fantasy">
+                                <label for="fantasy">Fantasy</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="horror" name="horror">
+                                <label for="horror">Horror</label>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="search-filter-menu__content__filter">
+                        <h2>Publisher</h2>
+                        <ul>
+                            <li>
+                                <input type="checkbox" value="bloomsbury" name="bloomsbury">
+                                <label for="bloomsbury">Bloomsbury</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="chilton" name="chilton">
+                                <label for="chilton">Chilton</label>
+                            </li>
+                        </ul>
+                    </section>
+            </section>
+        </section>
+
         <header>
             <section id="header-top">
                 <img id="logo-img" src="../images/logo.png" />
@@ -56,11 +93,16 @@
                 <li>About</li>
             </ul>
         </nav>
+
         <main>
             <button id="shopping-bag-btn">
                 <img src="../images/shopping-bag.png" />
                 <span>0</span>
             </button>
+
+            <h1>Search results for:</h1>
+            <span id="search-query">Harry Potter</span>
+            <h2>In: All</h2>
 
             <button id="filter-btn">
                 Filter
@@ -76,6 +118,18 @@
                     <p class="book-item__price">14,99</p>
                 </section>
             </article>
+
+            <section id="search-result-page-menu">
+                <a id="search-result-page-menu__left"><</a>
+                <ul>
+                    <li class="current-search-page"><a>1</a></li>
+                    <li><a>2</a></li>
+                    <li><a>3</a></li>
+                    <span>...</span>
+                    <li><a>10</a></li>
+                </ul>
+                <a id="search-result-page-menu__right">></a>
+            </section>
         </main>
         <footer>
 
