@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Webshop</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/books.css" />
+        <script type="text/javascript" src="dhtml/index.js" ></script>
+        <script type="text/javascript" src="../scripts/books.js"></script>
+    </head>
+    <body>
+        <!-- login screen overlay -->
+        <section id="login-screen-overlay-background">
+            <section id="login-screen-overlay">
+                <a href="javascript:void(0)" id="close-btn-login" class="close-btn close-btn__left-panel">&times;</a>
+            </section>
+        </section>
+
+        <!-- Account menu overlay -->
+        <section id="menu-overlay">
+            <a href="javascript:void(0)" id="close-btn-account-menu" class="close-btn close-btn__right-panel">&times;</a>
+            <section id="menu-overlay__content">
+                <h1>Hallo</h1>
+                <ul>
+                    <li><a>Ga naar hier</a></li>
+                    <li><a>Ga naar hier aajsf </a></li>
+                    <li><a>Ga naar hiera akdsj ljf sakf </a></li>
+                </ul>
+            </section>
+        </section>
+
+        <header>
+            <section id="header-top">
+                <img id="logo-img" src="../images/logo.png" />
+                <section id="account-section">
+                    <button id="account-btn"><img src="../images/account.png"/></button>
+                    <p>Account</p>
+                </section>
+            </section>
+            
+            <section id="search-section">
+                <form id="search-form">
+                    <input type="text" id="search-form__input" placeholder="Search..."/><button type="submit" id="search-form__submit"> <img id="search-img" src="../images/search.png" /> </button> <br>
+                </form>
+                <div id="search-form__filter-menu"> 
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="all"  checked> All </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="book"> Book </input>
+                    <input id="search-form__filter-menu__item" type="radio" name="search-filter" value="author"> Author </input>
+                </div>
+            </section>
+        </header>
+        <nav id="main-navigation">
+            <ul>
+                <li>Books</li>
+                <li>Authors</li>
+                <li>About</li>
+            </ul>
+        </nav>
+
+        <main>
+            <button id="shopping-bag-btn">
+                <img src="../images/shopping-bag.png" />
+                <span>0</span>
+            </button>
+
+        <!-- Search filter menu overlay -->
+        <section id="search-filter-menu">
+            <a href="javascript:void(0)" id="close-btn-filter-menu" class="close-btn close-btn__left-panel">&times;</a>
+            <section id="search-filter-menu__content">
+                <h1>Filters</h1>    
+                <section class="search-filter-menu__content__filter">
+                    <h1>Price</h1>
+                    <input type="number" name="price-range" value="5"/>
+                </section>
+                <section class="search-filter-menu__content__filter">
+                    <h1>Genre</h1>
+                    <ul>
+                        <li>
+                            <input type="checkbox" value="fantasy" name="fantasy">
+                            <label for="fantasy">Fantasy</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="horror" name="horror">
+                            <label for="horror">Horror</label>
+                        </li>
+                    </ul>
+                </section>
+                <section class="search-filter-menu__content__filter">
+                    <h1>Publisher</h1>
+                    <ul>
+                        <li>
+                            <input type="checkbox" value="bloomsbury" name="bloomsbury">
+                            <label for="bloomsbury">Bloomsbury</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="chilton" name="chilton">
+                            <label for="chilton">Chilton</label>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </section>
+
+        <section id="book-results-main">
+            <h1>Search results for:</h1>
+            <span id="search-query">Harry Potter</span>
+            <h2>In: All</h2>
+
+            <button id="filter-btn">
+                Filter
+            </button>
+
+            <article class="book-item">
+                <img src="../images/hp_debugimage.jpg"/>
+                <section>
+                    <h2>J.K. Rowling</h2>
+                    <h1>Harry Potter and the Philosopher's Stone</h1>
+                    <!--HIER KOMT DE RATING-->
+                    <article class="book-item__rating">(8)</article> <!--AANTAL REVIEWS-->
+                    <p class="book-item__price">14,99</p>
+                    <button id="order-btn">Order</button>
+                </section>
+            </article>
+        </section>
+        </main>
+        <section id="search-result-page-menu">
+            <a id="search-result-page-menu__left"><</a>
+            <ul>
+                <li class="current-search-page"><a>1</a></li>
+                <li><a>2</a></li>
+                <li><a>3</a></li>
+                <span>...</span>
+                <li><a>10</a></li>
+            </ul>
+            <a id="search-result-page-menu__right">></a>
+        </section>
+        <footer>
+
+        </footer>
+    </body>
+</html>
