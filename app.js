@@ -34,18 +34,44 @@ app.post("/register", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  global.sess = req.session;
+  const db = require('./app/scripts/database-init');
+  db.get(
+    "SELECT * FROM Users WHERE email='" + email + "'",
+    (err, row) => {
+      if(err != undefined) {
+        console.log(err);
+        res.send("an error occured");
+        return;
+      }
 
-  global.sess.fname = fname;
-  global.sess.lname = lname;
-
-  storeUser(new User(fname, lname, email, pass));
-
-  res.redirect("/");
-  res.end();
+      // email exists --> redirect user to register page
+      if(row) {
+        res.redirect("register.html");
+        return;
+      }
+    
+      global.sess = req.session;
+    
+      global.sess.fname = fname;
+      global.sess.lname = lname;
+    
+      storeUser(new User(fname, lname, email, pass));
+    
+      res.redirect("/");
+      res.end();
+    }
+  );
 });
 
 app.post("/login", (req, res) => {
+
+  if (global.sess) {
+    if(global.sess.fname) {
+      res.send("already logged in");
+      return;
+    }
+  }
+
   const email = req.body.email;
   const pass = req.body.password;
   let success = false;
@@ -63,24 +89,25 @@ app.post("/login", (req, res) => {
 
       if(row) {
         if(row.password == pass) {
-          global.sess.fname = row.firstname;
-          global.sess.lname = row.lastname;
-  
-  
+          global.sess.fname = row.firstName;
+          global.sess.lname = row.lastName;
+
           success = true;
         }
   
         if(success === false) {
-          res.send("<p>Username or password incorrect</p>");
+          console.log("wrong pass word '" + pass + "' (should be '" + row.password + "'");
+          res.redirect("debugLogin.html");
         }
         else {
-          res.send("<p>Logged in as " + row.firstName + " " + row.lastName + "</p>");
+          res.redirect("/");
         }
       
         res.end();
       }
       else {
-          res.send("<p>Username or password incorrect</p>");
+        console.log("row not found");
+        res.redirect("debugLogin.html");
       }
 
     }
