@@ -57,7 +57,13 @@ app.get("/info.html", (req, res) => {
   res.render("pages/info");
 });
 app.get("/register.html", (req, res) => {
-  res.render("pages/register");
+  let errMsg = "";
+  if (req.query.error == "0")
+    errMsg = "You need to specify an e-mail and password";
+  else if (req.query.error == "1") errMsg = "An error occured";
+  else if (req.query.error == "2") errMsg = "E-mail already exists";
+
+  errMsg = errMsg = res.render("pages/register", { errorMessage: errMsg });
 });
 app.get("/debugLogin.html", (req, res) => {
   res.render("pages/debugLogin");
@@ -74,21 +80,20 @@ app.post("/register", (req, res) => {
 
   // no input
   if (!email || !pass) {
-    res.redirect("register.html");
+    res.redirect("./register.html?error=" + 0);
     return;
   }
 
   const db = require("./app/scripts/database-init");
   db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
     if (err != undefined) {
-      console.log(err);
-      res.send("an error occured");
+      res.redirect("./register.html?error=" + 1);
       return;
     }
 
     // email exists --> redirect user to register page
     if (row) {
-      res.redirect("register.html");
+      res.redirect("./register.html?error=" + 2);
       return;
     }
 
