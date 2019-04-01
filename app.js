@@ -1,11 +1,15 @@
 const express = require("express");
-const dcRouter = require("./app/dc-router");
+const dcRouter = require("./app/scripts/dc-router");
 const app = express();
 const port = 8050;
 const expressSession = require("express-session");
 const bodyParser = require("body-parser");
-const { storeUser, User } = require("./app/database-store");
+const { storeUser, User } = require("./app/scripts/database-store");
 
+global.sess; // session variable
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 // register session middleware
 app.use(expressSession({ 
   secret: "some-safe-secret",
@@ -16,14 +20,6 @@ app.use(expressSession({
     maxAge: 5 * 24 * 60 * 60 * 1000 // 5 days
   }
  }));
-
-// register body / json parser middleware
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-app.use(bodyParser.json());
 
 // register static file serving
 app.use(express.static(__dirname + "/public/"));
@@ -38,14 +34,57 @@ app.post("/register", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  req.session.fname = fname;
-  req.session.lname = lname;
+  global.sess = req.session;
+
+  global.sess.fname = fname;
+  global.sess.lname = lname;
 
   storeUser(new User(fname, lname, email, pass));
 
+  res.redirect("/");
   res.end();
-
-  // TO DO: encryption, redirection, closing DB
 });
+
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const pass = req.body.password;
+  let success = false;
+  global.sess = req.session;
+
+  const db = require('./app/scripts/database-init');
+  db.get(
+    "SELECT * FROM Users WHERE email='" + email + "'",
+    (err, row) => {
+      if(err != undefined) {
+        console.log(err);
+        res.send("an error occured");
+        return;
+      }
+
+      if(row) {
+        if(row.password == pass) {
+          global.sess.fname = row.firstname;
+          global.sess.lname = row.lastname;
+  
+  
+          success = true;
+        }
+  
+        if(success === false) {
+          res.send("<p>Username or password incorrect</p>");
+        }
+        else {
+          res.send("<p>Logged in as " + row.firstName + " " + row.lastName + "</p>");
+        }
+      
+        res.end();
+      }
+      else {
+          res.send("<p>Username or password incorrect</p>");
+      }
+
+    }
+  );
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

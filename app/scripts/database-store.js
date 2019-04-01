@@ -31,10 +31,10 @@ function storeUser(user) {
     console.log("succesfull. all members:");
 
     db.each(
-        "SELECT firstName FROM Users",
+        "SELECT rowid, * FROM Users",
         (err, row) => {
           console.log(
-            row.rowid + ": " + row.firstName
+            row.rowid + ": " + row.firstName + " " + row.lastName + " " + row.email + " " + row.password
           );
         }
     );

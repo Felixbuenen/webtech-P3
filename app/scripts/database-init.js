@@ -63,14 +63,6 @@ function initUserTable() {
   db.run(
     "CREATE TABLE Users (firstName TEXT, lastName TEXT, email TEXT, password TEXT)"
   );
-
-  let stmt = db.prepare("INSERT INTO Users VALUES (?,?,?,?)");
-
-  // example data
-  stmt.run("Felix", "Buenen", "felixbuenen@hotmail.com", "encryptedpassword");
-  stmt.run("Desiree", "Van Den Braak", "desireevdbraak@gmail.com", "1234_whoo");
-
-  stmt.finalize();
 }
 
 function initPurchasesTable() {

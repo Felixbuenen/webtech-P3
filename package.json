@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "session-file-store": "^1.2.0",
     "sqlite": "^3.0.3"
   }
 }
