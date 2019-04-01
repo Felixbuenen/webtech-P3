@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+    <script type="text/javascript" src="dhtml/index.js"></script>
+  </head>
+  <body>
+    <!-- login screen overlay -->
+    <section id="login-screen-overlay-background">
+      <section id="login-screen-overlay">
+        <a
+          href="javascript:void(0)"
+          id="close-btn-login"
+          class="close-btn close-btn__left-panel"
+          >&times;</a
+        >
+      </section>
+    </section>
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <nav id="main-navigation">
+      <% include ../partials/mainNav %>
+    </nav>
+    <main>
+      <h1>Register</h1>
+
+      <section>
+        <form id="register-form" action="/register" method="POST">
+          <input type="text" name="fname" placeholder="First name" />
+          <input type="text" name="lname" placeholder="Last name" />
+          <input type="text" name="email" placeholder="E-mail" />
+          <input type="password" name="password" placeholder="Password" /><br />
+          <button>Register</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

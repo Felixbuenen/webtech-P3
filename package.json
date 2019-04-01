@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Felixbuenen/webtech-P3#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "morgan": "^1.9.1",
     "session-file-store": "^1.2.0",
     "sqlite": "^3.0.3"
   }

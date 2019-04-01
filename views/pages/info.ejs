@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+
+    <link rel="stylesheet" type="text/css" href="../css/bookInfo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script type="text/javascript" src="dhtml/index.js"></script>
+  </head>
+  <body>
+    <!-- login screen overlay -->
+    <section id="login-screen-overlay-background">
+      <section id="login-screen-overlay">
+        <a
+          href="javascript:void(0)"
+          id="close-btn-login"
+          class="close-btn close-btn__left-panel"
+          >&times;</a
+        >
+      </section>
+    </section>
+    <!-- Account menu overlay -->
+    <section id="menu-overlay">
+      <a
+        href="javascript:void(0)"
+        id="close-btn-account-menu"
+        class="close-btn close-btn__right-panel"
+        >&times;</a
+      >
+      <section id="menu-overlay__content">
+        <h1>Hallo</h1>
+        <ul>
+          <li><a>Ga naar hier</a></li>
+          <li><a>Ga naar hier aajsf </a></li>
+          <li><a>Ga naar hiera akdsj ljf sakf </a></li>
+        </ul>
+      </section>
+    </section>
+
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <nav id="main-navigation">
+      <% include ../partials/mainNav %>
+    </nav>
+    <main>
+      <button id="shopping-bag-btn">
+        <img src="../images/shopping-bag.png" />
+        <span>0</span>
+      </button>
+      <section id="book-header">
+        <img src="../images/hp_debugimage.jpg" />
+        <h1>Harry Potter and the Philosopher's stone</h1>
+        <a>J.K. Rowling</a>
+      </section>
+
+      <button id="buy-btn">Buy</button>
+
+      <h2>More info</h2>
+      <ul>
+        <li>Uitgever: Potternmore</li>
+        <li>Lengte: 228 pagina's</li>
+        <li>Taal: Nederlands</li>
+      </ul>
+
+      <h2>Reviews</h2>
+      <article class="book-review">
+        <article class="star-rating">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </article>
+        <h3>"Meh..."</h3>
+        <h4>Anonymous, 22 February 2018</h4>
+        <p>Ik vond niet zo leuk.</p>
+      </article>
+
+      <article class="book-review">
+        <article class="star-rating">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </article>
+        <h3>"Very nice"</h3>
+        <h4>Dirk, 12 April 2014</h4>
+        <p>Super duper</p>
+      </article>
+    </main>
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

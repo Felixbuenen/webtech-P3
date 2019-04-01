@@ -10,6 +10,7 @@ const fs = require("fs"); // file system
 const morgan = require("morgan"); // Morgan logging
 
 global.sess; // session variable
+app.set("view engine", "ejs");
 
 // Morgan logger
 var logToFileStream = fs.createWriteStream(
@@ -44,7 +45,23 @@ app.use(
 
 // register static file serving
 app.use(express.static(__dirname + "/public/"));
-app.use(express.static(__dirname + "/public/html"));
+
+// MAYBE CHANGE TO STATIC SERVING SOMEHOW?
+app.get("/", (req, res) => {
+  res.render("pages/index");
+});
+app.get("/books.html", (req, res) => {
+  res.render("pages/books");
+});
+app.get("/info.html", (req, res) => {
+  res.render("pages/info");
+});
+app.get("/register.html", (req, res) => {
+  res.render("pages/register");
+});
+app.get("/debugLogin.html", (req, res) => {
+  res.render("pages/debugLogin");
+});
 
 // register dynamic content javascript generation router
 app.use("/dhtml", dcRouter);
@@ -54,6 +71,12 @@ app.post("/register", (req, res) => {
   const lname = req.body.lname;
   const email = req.body.email;
   const pass = req.body.password;
+
+  // no input
+  if (!email || !pass) {
+    res.redirect("register.html");
+    return;
+  }
 
   const db = require("./app/scripts/database-init");
   db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
