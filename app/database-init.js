@@ -26,8 +26,6 @@ db.serialize(function() {
   );
 });
 
-db.close();
-
 function setupDB() {
   initBookTable();
   initUserTable();
@@ -150,3 +148,5 @@ function initPublishers() {
 
   stmt.finalize();
 }
+
+module.exports = db;

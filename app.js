@@ -1,10 +1,10 @@
 const express = require("express");
-const db = require("./app/database.js");
 const dcRouter = require("./app/dc-router");
 const app = express();
 const port = 8050;
 const expressSession = require("express-session");
-const bodyParser = require("body-parser"); 
+const bodyParser = require("body-parser");
+const { storeUser, User } = require("./app/database-store");
 
 // register session middleware
 app.use(expressSession({ 
@@ -32,12 +32,20 @@ app.use(express.static(__dirname + "/public/html"));
 // register dynamic content javascript generation router
 app.use("/dhtml", dcRouter);
 
-app.post("/login", (req, res) => {
-  req.session.name = req.body.name;
-  req.session.password = req.body.password;
+app.post("/register", (req, res) => {
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const email = req.body.email;
+  const pass = req.body.password;
 
-  res.send("<p>Welcome " + req.body.name + "</p>");
+  req.session.fname = fname;
+  req.session.lname = lname;
+
+  storeUser(new User(fname, lname, email, pass));
+
   res.end();
+
+  // TO DO: encryption, redirection, closing DB
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
