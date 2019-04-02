@@ -104,11 +104,11 @@ router.post("/update-settings", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  // no input
-  if (!email || !pass) {
-    res.redirect("./");
-    return;
-  }
+  updateUser(new User(fname, lname, email, pass));
+
+  global.sess.fname = fname;
+  global.sess.lname = lname;
+  global.sess.email = email;
 
   res.redirect("/");
 });

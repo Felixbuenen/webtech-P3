@@ -48,4 +48,20 @@ function storeUser(user) {
   });
 }
 
-module.exports = { storeUser, User };
+function updateUser(user) {
+  let stmt = db.prepare(
+    "UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ? WHERE email = ?;"
+  );
+
+  stmt.run(
+    user.firstName,
+    user.lastName,
+    user.email,
+    user.password,
+    global.sess.email
+  );
+
+  stmt.finalize();
+}
+
+module.exports = { storeUser, updateUser, User };
