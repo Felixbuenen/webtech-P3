@@ -1,3 +1,7 @@
+/**
+ * This file contains the initialisation logic of the database.
+ */
+
 let fs = require("fs");
 let sqlite = require("sqlite3").verbose();
 

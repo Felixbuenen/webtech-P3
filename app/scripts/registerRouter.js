@@ -1,3 +1,7 @@
+/**
+ * registerRouter.js contains the routing logic for logging in and registration.
+ */
+
 const express = require("express");
 const router = express.Router();
 

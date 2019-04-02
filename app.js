@@ -66,4 +66,21 @@ app.use("/dhtml", dcRouter);
 // register the register/login handler
 app.use("/", registerRouter);
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).render("pages/error", {
+    errorCode: 500,
+    errorMessage: "Something went wrong. Please try again later."
+  });
+});
+
+// nothing found: render the 404 page
+app.use((req, res) => {
+  res.status(404).render("pages/error", {
+    errorCode: 404,
+    errorMessage:
+      "We were unable to find the page you requested. Please check for any typos and try again."
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
