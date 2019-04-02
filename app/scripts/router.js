@@ -47,5 +47,20 @@ router.get("/register.html", (req, res) => {
 router.get("/debugLogin.html", (req, res) => {
   res.render("pages/debugLogin", req.pageVars);
 });
+router.get("/profile.html", (req, res) => {
+  if (req.pageVars.loggedIn) {
+    res.render("pages/profile", req.pageVars);
+  } else {
+    res.redirect("/");
+  }
+});
+router.get("/settings.html", (req, res) => {
+  if (req.pageVars.loggedIn) {
+    req.pageVars.email = global.sess.email;
+    res.render("pages/settings", req.pageVars);
+  } else {
+    res.redirect("/");
+  }
+});
 
 module.exports = router;

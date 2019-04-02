@@ -35,6 +35,7 @@ router.post("/register", (req, res) => {
 
     global.sess.fname = fname;
     global.sess.lname = lname;
+    global.sess.email = email;
 
     storeUser(new User(fname, lname, email, pass));
 
@@ -68,6 +69,7 @@ router.post("/login", (req, res) => {
       if (row.password == pass) {
         global.sess.fname = row.firstName;
         global.sess.lname = row.lastName;
+        global.sess.email = email;
 
         success = true;
       }
