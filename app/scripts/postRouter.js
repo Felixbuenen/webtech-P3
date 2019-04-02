@@ -4,7 +4,7 @@
 
 const express = require("express");
 const router = express.Router();
-const { storeUser, User } = require("./database-store");
+const { storeUser, updateUser, User } = require("./database-store");
 
 router.post("/register", (req, res) => {
   const fname = req.body.fname;
@@ -94,6 +94,21 @@ router.post("/login", (req, res) => {
 router.post("/logout", (req, res) => {
   req.session.destroy();
   global.sess = undefined;
+
+  res.redirect("/");
+});
+
+router.post("/update-settings", (req, res) => {
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const email = req.body.email;
+  const pass = req.body.password;
+
+  // no input
+  if (!email || !pass) {
+    res.redirect("./");
+    return;
+  }
 
   res.redirect("/");
 });

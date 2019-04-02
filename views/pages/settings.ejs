@@ -3,6 +3,7 @@
   <head>
     <% include ../partials/head %>
     <script type="text/javascript" src="dhtml/index.js"></script>
+    <script type="text/javascript" src="scripts/settings.js"></script>
   </head>
   <body>
     <!--If logged in, send the HTML for user menu. If not, send HTML for login menu. -->
@@ -22,16 +23,21 @@
       </button>
       <h1><%= fname + " " + lname %></h1>
       <h2>Update account settings</h2>
-      <form action="/update-settings" method="post">
-        <input type="text" name="fname" value=<%= fname%> /> <input type="text"
-        name="lname" value=<%= lname%> /> <input type="text" name="email"
-        value=<%= email%> />
-        <input
-          type="password"
-          name="password"
-          placeholder="New password"
-        /><br />
-        <button>Confirm</button>
+      <form id="settings-form" action="/update-settings" method="post">
+        <article>
+          <input type="text" name="fname" value=<%= fname%> /><span></span>
+        </article>
+        <article>
+          <input type="text" name="lname" value=<%= lname%> /> <span></span>
+        </article>
+        <article>
+          <input type="text" name="email" value=<%= email%> /> <span></span>
+        </article>
+        <article>
+          <input type="password" name="password" placeholder="New password" />
+          <span></span>
+        </article>
+        <button id="confirm-settings-btn">Confirm</button>
       </form>
     </main>
     <footer>
