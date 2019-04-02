@@ -5,38 +5,12 @@
     <script type="text/javascript" src="dhtml/index.js"></script>
   </head>
   <body>
-    <!-- login screen overlay -->
-    <section id="login-screen-overlay-background">
-      <section id="login-screen-overlay">
-        <a
-          href="javascript:void(0)"
-          id="close-btn-login"
-          class="close-btn close-btn__left-panel"
-          >&times;</a
-        >
-      </section>
-    </section>
-
-    <!-- Account menu overlay -->
-    <section id="menu-overlay">
-      <a
-        href="javascript:void(0)"
-        id="close-btn-account-menu"
-        class="close-btn close-btn__right-panel"
-        >&times;</a
-      >
-      <section id="menu-overlay__content">
-        <h1>Hallo</h1>
-        <ul>
-          <li><a>Ga naar hier</a></li>
-          <li><a>Ga naar hier aajsf </a></li>
-          <li><a>Ga naar hiera akdsj ljf sakf </a></li>
-        </ul>
-      </section>
-    </section>
+    <!--If logged in, send the HTML for user menu. If not, send HTML for login menu. -->
+    <% if(loggedIn) { %> <% include ../partials/menu-overlay %> <% } else { %>
+    <% include ../partials/login-overlay %> <% } %>
 
     <header>
-      <% include ../partials/header %>
+      <% include ../partials/header ) %>
     </header>
     <nav id="main-navigation">
       <% include ../partials/mainNav %>

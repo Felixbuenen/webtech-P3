@@ -11,7 +11,6 @@ const app = express();
 const port = 8050;
 const expressSession = require("express-session");
 const bodyParser = require("body-parser");
-const { storeUser, User } = require("./app/scripts/database-store");
 const path = require("path");
 const fs = require("fs"); // file system
 const morgan = require("morgan"); // Morgan logging
@@ -57,14 +56,13 @@ app.use(
 // register static file serving
 app.use(express.static(__dirname + "/public/"));
 
-// register (dynamic) html file router
-app.use("/", router);
-
 // register dynamic content javascript generation router
 app.use("/dhtml", dcRouter);
 
+// register (dynamic) html file router
+app.use("/", router, registerRouter);
+
 // register the register/login handler
-app.use("/", registerRouter);
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);
@@ -76,11 +74,10 @@ app.use(function(err, req, res, next) {
 
 // nothing found: render the 404 page
 app.use((req, res) => {
-  res.status(404).render("pages/error", {
-    errorCode: 404,
-    errorMessage:
-      "We were unable to find the page you requested. Please check for any typos and try again."
-  });
+  req.pageVars.errorCode = 404;
+  req.pageVars.errorMessage =
+    "We were unable to find the page you requested. Please check for any typos and try again.";
+  res.status(404).render("pages/error", req.pageVars);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

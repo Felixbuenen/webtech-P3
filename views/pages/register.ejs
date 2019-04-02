@@ -5,17 +5,9 @@
     <script type="text/javascript" src="dhtml/index.js"></script>
   </head>
   <body>
-    <!-- login screen overlay -->
-    <section id="login-screen-overlay-background">
-      <section id="login-screen-overlay">
-        <a
-          href="javascript:void(0)"
-          id="close-btn-login"
-          class="close-btn close-btn__left-panel"
-          >&times;</a
-        >
-      </section>
-    </section>
+    <!--If logged in, send the HTML for user menu. If not, send HTML for login menu. -->
+    <% if(loggedIn) { %> <% include ../partials/menu-overlay %> <% } else { %>
+    <% include ../partials/login-overlay %> <% } %>
     <header>
       <% include ../partials/header %>
     </header>

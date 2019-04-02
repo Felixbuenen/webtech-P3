@@ -4,6 +4,7 @@
 
 const express = require("express");
 const router = express.Router();
+const { storeUser, User } = require("./database-store");
 
 router.post("/register", (req, res) => {
   const fname = req.body.fname;
