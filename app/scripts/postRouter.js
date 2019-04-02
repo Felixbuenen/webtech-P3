@@ -89,4 +89,11 @@ router.post("/login", (req, res) => {
   });
 });
 
+router.post("/logout", (req, res) => {
+  req.session.destroy();
+  global.sess = undefined;
+
+  res.redirect("/");
+});
+
 module.exports = router;
