@@ -23,6 +23,7 @@
       </button>
       <h1><%= fname + " " + lname %></h1>
       <h2>Update account settings</h2>
+      <p id="email-exists"></p>
       <form id="settings-form" action="/update-settings" method="post">
         <article>
           <input type="text" name="fname" value=<%= fname%> /><span></span>

@@ -7,6 +7,7 @@ const express = require("express");
 const router = require("./app/scripts/router");
 const dcRouter = require("./app/scripts/dc-router");
 const registerRouter = require("./app/scripts/postRouter");
+const ajaxRouter = require("./app/scripts/ajaxRouter");
 const app = express();
 const port = 8050;
 const expressSession = require("express-session");
@@ -62,7 +63,7 @@ app.use("/dhtml", dcRouter);
 // register (dynamic) html file router
 app.use("/", router, registerRouter);
 
-// register the register/login handler
+app.use("/ajax", ajaxRouter);
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);

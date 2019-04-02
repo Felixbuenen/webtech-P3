@@ -24,5 +24,23 @@ function validateForm(event, settings_form) {
     }
   }
 
-  if (!success) event.preventDefault();
+  if (!success) {
+    event.preventDefault();
+    return;
+  }
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      success = JSON.parse(this.responseText).isValid;
+      if (!success) {
+        document.getElementById("email-exists").innerHTML =
+          "Email already registered";
+        event.preventDefault();
+        return;
+      }
+    }
+  };
+  xhttp.open("POST", "ajax/emailExists?email=" + inputs["email"].value, false);
+  xhttp.send();
 }
