@@ -1,0 +1,87 @@
+.user-profile-container {
+    padding: 5px;
+    border: 1px solid rgb(126, 126, 126);
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.user-profile-container__review {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px;
+    margin: 10px 0px;
+    overflow: hidden;
+}
+
+.user-profile-container__review h3 {
+    display: block;
+    max-height: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0px;
+}
+
+.user-profile-container__review h4 {
+    color: rgb(77, 77, 77);
+    margin: 3px 0px;
+}
+
+.user-profile-container__review  p {
+    margin: 0px;
+    white-space: normal;
+}
+
+.user-profile-container__review .star-rating {
+    display: block;
+    margin: 5px;
+}
+
+.user-profile-container__purchase {
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px;
+    margin: 10px 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+.user-profile-container__purchase section {
+    white-space: normal;
+    display: inline-block;
+    width: 50%;
+}
+
+.user-profile-container__purchase img {
+    max-width: 45%;
+    max-height: 88%;
+    display: inline-block;
+    margin: 0 auto;
+    right: 10px;
+    position: absolute;
+}
+
+.user-profile-container__purchase h3 {
+    display: block;
+    max-height: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0px;
+}
+
+.user-profile-container__purchase h4 {
+    color: rgb(77, 77, 77);
+    margin: 3px 0px;
+}
+
+.checked {
+    color: rgb(219, 231, 45);
+}

@@ -29,6 +29,7 @@
     text-align: left;
     padding: 10px;
     margin: 10px 0px;
+    display: block;
 }
 
 .book-review h3 {
@@ -39,6 +40,8 @@
     color: rgb(77, 77, 77);
     margin: 3px 0px;
 }
+
+
 
 .star-rating {
     display: inline;

@@ -1,5 +1,5 @@
 /**
- * registerRouter.js contains the routing logic for logging in and registration.
+ * ajaxRouter.js contains the routing logic for AJAX requests
  */
 
 const express = require("express");
