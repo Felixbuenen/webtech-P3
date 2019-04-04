@@ -25,4 +25,14 @@ router.post("/emailExists", (req, res) => {
   }
 });
 
+router.post("/profileData", (req, res) => {
+  console.log(req.body);
+  //res.send(JSON.stringify({data: req.body.data}));
+  res.send(JSON.stringify( {
+    title: "AJAX TITLE",
+    date: "3 April 2016"
+  }));
+  res.end();
+})
+
 module.exports = router;
