@@ -55,7 +55,6 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
   let success = false;
-  global.sess = req.session;
 
   const db = require("./database-init");
   db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
@@ -67,6 +66,8 @@ router.post("/login", (req, res) => {
 
     if (row) {
       if (row.password == pass) {
+        global.sess = req.session;
+
         global.sess.fname = row.firstName;
         global.sess.lname = row.lastName;
         global.sess.email = email;
