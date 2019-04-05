@@ -25,4 +25,44 @@ router.post("/emailExists", (req, res) => {
   }
 });
 
+class PurchaseInfo {
+  constructor(bookTitle, purchaseDate, bookImage) {
+    this.bookTitle = bookTitle;
+    this.purchaseDate = purchaseDate;
+    this.bookImage = bookImage;
+  }
+}
+
+router.post("/profileData", (req, res) => {
+  console.log(req.body);
+  //res.send(JSON.stringify({data: req.body.data}));
+
+  let userPurchases = [];
+
+  const db = require("./database-init");
+  db.each(
+    "SELECT Books.title, Books.image, Purchases.date " +
+      "FROM Books, Purchases, Users " +
+      "WHERE Books.rowid = Purchases.bookID " +
+      "AND Users.rowid = Purchases.userID",
+    (err, row) => {
+      //console.log(row);
+      userPurchases.push(row);
+    },
+    (err, rows) => {
+      userPurchases.forEach(element => {
+        console.log(element);
+      });
+
+      res.send(
+        JSON.stringify({
+          nrItems: rows,
+          books: userPurchases
+        })
+      );
+      res.end();
+    }
+  );
+});
+
 module.exports = router;

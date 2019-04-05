@@ -67,6 +67,11 @@ function initUserTable() {
   db.run(
     "CREATE TABLE Users (firstName TEXT, lastName TEXT, email TEXT, password TEXT)"
   );
+
+  let stmt = db.prepare("INSERT INTO Users VALUES (?,?,?,?)");
+
+  // example data
+  stmt.run("Felix", "Buenen", "felix@gmail.com", "felix");
 }
 
 function initPurchasesTable() {
@@ -75,8 +80,9 @@ function initPurchasesTable() {
   let stmt = db.prepare("INSERT INTO Purchases VALUES (?,?,?)");
 
   // example data
-  stmt.run(1, 0, "2014-04-26 16:21:53");
-  stmt.run(0, 1, "2016-12-21 09:36:01");
+  stmt.run(1, 1, "2016-12-21 09:36:01");
+  stmt.run(2, 1, "2012-11-21 09:36:01");
+  stmt.run(2, 2, "2017-11-11 12:53:14");
 
   stmt.finalize();
 }
