@@ -9,10 +9,20 @@ function setup() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      //alert(JSON.parse(this.responseText).data);
       let bookData = JSON.parse(this.responseText);
+      if(bookData.nrItems == 0) {
+        createNoPurchasesHTML();
+        return;
+      }
 
-      for (let i = 0; i < bookData.nrItems; i++) {
+      // set purchase HTML data
+      let title = document.getElementById("user-purchases-title");
+      title.innerHTML = "Your purchases (" + bookData.nrItems + ")";
+
+      createPurchaseElement(userPurchaseElement, purchaseContainer, bookData.books[0])
+
+      // create copies for remaining purchases info
+      for (let i = 1; i < bookData.nrItems; i++) {
         let newElement = userPurchaseElement.cloneNode(true);
         createPurchaseElement(newElement, purchaseContainer, bookData.books[i]);
       }
@@ -29,10 +39,16 @@ function createPurchaseElement(element, parent, book) {
   titleElement.innerHTML = book.title;
 
   let dateElement = element.getElementsByTagName("H4")[0];
-  dateElement.innerHTML = book.date;
+  dateElement.innerHTML = "Purchased on: " + book.date;
 
-  let imgElement = element.getElementsByTagName("IMG")[0];
-  imgElement.href = book.image;
+  let imgElement = element.getElementsByTagName("img")[0];
+  imgElement.src = book.image;
+  alert(imgElement.href);
 
   parent.appendChild(element);
+}
+
+function createNoPurchasesHTML() {
+    let title = document.getElementById("user-purchases-title");
+    title.innerHTML = "You currently don't have any purchases.";
 }
