@@ -43,10 +43,11 @@ router.post("/profileData", (req, res) => {
   db.each(
     "SELECT Books.title, Books.image, Purchases.date " +
       "FROM Books, Purchases, Users " +
-      "WHERE Books.rowid = Purchases.bookID " +
-      "AND Users.rowid = Purchases.userID",
+      "WHERE Users.email = " + "'" + global.sess.email + "' " +
+      "AND Purchases.userID = Users.rowid " +
+      "AND Purchases.bookID = Books.rowid",
     (err, row) => {
-      //console.log(row);
+      console.log(row);
       userPurchases.push(row);
     },
     (err, rows) => {
@@ -60,6 +61,7 @@ router.post("/profileData", (req, res) => {
           books: userPurchases
         })
       );
+      
       res.end();
     }
   );
