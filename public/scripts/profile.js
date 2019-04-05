@@ -12,7 +12,6 @@ function setup() {
       let bookData = JSON.parse(this.responseText);
       if(!bookData.nrItems) {
         createNoPurchasesHTML();
-
         return;
       }
       else {
@@ -28,7 +27,7 @@ function setup() {
         let newElement = userPurchaseElement.cloneNode(true);
         createPurchaseElement(newElement, purchaseContainer, bookData.books[i]);
         }
-    }
+      }
     }
 
   };
@@ -47,7 +46,6 @@ function createPurchaseElement(element, parent, book) {
 
   let imgElement = element.getElementsByTagName("img")[0];
   imgElement.src = book.image;
-  //alert(imgElement.href);
 
   parent.appendChild(element);
 }
