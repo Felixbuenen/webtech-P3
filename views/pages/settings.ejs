@@ -23,19 +23,19 @@
       </button>
       <h1><%= fname + " " + lname %></h1>
       <h2>Update account settings</h2>
-      <p id="email-exists"></p>
-      <form id="settings-form" action="/update-settings" method="post">
+      <p id="settings-response-msg"></p>
+      <form id="settings-form" action="ajax/emailExists" method="post">
         <article>
-          <input type="text" name="fname" value=<%= fname%> /><span></span>
+          <input required type="text" name="fname" value=<%= fname%> /><span></span>
         </article>
         <article>
-          <input type="text" name="lname" value=<%= lname%> /> <span></span>
+          <input required type="text" name="lname" value=<%= lname%> /> <span></span>
         </article>
         <article>
-          <input type="text" name="email" value=<%= email%> /> <span></span>
+          <input required type="text" name="email" value=<%= email%> /> <span></span>
         </article>
         <article>
-          <input type="password" name="password" placeholder="New password" />
+          <input required type="password" name="password" placeholder="New password" />
           <span></span>
         </article>
         <button id="confirm-settings-btn">Confirm</button>

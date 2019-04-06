@@ -23,8 +23,8 @@ function setup() {
 
         // create copies for remaining purchases info
         for (let i = 1; i < bookData.nrItems; i++) {
-        let newElement = userPurchaseElement.cloneNode(true);
-        createPurchaseElement(newElement, purchaseContainer, bookData.books[i]);
+          let newElement = userPurchaseElement.cloneNode(true);
+          createPurchaseElement(newElement, purchaseContainer, bookData.books[i]);
         }
       }
     }

@@ -63,8 +63,10 @@ app.use("/dhtml", dcRouter);
 // register (dynamic) html file router
 app.use("/", router, registerRouter);
 
+// register ajax request router
 app.use("/ajax", ajaxRouter);
 
+// register error handler
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).render("pages/error", {

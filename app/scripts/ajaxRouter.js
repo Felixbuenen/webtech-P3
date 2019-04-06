@@ -5,6 +5,8 @@
 const express = require("express");
 const router = express.Router();
 const storePurchase = require("./database-store").storePurchase;
+const updateUser = require("./database-store").updateUser;
+const User = require("./database-store").User;
 
 router.post("/emailExists", (req, res) => {
 
@@ -15,11 +17,24 @@ router.post("/emailExists", (req, res) => {
   } else {
     const db = require("./database-init");
     db.get(
-      "SELECT * FROM Users WHERE email='" + req.body.email + "'",
+      "SELECT * FROM Users WHERE email = ?", [req.body.email],
       (err, row) => {
         if (row) {
           res.send(JSON.stringify({ isValid: false }));
-        } else {
+        } 
+        
+        // settings were successfully validated, update the user
+        else {
+          const fname = req.body.fname;
+          const lname = req.body.lname;
+          const pass = req.body.password;
+          const email = req.body.email;
+        
+          updateUser(new User(fname, lname, email, pass));
+        
+          global.sess.fname = fname;
+          global.sess.lname = lname;
+          global.sess.email = email;
           res.send(JSON.stringify({ isValid: true }));
         }
       }
@@ -36,9 +51,6 @@ class PurchaseInfo {
 }
 
 router.post("/profileData", (req, res) => {
-  console.log(req.body);
-  //res.send(JSON.stringify({data: req.body.data}));
-
   let userPurchases = [];
 
   const db = require("./database-init");
@@ -84,7 +96,7 @@ router.post("/login", (req, res) => {
   let success = false;
 
   const db = require("./database-init");
-  db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
+  db.get("SELECT * FROM Users WHERE email = ?", [email], (err, row) => {
     if (err != undefined) {
       console.log(err);
       res.send(JSON.stringify({errorMsg: "An error occured. Please try again later."}));

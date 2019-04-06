@@ -40,6 +40,9 @@ function setupDB() {
   initPublishers();
 }
 
+
+// ---------------- INITIALISATION OF DATABASE ---------------
+
 function initBookTable() {
   db.run(
     "CREATE TABLE Books (title TEXT, authorID INT, publisherID INT, genre TEXT, image TEXT, price REAL, nrRatings INT, rating FLOAT)"
