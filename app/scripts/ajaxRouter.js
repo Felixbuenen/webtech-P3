@@ -9,9 +9,6 @@ const updateUser = require("./database-store").updateUser;
 const User = require("./database-store").User;
 
 router.post("/settings", (req, res) => {
-
-  console.log(req.body.email);
-
   if (req.body.email === global.sess.email) {
     res.send(JSON.stringify({ isValid: true }));
   } else {
@@ -58,18 +55,15 @@ router.post("/profileData", (req, res) => {
   db.each(
     "SELECT Books.title, Books.image, Purchases.date " +
       "FROM Books, Purchases, Users " +
-      "WHERE Users.email = " + "'" + global.sess.email + "' " +
+      "WHERE Users.email = ? " +
       "AND Purchases.userID = Users.rowid " +
       "AND Purchases.bookID = Books.rowid",
+      [global.sess.email],
     (err, row) => {
       console.log(row);
       userPurchases.push(row);
     },
     (err, rows) => {
-      userPurchases.forEach(element => {
-        console.log(element);
-      });
-
       res.send(
         JSON.stringify({
           nrItems: rows,
@@ -138,5 +132,53 @@ router.post("/purchase", (req, res) => {
   // succesful purchase
   res.sendStatus(200);
 });
+
+
+// DEBUG COMMENT: dit is waar de ajax request afgehandeld wordt. Hier wil je server side dingen regelen (zoals db queries)
+router.post("/books", (req, res) => {
+  
+  let search = req.body.search;
+  let pageIndex = req.body.index;
+  let query;
+
+  const db = require("./database-init");
+  if(search == "null" || search == "") {
+    query = "SELECT rowid, * FROM Books";
+  }
+  else {
+  /**
+   * DEBUG COMMENT:
+   * De '?' wordt vervangen
+    * door een parameter die je in de parameter lijst bij db.all(*query*, [search]) opgeeft (dit is goed tegen injectie).
+    * De query is uiteraard nog niet goed, er moet namelijk ook gezocht kunnen worden op auteur. Voor nu kunnen we de zoekopdracht altijd
+    * toepassen op boek titel en auteur, daarna kunnen we dit optioneel maken. Ook moet er nog gefilterd kunnen worden.
+   */
+    query = "SELECT rowid, * FROM Books WHERE title = ?", [search];
+  }
+
+  let books = []; // books that will be sent to the client
+  let bookShowLimit = 10; // total number of books shown on page
+  let bookIndex = (parseInt(pageIndex)-1) * bookShowLimit; // first book in DB which needs to be shown (based on page index) 
+
+  let indexCounter = 0;
+  let bookCounter = 0;
+
+  db.each(query, (err, row) => {
+    // only add books to the list that we want to show
+    if(indexCounter == bookIndex && bookCounter <= bookShowLimit) {
+      books.push(row);
+      bookCounter++;
+    }
+    else {
+      indexCounter++;
+    }
+  }, (err, rows) => {
+    // send book data back to the client
+    res.send(JSON.stringify({
+      nrBooks: rows,
+      showBooks: books
+    }))
+  })
+})
 
 module.exports = router;
