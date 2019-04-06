@@ -48,7 +48,7 @@ router.post("/logout", (req, res) => {
   req.session.destroy();
   global.sess = undefined;
 
-  res.redirect("/");
+  res.redirect("back");
 });
 
 router.post("/update-settings", (req, res) => {

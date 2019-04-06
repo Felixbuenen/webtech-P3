@@ -29,7 +29,7 @@ function makeAjaxRequest(event, email, password) {
       if (this.readyState == 4 && this.status == 200) {
         let error = JSON.parse(this.responseText);
         if(!error.errorMsg) {
-          window.location.href = location.protocol + '//' + location.host;
+          window.location.reload();
           return;
         }
         else {

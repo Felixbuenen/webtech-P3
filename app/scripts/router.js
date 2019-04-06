@@ -44,9 +44,6 @@ router.get("/register.html", (req, res) => {
   req.pageVars.errorMessage = errMsg;
   errMsg = errMsg = res.render("pages/register", req.pageVars);
 });
-router.get("/debugLogin.html", (req, res) => {
-  res.render("pages/debugLogin", req.pageVars);
-});
 router.get("/profile.html", (req, res) => {
   if (req.pageVars.loggedIn) {
     res.render("pages/profile", req.pageVars);
