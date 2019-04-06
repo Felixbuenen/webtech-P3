@@ -14,8 +14,6 @@ if (!fileExists) {
 
 let db = new sqlite.Database(dbFile);
 
-db.each("SELECT * From Purchases", (error, row) => {console.log(row);});
-
 db.serialize(function() {
   if (!fileExists) {
     setupDB();
