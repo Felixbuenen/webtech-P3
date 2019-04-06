@@ -9,6 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <script type="text/javascript" src="dhtml/index.js"></script>
+    <script type="text/javascript" src="./scripts/info.js"></script>
   </head>
   <body>
     <!--If logged in, send the HTML for user menu. If not, send HTML for login menu. -->
@@ -33,6 +34,8 @@
       </section>
 
       <% if(loggedIn) { %> <button id="buy-btn">Buy</button> <% } %>
+
+      <p id="buy-response-msg"></p>
 
       <h2>More info</h2>
       <ul>

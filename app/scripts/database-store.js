@@ -1,5 +1,5 @@
 /**
- * This file contains the logic to update new entities into the database.
+ * This file contains the logic to update and add new entities into the database.
  */
 
 const db = require("./database-init");
@@ -64,4 +64,22 @@ function updateUser(user) {
   stmt.finalize();
 }
 
-module.exports = { storeUser, updateUser, User };
+function storePurchase(bookID) {
+  
+  // get user ID
+  db.get("SELECT rowid FROM Users WHERE email='" + global.sess.email + "'", (err, row) => {
+    let userID = row.rowid;
+
+    // insert data into purchase table
+    let stmt = db.prepare(
+      "UPDATE Purchases SET userID = ?, bookID = ?, date =" + Date.now()
+    );
+
+    stmt.run(userID, bookID);
+    stmt.finalize();
+  });
+  
+
+}
+
+module.exports = { storeUser, updateUser, storePurchase, User };

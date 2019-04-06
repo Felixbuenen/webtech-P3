@@ -4,6 +4,7 @@
 
 const express = require("express");
 const router = express.Router();
+const storePurchase = require("./database-store").storePurchase;
 
 router.post("/emailExists", (req, res) => {
 
@@ -116,6 +117,13 @@ router.post("/login", (req, res) => {
       res.send(JSON.stringify({errorMsg: "The e-mail or password could not be found."}));
     }
   });
+});
+
+router.post("/purchase", (req, res) => {
+  storePurchase(req.body.bookID);
+
+  // succesful purchase
+  res.sendStatus(200);
 });
 
 module.exports = router;
