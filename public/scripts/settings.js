@@ -19,22 +19,6 @@ function validateForm(event, settings_form) {
   let inputs = settings_form.elements;
   let success = true;
 
-  // check if all fields were filled in
-  /*for (i = 0; i < settings_form.children.length - 1; i++) {
-    if (inputs[i].value === "") {
-      settings_form.children[i].children[1].innerHTML = "Field can't be empty!";
-      if (success) success = false;
-    } else {
-      settings_form.children[i].children[1].innerHTML = "";
-    }
-  }*/
-
-  // if not all fields were filled in, return
-  /*if (!success) {
-    event.preventDefault();
-    return;
-  }*/
-
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -51,8 +35,9 @@ function validateForm(event, settings_form) {
       }
     }
   };
-  xhttp.open("POST", "ajax/emailExists", false);
+  xhttp.open("POST", "ajax/settings", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
   let sendData = "email=" + inputs["email"].value + "&fname=" + inputs["fname"].value + "&lname=" + inputs["lname"].value + "&password=" + inputs["password"].value;
   xhttp.send(sendData);
 }

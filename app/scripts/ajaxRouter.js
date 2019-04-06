@@ -8,7 +8,7 @@ const storePurchase = require("./database-store").storePurchase;
 const updateUser = require("./database-store").updateUser;
 const User = require("./database-store").User;
 
-router.post("/emailExists", (req, res) => {
+router.post("/settings", (req, res) => {
 
   console.log(req.body.email);
 
@@ -17,7 +17,8 @@ router.post("/emailExists", (req, res) => {
   } else {
     const db = require("./database-init");
     db.get(
-      "SELECT * FROM Users WHERE email = ?", [req.body.email],
+      "SELECT * FROM Users WHERE email = ?", 
+      [req.body.email],
       (err, row) => {
         if (row) {
           res.send(JSON.stringify({ isValid: false }));
