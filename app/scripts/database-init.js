@@ -14,6 +14,8 @@ if (!fileExists) {
 
 let db = new sqlite.Database(dbFile);
 
+db.each("SELECT * From Purchases", (error, row) => {console.log(row);});
+
 db.serialize(function() {
   if (!fileExists) {
     setupDB();
@@ -75,14 +77,13 @@ function initUserTable() {
 }
 
 function initPurchasesTable() {
-  db.run("CREATE TABLE Purchases (bookID INT, userID INT, date DATETIME)");
+  db.run("CREATE TABLE Purchases (bookID INT, userID INT, date TEXT)");
 
   let stmt = db.prepare("INSERT INTO Purchases VALUES (?,?,?)");
 
-  // example data
+  // example data for user 1 (Felix)
   stmt.run(1, 1, "2016-12-21 09:36:01");
   stmt.run(2, 1, "2012-11-21 09:36:01");
-  stmt.run(2, 2, "2017-11-11 12:53:14");
 
   stmt.finalize();
 }

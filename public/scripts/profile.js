@@ -15,7 +15,6 @@ function setup() {
         return;
       }
       else {
-        alert(bookData.nrItems);
         // set purchase HTML data
         let title = document.getElementById("user-purchases-title");
         title.innerHTML = "Your purchases (" + bookData.nrItems + ")";
