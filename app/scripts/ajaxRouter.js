@@ -6,14 +6,15 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/emailExists", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
 
-  if (req.query.email === global.sess.email) {
+  console.log(req.body.email);
+
+  if (req.body.email === global.sess.email) {
     res.send(JSON.stringify({ isValid: true }));
   } else {
     const db = require("./database-init");
     db.get(
-      "SELECT * FROM Users WHERE email='" + req.query.email + "'",
+      "SELECT * FROM Users WHERE email='" + req.body.email + "'",
       (err, row) => {
         if (row) {
           res.send(JSON.stringify({ isValid: false }));

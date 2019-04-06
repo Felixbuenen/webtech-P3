@@ -1,3 +1,8 @@
+/**
+ * This file contains the logic for the form on the 'settings' page. It sends an AJAX request with form data.
+ * If the email already existed, the AJAX call will return this and it will be displayed in the browser. 
+ */
+
 window.addEventListener("load", setup, false);
 
 function setup() {
@@ -12,11 +17,9 @@ function validateForm(event, settings_form) {
   let inputs = settings_form.elements;
   let success = true;
 
-  //alert(settings_form.children.length);
+  // check if all fields were filled in
   for (i = 0; i < settings_form.children.length - 1; i++) {
-    //alert(inputs[i].value);
     if (inputs[i].value === "") {
-      //alert(settings_form.childNodes[i].childNodes[1]);
       settings_form.children[i].children[1].innerHTML = "Field can't be empty!";
       if (success) success = false;
     } else {
@@ -24,6 +27,7 @@ function validateForm(event, settings_form) {
     }
   }
 
+  // if not all fields were filled in, return
   if (!success) {
     event.preventDefault();
     return;
@@ -41,6 +45,7 @@ function validateForm(event, settings_form) {
       }
     }
   };
-  xhttp.open("POST", "ajax/emailExists?email=" + inputs["email"].value, false);
-  xhttp.send();
+  xhttp.open("POST", "ajax/emailExists", false);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("email=" + inputs["email"].value);
 }
