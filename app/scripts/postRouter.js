@@ -44,54 +44,6 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.post("/login", (req, res) => {
-  if (global.sess) {
-    if (global.sess.fname) {
-      res.send("already logged in");
-      return;
-    }
-  }
-
-  const email = req.body.email;
-  const pass = req.body.password;
-  let success = false;
-
-  const db = require("./database-init");
-  db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
-    if (err != undefined) {
-      console.log(err);
-      res.send("an error occured");
-      return;
-    }
-
-    if (row) {
-      if (row.password == pass) {
-        global.sess = req.session;
-
-        global.sess.fname = row.firstName;
-        global.sess.lname = row.lastName;
-        global.sess.email = email;
-
-        success = true;
-      }
-
-      if (success === false) {
-        console.log(
-          "wrong pass word '" + pass + "' (should be '" + row.password + "'"
-        );
-        res.redirect("debugLogin.html");
-      } else {
-        res.redirect("/");
-      }
-
-      res.end();
-    } else {
-      console.log("row not found");
-      res.redirect("debugLogin.html");
-    }
-  });
-});
-
 router.post("/logout", (req, res) => {
   req.session.destroy();
   global.sess = undefined;

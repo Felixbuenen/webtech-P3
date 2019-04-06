@@ -67,4 +67,54 @@ router.post("/profileData", (req, res) => {
   );
 });
 
+router.post("/login", (req, res) => {
+  if (global.sess) {
+    if (global.sess.fname) {
+      res.send("already logged in");
+      return;
+    }
+  }
+
+  const email = req.body.email;
+  const pass = req.body.password;
+
+  console.log(email + " " + pass);
+  let success = false;
+
+  const db = require("./database-init");
+  db.get("SELECT * FROM Users WHERE email='" + email + "'", (err, row) => {
+    if (err != undefined) {
+      console.log(err);
+      res.send(JSON.stringify({errorMsg: "An error occured. Please try again later."}));
+      return;
+    }
+
+    if (row) {
+      if (row.password == pass) {
+        global.sess = req.session;
+
+        global.sess.fname = row.firstName;
+        global.sess.lname = row.lastName;
+        global.sess.email = email;
+
+        success = true;
+      }
+
+      if (success === false) {
+        console.log(
+          "wrong pass word '" + pass + "' (should be '" + row.password + "')"
+        );
+        res.send(JSON.stringify({errorMsg: "The e-mail or password could not be found."}));
+      } else {        
+        res.send(JSON.stringify({errorMsg: ""}));
+      }
+
+      res.end();
+    } else {
+      console.log("row not found");
+      res.send(JSON.stringify({errorMsg: "The e-mail or password could not be found."}));
+    }
+  });
+});
+
 module.exports = router;

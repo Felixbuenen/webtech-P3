@@ -9,11 +9,12 @@
     >
     <h1>Login</h1>
     <h2>Enter credentials:</h2>
-    <form action="/login" method="post">
-      E-mail: <input type="text" name="email" /><br />
-      password: <input type="password" name="password" /><br />
+    <form id="login-form">
+      E-mail: <input type="text" name="email" required /><br />
+      password: <input type="password" name="password" required/><br />
       <input type="submit" value="Submit" />
     </form>
+    <p id="response-message"></p>
     <p>Don't have an account yet? <a href="./register.html">Register now</a>.</p>
   </section>
 </section>
