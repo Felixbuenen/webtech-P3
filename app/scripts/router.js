@@ -83,8 +83,8 @@ router.get("/profile.html", (req, res) => {
   }
 });
 router.get("/settings.html", (req, res) => {
-  if (req.pageVars.loggedIn) {
-    req.pageVars.email = global.sess.email;
+  if (req.session.fname) {
+    req.pageVars.email = req.session.email;
     res.render("pages/settings", req.pageVars);
   } else {
     res.redirect("/");
