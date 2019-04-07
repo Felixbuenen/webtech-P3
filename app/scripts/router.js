@@ -16,9 +16,10 @@ router.use((req, res, next) => {
   };
 
   // if user is logged in...
-  if (global.sess) {
-    pageVars.fname = global.sess.fname;
-    pageVars.lname = global.sess.lname;
+  // CHANGED
+  if (req.session.fname) {
+    pageVars.fname = req.session.fname;
+    pageVars.lname = req.session.lname;
     pageVars.loggedIn = true;
   }
 

@@ -82,7 +82,7 @@ function storeUser(user) {
   });
 }
 
-function updateUser(user) {
+function updateUser(user, oldEmail) {
   let stmt = db.prepare(
     "UPDATE Users SET firstName = ?, lastName = ?, email = ?, password = ? WHERE email = ?;"
   );
@@ -92,16 +92,16 @@ function updateUser(user) {
     user.lastName,
     user.email,
     user.password,
-    global.sess.email
+    oldEmail
   );
 
   stmt.finalize();
 }
 
-function storePurchase(bookID) {
+function storePurchase(bookID, userEmail) {
   
   // get user ID
-  db.get("SELECT rowid FROM Users WHERE email='" + global.sess.email + "'", (err, row) => {
+  db.get("SELECT rowid FROM Users WHERE email='" + userEmail + "'", (err, row) => {
     let userID = row.rowid;
 
     // insert data into purchase table

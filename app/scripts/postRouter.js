@@ -31,11 +31,9 @@ router.post("/register", (req, res) => {
       return;
     }
 
-    global.sess = req.session;
-
-    global.sess.fname = fname;
-    global.sess.lname = lname;
-    global.sess.email = email;
+    req.session.fname = fname;
+    req.session.lname = lname;
+    req.session.email = email;
 
     storeUser(new User(fname, lname, email, pass));
 
@@ -46,7 +44,6 @@ router.post("/register", (req, res) => {
 
 router.post("/logout", (req, res) => {
   req.session.destroy();
-  global.sess = undefined;
 
   res.redirect("back");
 });
@@ -59,9 +56,9 @@ router.post("/update-settings", (req, res) => {
 
   updateUser(new User(fname, lname, email, pass));
 
-  global.sess.fname = fname;
-  global.sess.lname = lname;
-  global.sess.email = email;
+  req.session.fname = fname;
+  req.session.lname = lname;
+  req.session.email = email;
 
   res.redirect("/");
 });

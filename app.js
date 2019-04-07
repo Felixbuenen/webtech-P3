@@ -16,9 +16,6 @@ const path = require("path");
 const fs = require("fs"); // file system
 const morgan = require("morgan"); // Morgan logging
 
-// session variable
-global.sess;
-
 // set EJS to be our view engine
 app.set("view engine", "ejs");
 

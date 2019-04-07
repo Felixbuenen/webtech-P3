@@ -9,13 +9,13 @@ const updateUser = require("./database-store").updateUser;
 const User = require("./database-store").User;
 
 router.post("/settings", (req, res) => {
-  if (req.body.email === global.sess.email) {
+  if (req.body.email === req.session.email) {
     res.send(JSON.stringify({ isValid: true }));
   } else {
     const db = require("./database-init");
     db.get(
       "SELECT * FROM Users WHERE email = ?", 
-      [req.body.email],
+      [req.session.email],
       (err, row) => {
         if (row) {
           res.send(JSON.stringify({ isValid: false }));
@@ -27,12 +27,13 @@ router.post("/settings", (req, res) => {
           const lname = req.body.lname;
           const pass = req.body.password;
           const email = req.body.email;
+          const oldEmail = req.session.email;
+
+          updateUser(new User(fname, lname, email, pass), oldEmail);
         
-          updateUser(new User(fname, lname, email, pass));
-        
-          global.sess.fname = fname;
-          global.sess.lname = lname;
-          global.sess.email = email;
+          req.session.fname = fname;
+          req.session.fname = lname;
+          req.session.fname = email;
           res.send(JSON.stringify({ isValid: true }));
         }
       }
@@ -58,7 +59,7 @@ router.post("/profileData", (req, res) => {
       "WHERE Users.email = ? " +
       "AND Purchases.userID = Users.rowid " +
       "AND Purchases.bookID = Books.rowid",
-      [global.sess.email],
+      [req.session.email],
     (err, row) => {
       console.log(row);
       userPurchases.push(row);
@@ -77,8 +78,8 @@ router.post("/profileData", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  if (global.sess) {
-    if (global.sess.fname) {
+  if (req.session) {
+    if (req.session.fname) {
       res.send("already logged in");
       return;
     }
@@ -87,7 +88,7 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  console.log(email + " " + pass);
+  //console.log(email + " " + pass);
   let success = false;
 
   const db = require("./database-init");
@@ -100,11 +101,11 @@ router.post("/login", (req, res) => {
 
     if (row) {
       if (row.password == pass) {
-        global.sess = req.session;
+        req.session = req.session;
 
-        global.sess.fname = row.firstName;
-        global.sess.lname = row.lastName;
-        global.sess.email = email;
+        req.session.fname = row.firstName;
+        req.session.lname = row.lastName;
+        req.session.email = email;
 
         success = true;
       }
@@ -127,7 +128,7 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/purchase", (req, res) => {
-  storePurchase(req.body.bookID);
+  storePurchase(req.body.bookID, req.session.email);
 
   // succesful purchase
   res.sendStatus(200);

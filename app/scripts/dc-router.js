@@ -7,8 +7,8 @@ const express = require("express");
 const router = express.Router();
 
 router.use((req, res, next) => {
-  if (global.sess) {
-    if (global.sess.fname) {
+  if (req.session) {
+    if (req.session.fname) {
       req.dir = __dirname + "/dynamic_content/loggedin";
     } else {
       //console.log("session defined but no fname " + global.sess.fname);
