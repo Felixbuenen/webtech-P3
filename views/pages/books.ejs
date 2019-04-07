@@ -3,6 +3,10 @@
   <head>
     <% include ../partials/head %>
     <link rel="stylesheet" type="text/css" href="./css/books.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script type="text/javascript" src="./dhtml/index.js"></script>
     <script type="text/javascript" src="./scripts/books.js"></script>
   </head>
@@ -81,7 +85,13 @@
             <h1>J.K. Rowling</h1>
             <h2>Harry Potter and the Philosopher's Stone</h2>
             <!--HIER KOMT DE RATING-->
-            <article class="book-item__rating">(8)</article>
+            <article class="star-rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </article>
             <!--AANTAL REVIEWS-->
             <p class="book-item__price">14,99</p>
             <button id="order-btn">Order</button>
@@ -100,6 +110,7 @@
       </ul>
       <a id="search-result-page-menu__right">></a>
     </section>
+    
     <footer>
       <% include ../partials/footer %>
     </footer>

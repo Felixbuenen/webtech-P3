@@ -141,10 +141,12 @@ router.post("/purchase", (req, res) => {
 router.post("/books", (req, res) => {
   
   let search = req.body.search;
+  let filter = req.body.filter;
   let pageIndex = req.body.index;
   let query;
 
   const db = require("./database-init");
+  console.log("Search: " + search);
   if(search == "null" || search == "") {
     query = "SELECT rowid, * FROM Books";
   }
@@ -156,7 +158,7 @@ router.post("/books", (req, res) => {
     * De query is uiteraard nog niet goed, er moet namelijk ook gezocht kunnen worden op auteur. Voor nu kunnen we de zoekopdracht altijd
     * toepassen op boek titel en auteur, daarna kunnen we dit optioneel maken. Ook moet er nog gefilterd kunnen worden.
    */
-    query = "SELECT rowid, * FROM Books WHERE title = ?", [search];
+    query = "SELECT rowid, * FROM Books WHERE title = '?'", [search];
   }
 
   let books = []; // books that will be sent to the client
