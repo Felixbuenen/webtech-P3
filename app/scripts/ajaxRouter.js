@@ -166,7 +166,7 @@ router.post("/books", (req, res) => {
 
   db.each(query, (err, row) => {
     // only add books to the list that we want to show
-    if(indexCounter == bookIndex && bookCounter <= bookShowLimit) {
+    if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
       books.push(row);
       bookCounter++;
     }

@@ -43,7 +43,7 @@ function getBooks(search, filter) {
       alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
       alert("Array length: " + ajaxData.showBooks.length);
 
-      showBooks(ajaxData.books);
+      showBooks(ajaxData.showBooks);
     }
   };
   xhttp.open("POST", "ajax/books", false);
@@ -56,21 +56,24 @@ function showBooks(books) {
   // In de book data staat ook de rowID. Deze hoef je niet te gebruiken voor visualisatie, maar kan gebruikt worden in de router.
   // Bijv. Harry Potter heeft rowid=1. Als we hier op klikken, stuurt de client dus een request voor info.html/bookID=1 .
   // De router kan dan uitzoeken dat de client Harry Potter wil zien en dit doorsturen.
-  /*
+  
   let bookItem = document.getElementsByClassName("book-item")[0];
   let bookResults = document.getElementById("book-results-main");
+
+  // first one doesn't have to be cloned
+  createBookItem(bookItem, bookResults, books[0]);
   
-  for(let i = 0; i < books.length; i++) {
+  for(let i = 1; i < books.length; i++) {
       let newBookItem = bookItem.cloneNode(true);
       createBookItem(newBookItem, bookResults, books[i]);
-  }*/
+  }
 }
-/*
+
 function createBookItem(element, parent, book) {
     
     let imgElement = element.getElementsByTagName("img")[0];
-    let authorName = element.getElementsByTagName("h2")[0];
-    let titleElement = element.getElementsByTagName("h1")[0];
+    let authorName = element.getElementsByTagName("h1")[0];
+    let titleElement = element.getElementsByTagName("h2")[0];
     let ratingElement = element.getElementsByClassName("book-item__rating")[0];
     let priceElement = element.getElementsByClassName("book-item__price")[0];
     
@@ -79,8 +82,7 @@ function createBookItem(element, parent, book) {
     titleElement.innerHTML = book.title;
     ratingElement.innerHTML = book.rating;
     priceElement.innerHTML = book.price;
-    alert("This book is called " + titleElement.innerHTML + " and costs " + priceElement.innerHTML);
+    //alert("This book is called " + titleElement.innerHTML + " and costs " + priceElement.innerHTML);
     
     parent.appendChild(element);
 }
-*/
