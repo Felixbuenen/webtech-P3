@@ -37,7 +37,10 @@ router.get("/info.html", (req, res) => {
   let bookID = req.query.bookID;
   
   // no (valid) bookID defined
-  if(!bookID || isNaN(bookID)) res.redirect("/books.html");
+  if(!bookID || isNaN(bookID)) { 
+    res.redirect("/books.html");
+    return;
+  }
 
   let book;
   let author;

@@ -7,24 +7,27 @@ function setup() {
 }
 
 function handleBuy() {
-    let confirmed = confirm("Are you sure you want to buy harry potter?");
+    let bookTitle = document.getElementById("book-header").getElementsByTagName("H1")[0].innerHTML;
+    let confirmed = confirm("Are you sure you want to buy " + bookTitle + "?");
 
     if(confirmed) {
-        sendAjaxRequest();
+        // get book id and send ajax request
+        let ID = window.location.search.replace(/^.*?\=/, '');
+        sendAjaxRequest(bookTitle, ID);
     }
 }
 
-function sendAjaxRequest() {
+function sendAjaxRequest(bookTitle, bookID) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         let responseMsg = document.getElementById("buy-response-msg");
-        responseMsg.innerHTML = "You just bought Harry Potter. Have fun reading!";
+        responseMsg.innerHTML = "You just bought " + bookTitle + ". Have fun reading!";
       }
     };
 
     xhttp.open("POST", "ajax/purchase", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // DEBUG ID: THIS SHOULD COME FROM THE CURRENT BOOK DATA
-    xhttp.send("bookID=" + 1);
+    
+    xhttp.send("bookID=" + bookID);
 }

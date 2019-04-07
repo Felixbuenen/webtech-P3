@@ -34,6 +34,7 @@
       </section>
 
       <% if(loggedIn) { %> <button id="buy-btn">Buy</button> <% } %>
+      <% if(!loggedIn) { %> <h3>You need to be logged in in order to make a purchase.</h3> <% } %>
 
       <p id="buy-response-msg"></p>
 
