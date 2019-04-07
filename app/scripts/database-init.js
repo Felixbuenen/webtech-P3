@@ -44,24 +44,20 @@ function setupDB() {
 // ---------------- INITIALISATION OF DATABASE ---------------
 
 function initBookTable() {
+
   db.run(
     "CREATE TABLE Books (title TEXT, authorID INT, publisherID INT, genre TEXT, image TEXT, price REAL, nrRatings INT, rating FLOAT)"
   );
-
   let stmt = db.prepare("INSERT INTO Books VALUES (?,?,?,?,?,?,?,?)");
 
-  // example data
-  stmt.run(
-    "Harry Potter and the Prisoner",
-    1,
-    1,
-    "Fantasy",
-    "./images/hp.png",
-    14.99,
-    50,
-    4.3
-  );
-  stmt.run("Doom's Day", 37, 1, "War", "./images/dd.png", 11.99, 24, 3.6);
+  // read and parse JSON book data
+  let bookFile = fs.readFileSync(__dirname + "/../data/books.json", "utf8");
+  let bookData = JSON.parse(bookFile);
+
+  let imgPath = "./images/bookCovers/";
+  bookData.forEach(book => {
+    stmt.run(book['title'], book['authorID'], book['publisherID'], book['genre'], imgPath + book['image'], book['price'], book['nrRatings'], book['rating']);
+  });
 
   stmt.finalize();
 }

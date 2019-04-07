@@ -1,0 +1,67 @@
+[
+    {
+        "firstName": "J.K.",
+        "lastName": "Rowling",
+        "image": "rowling.jpeg"
+    },
+
+    {
+        "firstName": "Frank",
+        "lastName": "Herbert",
+        "image": "herbert.jpeg"
+    },
+
+    {
+        "firstName": "Stephen",
+        "lastName": "King",
+        "image": "s_king.jpeg"
+    },
+
+    {
+        "firstName": "William",
+        "lastName": "Shakespeare",
+        "image": "shakespeare.jpeg"
+    },
+
+    {
+        "firstName": "Roald",
+        "lastName": "Dahl",
+        "image": "dahl.jpeg"
+    },
+
+    {
+        "firstName": "Tom",
+        "lastName": "Clancy",
+        "image": "clancy.jpeg"
+    },
+
+    {
+        "firstName": "Dan",
+        "lastName": "Brown",
+        "image": "danbrown.jpeg"
+    },
+
+    {
+        "firstName": "Saskia",
+        "lastName": "Noort",
+        "image": "saskiaNoort.jpeg"
+    },
+
+    {
+        "firstName": "Khaled",
+        "lastName": "Hosseini",
+        "image": "hosseini.jpeg"
+    },
+
+    {
+        "firstName": "Gerard",
+        "lastName": "Reve",
+        "image": "reve.jpeg"
+    },
+
+    {
+        "firstName": "Ken",
+        "lastName": "Kesey",
+        "image": "kesey.jpeg"
+    }
+]

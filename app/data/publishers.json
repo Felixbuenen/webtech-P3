@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Bloomsbury Publishing",
+        "country": "United Kingdom",
+        "city": "London"
+    },
+
+    {
+        "name": "Chilton Books",
+        "country": "United States",
+        "city": "New York City"       
+    },
+
+    {
+        "name": "Viking Press",
+        "country": "United States",
+        "city": "New York City"       
+    },
+
+    {
+        "name": "Simon & Schuster",
+        "country": "United States",
+        "city": "New York City"
+    },
+
+    {
+        "name": "Penguin Books",
+        "country": "United Kingdom",
+        "city": "London"
+    },
+
+    {
+        "name": "G. P. Putnam's Sons",
+        "country": "United States",
+        "city": "New York City"
+    },
+
+    {
+        "name": "Transworld Publishers",
+        "country": "United Kingdom",
+        "city": "London"
+    },
+
+    {
+        "name": "Anthos",
+        "country": "The Netherlands",
+        "city": "Amsterdam"
+    }
+]

@@ -1,0 +1,100 @@
+[
+    {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 50,
+        "rating": 4.3
+    },
+    
+    {
+        "title": "Dune",
+        "authorID": 2,
+        "publisherID": 2,
+        "genre": "Science Fiction",
+        "image": "dune.jpeg",
+        "price": 11.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "It",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "it.jpeg",
+        "price": 16.98,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Romeo and Juliet",
+        "authorID": 4,
+        "publisherID": 4,
+        "genre": "Romance",
+        "image": "romeoJuliet.jpeg",
+        "price": 8.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The BFG",
+        "authorID": 5,
+        "publisherID": 5,
+        "genre": "Children's",
+        "image": "bfg.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Rainbow Six",
+        "authorID": 6,
+        "publisherID": 6,
+        "genre": "War",
+        "image": "rainbowsix.jpeg",
+        "price": 6.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The Da Vinci Code",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "davinci.jpeg",
+        "price": 16.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "De Eetclub",
+        "authorID": 8,
+        "publisherID": 8,
+        "genre": "Thriller",
+        "image": "eetclub.jpeg",
+        "price": 13.50,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The Kite Runner",
+        "authorID": 9,
+        "publisherID": 5,
+        "genre": "Drama",
+        "image": "kiterunner.jpeg",
+        "price": 15.50,
+        "nrRatings": 0,
+        "rating": 0
+    }
+]
