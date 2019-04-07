@@ -63,5 +63,59 @@
         "firstName": "Ken",
         "lastName": "Kesey",
         "image": "kesey.jpeg"
+    },
+
+    {
+        "firstName": "Charles",
+        "lastName": "Bukowski",
+        "image": "bukowski.jpeg"
+    },
+
+    {
+        "firstName": "J.R.R.",
+        "lastName": "Tolkien",
+        "image": "tolkien.jpeg"
+    },
+
+    {
+        "firstName": "George",
+        "lastName": "Orwell",
+        "image": "orwell.jpeg"
+    },
+
+    {
+        "firstName": "Ray",
+        "lastName": "Bradbury",
+        "image": "bradbury.jpeg"
+    },
+
+    {
+        "firstName": "Hunter",
+        "lastName": "S. Thompson",
+        "image": "thompson.jpeg"
+    },
+
+    {
+        "firstName": "Bram",
+        "lastName": "Stoker",
+        "image": "stoker.jpeg"
+    },
+
+    {
+        "firstName": "Haruki",
+        "lastName": "Murakami",
+        "image": "murakami.jpeg"
+    },
+
+    {
+        "firstName": "Art",
+        "lastName": "Spiegelman",
+        "image": "spiegelman.jpeg"
+    },
+
+    {
+        "firstName": "George",
+        "lastName": "R. R. Martin",
+        "image": "martin.jpeg"
     }
 ]

@@ -96,5 +96,126 @@
         "price": 15.50,
         "nrRatings": 0,
         "rating": 0
+    },
+
+    {
+        "title": "De Avonden",
+        "authorID": 10,
+        "publisherID": 9,
+        "genre": "Coming of age",
+        "image": "avonden.jpeg",
+        "price": 12.50,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "One Flew Over The Cuckoo's Nest",
+        "authorID": 11,
+        "publisherID": 5,
+        "genre": "Fiction",
+        "image": "cuckoos.jpeg",
+        "price": 12.50,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Post Office",
+        "authorID": 12,
+        "publisherID": 10,
+        "genre": "Fiction",
+        "image": "cuckoos.jpeg",
+        "price": 8.50,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The Fellowship Of The Ring",
+        "authorID": 13,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "fellowshipring.jpeg",
+        "price": 17.80,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "1984",
+        "authorID": 14,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "1984.jpeg",
+        "price": 13.80,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Fahrenheit 451",
+        "authorID": 15,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "fahrenheit.jpeg",
+        "price": 9.80,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Fear and Loathing in Las Vegas",
+        "authorID": 16,
+        "publisherID": 5,
+        "genre": "Autobiography",
+        "image": "fearloathing.jpeg",
+        "price": 6.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Dracula",
+        "authorID": 17,
+        "publisherID": 5,
+        "genre": "Horror",
+        "image": "dracula.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Norwegian Wood",
+        "authorID": 18,
+        "publisherID": 11,
+        "genre": "Horror",
+        "image": "norwegian.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Maus",
+        "authorID": 19,
+        "publisherID": 6,
+        "genre": "Cartoon",
+        "image": "maus.jpeg",
+        "price": 19.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "A Song Of Ice And Fire",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "icefire.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
     }
 ]

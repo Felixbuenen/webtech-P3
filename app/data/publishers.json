@@ -45,5 +45,23 @@
         "name": "Anthos",
         "country": "The Netherlands",
         "city": "Amsterdam"
+    },
+
+    {
+        "name": "De Bezige Bij",
+        "country": "The Netherlands",
+        "city": "Amsterdam"
+    },
+
+    {
+        "name": "Black Sparrow Books",
+        "country": "United States",
+        "city": "Boston"
+    },
+
+    {
+        "name": "Kodansha",
+        "country": "Japan",
+        "city": "Tokyo"
     }
 ]
