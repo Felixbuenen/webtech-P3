@@ -130,9 +130,14 @@ function initAuthors() {
 
   let stmt = db.prepare("INSERT INTO Authors VALUES (?,?,?)");
 
-  // example data
-  stmt.run("J.", "K. Rowling", "./images/jk-rowling.png");
-  stmt.run("Frank", "Herbert", "./images/herbert.png");
+  // read and parse JSON book data
+  let authorsFile = fs.readFileSync(__dirname + "/../data/authors.json", "utf8");
+  let authorsData = JSON.parse(authorsFile);
+
+  let imgPath = "./images/authors/";
+  authorsData.forEach(author => {
+    stmt.run(author['firstName'], author['lastName'], imgPath + author['image']);
+  });
 
   stmt.finalize();
 }
@@ -142,9 +147,14 @@ function initPublishers() {
 
   let stmt = db.prepare("INSERT INTO Publishers VALUES (?,?,?)");
 
-  // example data
-  stmt.run("Bloomsbury", "England", "London");
-  stmt.run("Books LTD", "The Netherlands", "Utrecht");
+  // read and parse JSON book data
+  let publishersFile = fs.readFileSync(__dirname + "/../data/publishers.json", "utf8");
+  let publishersData = JSON.parse(publishersFile);
+
+  let imgPath = "./images/authors/";
+  publishersData.forEach(publisher => {
+    stmt.run(publisher['name'], publisher['country'], publisher['city']);
+  });
 
   stmt.finalize();
 }

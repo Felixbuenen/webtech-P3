@@ -30,16 +30,34 @@ class User {
 }
 
 class Book {
-  constructor(name, author, numPages, publisher, isbn, imageRef) {
-    this.name = name;
-    this.author = author;
-    this.numPages = numPages;
-    this.publisher = publisher;
-    this.isbn = isbn;
-    this.imageRef = imageRef;
+  constructor(title, authorID, publisherID, genre, image, price, nrRatings, rating) {
+    this.title = title;
+    this.authorID = authorID;
+    this.publisherID = publisherID;
+    this.genre = genre;
+    this.image = image;
+    this.price = price;
+    this.nrRatings = nrRatings;
+    this.rating = rating;
   }
 }
 
+class Author {
+  constructor(firstName, lastName, image) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.image = image;
+  }
+}
+
+
+class Publisher {
+  constructor(name, country, city) {
+    this.name = name;
+    this.country = country;
+    this.city = city;
+  }
+}
 
 
 function storeUser(user) {
@@ -116,4 +134,4 @@ function getFormattedDate() {
   return `${dd} ${month} ${yyyy}`;
 }
 
-module.exports = { storeUser, updateUser, storePurchase, User };
+module.exports = { storeUser, updateUser, storePurchase, User, Book, Author, Publisher };

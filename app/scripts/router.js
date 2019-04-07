@@ -4,6 +4,8 @@
 
 const express = require("express");
 const router = express.Router();
+const Book = require('./database-store').Book;
+const {getBookData, getAuthorData, getPublisherData} = require('./database-queries');
 
 // set EJS variables
 router.use((req, res, next) => {
@@ -32,7 +34,34 @@ router.get("/books.html", (req, res) => {
   res.render("pages/books", req.pageVars);
 });
 router.get("/info.html", (req, res) => {
-  res.render("pages/info", req.pageVars);
+  let bookID = req.query.bookID;
+  
+  // no (valid) bookID defined
+  if(!bookID || isNaN(bookID)) res.redirect("/books.html");
+
+  let book;
+  let author;
+  let publisher;
+  
+  // request all book info
+  getBookData(bookID, (data) => {
+    book = data;
+    getAuthorData(book.authorID, (data) => {
+      author = data;
+      getPublisherData(book.publisherID, (data) => {
+        publisher = data;
+
+        // all data acquired, send to client
+        req.pageVars.book = book;
+        req.pageVars.author = author;
+        req.pageVars.publisher = publisher;
+
+        console.log(book + " " + author + " " + publisher);
+
+        res.render("pages/info", req.pageVars);
+      })
+    })
+  });
 });
 router.get("/register.html", (req, res) => {
   let errMsg = "";
