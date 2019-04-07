@@ -125,7 +125,7 @@
         "authorID": 12,
         "publisherID": 10,
         "genre": "Fiction",
-        "image": "cuckoos.jpeg",
+        "image": "postoffice.jpeg",
         "price": 8.50,
         "nrRatings": 0,
         "rating": 0
@@ -209,7 +209,7 @@
     },
 
     {
-        "title": "A Song Of Ice And Fire",
+        "title": "A Game of Thrones",
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
@@ -217,5 +217,364 @@
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
+    },
+
+
+
+
+
+
+
+    {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Harry Potter and the Goblet of Fire",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Harry Potter and the Order of the Phoenix",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Harry Potter and the Half-Blood Prince",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Harry Potter and the Deathly Hallows",
+        "authorID": 1,
+        "publisherID": 1,
+        "genre": "Fantasy",
+        "image": "hp.png",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "The Shining",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "hp.jpeg",
+        "price": 9.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The Running Man",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "hp.jpeg",
+        "price": 10.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Gerald's Game",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "hp.jpeg",
+        "price": 14.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Joyland",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "hp.jpeg",
+        "price": 11.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Revival",
+        "authorID": 3,
+        "publisherID": 3,
+        "genre": "Horror",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Origin",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "hp.jpeg",
+        "price": 18.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Inferno",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "hp.jpeg",
+        "price": 13.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Angels & Demons",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "hp.jpeg",
+        "price": 8.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "The Lost Symbol",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "hp.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Deception Point",
+        "authorID": 7,
+        "publisherID": 7,
+        "genre": "Mystery",
+        "image": "hp.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Animal Farm",
+        "authorID": 14,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "hp.jpeg",
+        "price": 6.80,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Down and Out in Paris and London",
+        "authorID": 14,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "hp.jpeg",
+        "price": 6.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "Keep the Aspidistra Flying",
+        "authorID": 14,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "hp.jpeg",
+        "price": 4.89,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "Homage to Catalonia",
+        "authorID": 14,
+        "publisherID": 1,
+        "genre": "Science Fiction",
+        "image": "hp.jpeg",
+        "price": 6.89,
+        "nrRatings": 0,
+        "rating": 0
+    },
+
+    {
+        "title": "A Clash of Kings",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "A Storm of Swords 1: Steel and Snow",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "A Storm of Swords 2: Blood and Gold",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "A Feast for Crows",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "A Dance with Dragons 1: Dreams and Dust",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "A Dance with Dragons 2: After the Feast",
+        "authorID": 20,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 17.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+    
+    {
+        "title": "WorShip",
+        "authorID": 2,
+        "publisherID": 2,
+        "genre": "Science Fiction",
+        "image": "hp.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+        
+    {
+        "title": "Hamlet",
+        "authorID": 4,
+        "publisherID": 4,
+        "genre": "Drama",
+        "image": "hp.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+        
+    {
+        "title": "Charlie and the Chocolate Factory",
+        "authorID": 5,
+        "publisherID": 5,
+        "genre": "Fantasy",
+        "image": "hp.jpeg",
+        "price": 8.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+        
+    {
+        "title": "Red Rabbit",
+        "authorID": 6,
+        "publisherID": 4,
+        "genre": "Fiction",
+        "image": "hp.jpeg",
+        "price": 10.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+        
+    {
+        "title": "De Verbouwing",
+        "authorID": 8,
+        "publisherID": 8,
+        "genre": "Romance",
+        "image": "hp.jpeg",
+        "price": 12.99,
+        "nrRatings": 0,
+        "rating": 0
+    },
+        
+    {
+        "title": "En Uit de Bergen Kwam de Echo",
+        "authorID": 9,
+        "publisherID": 9,
+        "genre": "Drama",
+        "image": "hp.jpeg",
+        "price": 13.89,
+        "nrRatings": 0,
+        "rating": 0
     }
+
 ]
