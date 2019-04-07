@@ -2,7 +2,7 @@ html {
   font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text",
     "Times New Roman", serif;
   margin: auto;
-  background-color: #8f8f8f;
+  background-color: white;
   text-align: center;
   min-height: 100vh;
   width: 100%;
@@ -11,10 +11,11 @@ html {
 body {
   align-content: center;
   margin: 0px;
+  color: #223843;
 }
 
 header {
-  background-color: rgb(177, 177, 177);
+  background-color: #A3D5FF;
   padding: 30px;
 }
 
@@ -22,6 +23,7 @@ main {
   padding: 20px;
   position: relative;
   overflow: auto;
+  font-size: 1.25em;
 }
 
 #login-screen-overlay-background {
@@ -38,18 +40,27 @@ main {
 
 #login-screen-overlay {
   position: relative;
-  background-color: #cecece;
+  background-color: white;
   margin: auto 15%;
-  padding: 40px;
+  padding: 5%;
   border: 1px solid #888;
-  height: 30%;
+  height: auto;
   top: 50%;
   transform: translate(0, -50%);
+  box-sizing: border-box;
 }
 
 #login-screen-overlay h1 {
   font-size: 35px;
   margin: 20px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: 1px solid #AFC2D5;
+  box-sizing: border-box;
 }
 
 #menu-overlay {
@@ -149,6 +160,7 @@ main {
 
 #search-form__filter-menu {
   text-align: center;
+  font-weight: bold;
   margin-top: 25px;
 }
 
@@ -164,6 +176,7 @@ main {
 
 #account-section p {
   text-align: center;
+  font-weight: bold;
   margin: 0px;
 }
 
@@ -191,19 +204,36 @@ main {
 }
 
 #main-navigation {
-  background-color: rgb(77, 77, 77);
+  background-color: #68D8D6;
+  color: white;
+  font-weight: bold;
 }
 
 #main-navigation ul {
   list-style: none;
   margin: 0 auto;
-  padding: 15px 0px;
+  padding: 0;
   text-align: center;
 }
 
 #main-navigation ul li {
-  display: inline;
-  padding: 0% 10%;
+  display: block;
+  padding: 10px 10%;
+  border-top: 1px solid #D9F0FF;
+}
+
+#main-navigation ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+#main-navigation ul li a:hover {
+  color: #52489C;
+}
+
+#main-navigation ul li:hover {
+  background-color: #AFC2D5;
+  padding: 10px 10%;
 }
 
 #shopping-bag-btn {
@@ -246,11 +276,16 @@ main {
   text-align: center;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 992px) {
   html {
     width: 75%;
   }
   #shopping-bag-btn {
     display: none;
   }
+  #main-navigation ul li {
+  display: inline-block;
+  padding: 10px 10%;
+  border: none;
+}
 }
