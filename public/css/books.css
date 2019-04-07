@@ -4,6 +4,7 @@
   width: 100%;
   padding: 15px;
   margin: 20px 0px;
+  font-weight: bold;
 }
 
 #search-filter-menu {
@@ -66,6 +67,7 @@
   border-color: rgb(179, 179, 179);
   border-style: solid;
   padding: 8px;
+  text-align: left;
 }
 
 #book-results-main {
@@ -99,19 +101,19 @@
   position: relative;
   text-align: left;
   float: right;
-  display: inline-block;
+  display: block;
   width: 53%;
   padding: 5% 5% 5% 0%;
 }
 
 .book-item h1 {
-  font-size: 23px;
-  margin: 13px 0px;
+  font-size: 14px;
+  margin-top: 0px;
 }
 
 .book-item h2 {
-  font-size: 14px;
-  margin-top: 0px;
+  font-size: 23px;
+  margin: 13px 0px;
 }
 
 .book-item__price {
@@ -178,14 +180,14 @@
   background-color: white !important;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 992px) {
   #filter-btn {
     display: none;
   }
 
   #search-filter-menu {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 20%;
     height: 100%;
     float: left;
@@ -201,7 +203,7 @@
     float: right;
     width: 70%;
     height: 100%;
-    display: inline-block;
+    display: block;
   }
 
   #close-btn-filter-menu {

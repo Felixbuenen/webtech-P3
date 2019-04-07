@@ -10,8 +10,10 @@
     <h1>Login</h1>
     <h2>Enter credentials:</h2>
     <form id="login-form">
-      E-mail: <input type="text" name="email" required /><br />
-      password: <input type="password" name="password" required/><br />
+      <label for="email">E-mail</label>
+      <input type="email" name="email" placeholder="Enter e-mail..." required autofocus />
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Enter password..." required/>
       <input type="submit" value="Submit" />
     </form>
     <p id="response-message"></p>
