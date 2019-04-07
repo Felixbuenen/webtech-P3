@@ -28,7 +28,7 @@
         <span>0</span>
       </button>
       <section id="book-header">
-        <img src= <%= author.image %> />
+        <img src= <%= book.image %> alt=<%= book.title %>/>
         <h1><%= book.title %></h1>
         <h2><%= author.firstName + " " + author.lastName %></h2>
       </section>
@@ -43,6 +43,11 @@
         <li>Publisher: <%= publisher.name + " (" + publisher.country + ", " + publisher.city + ")" %></li>
         <li>Genre: <%= book.genre %></li>
       </ul>
+
+      <section id="author-img-section">
+        <img src= <%= author.image %> alt="<%= author.firstName + " " + author.lastName %>" />
+        <p><%= author.firstName + " " + author.lastName %> </p>
+      </section>
 
       <h2>Reviews</h2>
       <article class="book-review">

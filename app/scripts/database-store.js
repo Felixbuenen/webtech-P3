@@ -117,7 +117,7 @@ function storePurchase(bookID) {
 
 }
 
-// Date formatter helper function. source: https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-3.php
+// Date formatter helper function. Help source: https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-3.php
 function getFormattedDate() {
   let today = new Date();
   let dd = today.getDate();
