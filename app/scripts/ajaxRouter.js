@@ -7,6 +7,8 @@ const router = express.Router();
 const storePurchase = require("./database-store").storePurchase;
 const updateUser = require("./database-store").updateUser;
 const User = require("./database-store").User;
+const Author = require("./database-store").Author;
+const getMultipleAuthorData = require("./database-queries").getMultipleAuthorData;
 
 router.post("/settings", (req, res) => {
   if (req.body.email === req.session.email) {
@@ -158,28 +160,47 @@ router.post("/books", (req, res) => {
   }
 
   let books = []; // books that will be sent to the client
+  let authors = []; // authors (index corresponding to books indices) 
   let bookShowLimit = 10; // total number of books shown on page
   let bookIndex = (parseInt(pageIndex)-1) * bookShowLimit; // first book in DB which needs to be shown (based on page index) 
 
   let indexCounter = 0;
   let bookCounter = 0;
 
+  // get all books
   db.each(query, (err, row) => {
-    // only add books to the list that we want to show
-    if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
-      books.push(row);
-      bookCounter++;
-    }
-    else {
-      indexCounter++;
-    }
-  }, (err, rows) => {
-    // send book data back to the client
-    res.send(JSON.stringify({
-      nrBooks: rows,
-      showBooks: books
-    }))
-  })
+      // only add books to the list that we want to show
+      if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
+        books.push(row);
+        bookCounter++;
+      }
+      else {
+        indexCounter++;
+      }
+    }, 
+    (err, rows) => {
+
+      let authorIDs = [];
+      books.forEach(book => {
+        console.log("first");
+        authorIDs.push(book.authorID);
+      });
+
+      console.log("next");
+
+    // get all corresponding authors
+    getMultipleAuthorData(authorIDs, (authors) => {
+      // send book data back to the client
+      res.send(JSON.stringify({
+        nrBooks: rows,
+        showBooks: books,
+        showAuthors: authors
+      }))
+    });
+
+  });
+
+
 })
 
 module.exports = router;

@@ -40,10 +40,11 @@ function getBooks(search, filter) {
 
       //alert("ajaxData: " + ajaxData);
       alert("Nr of books: " + ajaxData.nrBooks);
+      alert("Nr of authors: " + ajaxData.showAuthors.length);
       alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
       alert("Array length: " + ajaxData.showBooks.length);
 
-      showBooks(ajaxData.showBooks);
+      showBooks(ajaxData.showBooks, ajaxData.showAuthors);
     }
   };
   xhttp.open("POST", "ajax/books", false);
@@ -51,7 +52,7 @@ function getBooks(search, filter) {
   xhttp.send("search=" + search + "&filter=" + JSON.stringify(filter) + "&index=1");
 }
 
-function showBooks(books) {
+function showBooks(books, authors) {
   // DEBUG COMMENT: functie die een lijst boeken krijgt en deze in een loop parset naar HTML code
   // In de book data staat ook de rowID. Deze hoef je niet te gebruiken voor visualisatie, maar kan gebruikt worden in de router.
   // Bijv. Harry Potter heeft rowid=1. Als we hier op klikken, stuurt de client dus een request voor info.html/bookID=1 .
@@ -61,15 +62,15 @@ function showBooks(books) {
   let bookResults = document.getElementById("book-results-main");
 
   // first one doesn't have to be cloned
-  createBookItem(bookItem, bookResults, books[0]);
+  createBookItem(bookItem, bookResults, books[0], authors[0]);
   
   for(let i = 1; i < books.length; i++) {
       let newBookItem = bookItem.cloneNode(true);
-      createBookItem(newBookItem, bookResults, books[i]);
+      createBookItem(newBookItem, bookResults, books[i], authors[i]);
   }
 }
 
-function createBookItem(element, parent, book) {
+function createBookItem(element, parent, book, author) {
     
     let imgElement = element.getElementsByTagName("img")[0];
     let authorName = element.getElementsByTagName("h1")[0];
@@ -78,7 +79,7 @@ function createBookItem(element, parent, book) {
     let priceElement = element.getElementsByClassName("book-item__price")[0];
     
     imgElement.src = book.image;
-    authorName.innerHTML = book.authorID;
+    authorName.innerHTML = author.firstName + " " + author.lastName;
     titleElement.innerHTML = book.title;
     ratingElement.innerHTML = book.rating;
     priceElement.innerHTML = book.price;

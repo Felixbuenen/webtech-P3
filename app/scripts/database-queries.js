@@ -34,6 +34,23 @@
     });
  }
 
+ // returns a list of authors, given a list of ID's
+ function getMultipleAuthorData(authorIDs, doneFunc) {
+     let length = authorIDs.length;
+     let authors = [];
+     let i = 0;
+
+     authorIDs.forEach(id => {
+         getAuthorData(id, (author) => {
+             authors.push(author);
+             if(i == length - 1) {
+                 doneFunc(authors);
+             }
+             i++;
+         }) 
+     });
+ } 
+
  function getPublisherData(publisherID, func) {
     db.get("SELECT * FROM Publishers WHERE Publishers.rowid = ?", [publisherID], (err, row) => {
         // no publisher found
@@ -47,4 +64,4 @@
     });
  }
 
- module.exports = {getBookData, getAuthorData, getPublisherData}
+ module.exports = {getBookData, getAuthorData, getPublisherData, getMultipleAuthorData}
