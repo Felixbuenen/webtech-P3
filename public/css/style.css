@@ -24,6 +24,7 @@ main {
   position: relative;
   overflow: auto;
   font-size: 1.25em;
+  height: 100%;
 }
 
 #login-screen-overlay-background {
