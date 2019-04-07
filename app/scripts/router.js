@@ -56,8 +56,6 @@ router.get("/info.html", (req, res) => {
         req.pageVars.author = author;
         req.pageVars.publisher = publisher;
 
-        console.log(book + " " + author + " " + publisher);
-
         res.render("pages/info", req.pageVars);
       })
     })

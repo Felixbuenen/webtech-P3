@@ -50,7 +50,6 @@ class Author {
   }
 }
 
-
 class Publisher {
   constructor(name, country, city) {
     this.name = name;
@@ -58,7 +57,6 @@ class Publisher {
     this.city = city;
   }
 }
-
 
 function storeUser(user) {
   let stmt = db.prepare("INSERT INTO Users VALUES (?,?,?,?)");

@@ -28,9 +28,9 @@
         <span>0</span>
       </button>
       <section id="book-header">
-        <img src="../images/hp_debugimage.jpg" />
-        <h1>Harry Potter and the Philosopher's stone</h1>
-        <a>J.K. Rowling</a>
+        <img src= <%= author.image %> />
+        <h1><%= book.title %></h1>
+        <h2><%= author.firstName + " " + author.lastName %></h2>
       </section>
 
       <% if(loggedIn) { %> <button id="buy-btn">Buy</button> <% } %>
@@ -39,9 +39,9 @@
 
       <h2>More info</h2>
       <ul>
-        <li>Uitgever: Potternmore</li>
-        <li>Lengte: 228 pagina's</li>
-        <li>Taal: Nederlands</li>
+        <li>Author: <%= author.firstName + " " + author.lastName %></li>
+        <li>Publisher: <%= publisher.name + " (" + publisher.country + ", " + publisher.city + ")" %></li>
+        <li>Genre: <%= book.genre %></li>
       </ul>
 
       <h2>Reviews</h2>
