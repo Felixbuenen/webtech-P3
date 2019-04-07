@@ -7,6 +7,13 @@ function setupPage() {
   let linkQuery = new URLSearchParams(window.location.search);
   let bookQuery = linkQuery.get("search");
 
+  let searchQueryDisplay = document.getElementById("search-query");
+  if(linkQuery == "") {
+      searchQueryDisplay.innerHTML = "Everything";
+  } else {
+      searchQueryDisplay.innerHTML = "'" + linkQuery + "'";
+  }
+  
   // get all books (no filters by default)
   getBooks(bookQuery, {});
 }
@@ -81,9 +88,14 @@ function createBookItem(element, parent, book, author) {
     imgElement.src = book.image;
     authorName.innerHTML = author.firstName + " " + author.lastName;
     titleElement.innerHTML = book.title;
-    ratingElement.innerHTML = book.rating;
-    priceElement.innerHTML = book.price;
-    //alert("This book is called " + titleElement.innerHTML + " and costs " + priceElement.innerHTML);
+    priceElement.innerHTML = "€" + book.price;
+    
+    //Declare rating display
+    if(book.nrRatings <= 0) {
+        ratingElement.innerHTML = "This book has not yet been rated."
+    } else {
+        ratingElement.innerHTML = book.rating + " out of 5 stars (from " + book.nrRatings + " ratings)"
+    }
     
     parent.appendChild(element);
 }
