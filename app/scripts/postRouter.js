@@ -45,7 +45,7 @@ router.post("/register", (req, res) => {
 router.post("/logout", (req, res) => {
   req.session.destroy();
 
-  res.redirect("back");
+  res.redirect("./");
 });
 
 router.post("/update-settings", (req, res) => {

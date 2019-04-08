@@ -17,9 +17,10 @@ router.post("/settings", (req, res) => {
     const db = require("./database-init");
     db.get(
       "SELECT * FROM Users WHERE email = ?", 
-      [req.session.email],
+      [req.body.email],
       (err, row) => {
         if (row) {
+          console.log(row.email);
           res.send(JSON.stringify({ isValid: false }));
         } 
         
