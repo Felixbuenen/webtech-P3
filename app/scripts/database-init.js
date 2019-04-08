@@ -101,22 +101,24 @@ function initRatings() {
 
 function initReviews() {
   db.run(
-    "CREATE TABLE Reviews (userID INT, bookID INT, content TEXT, date TEXT, ananymous BOOLEAN)"
+    "CREATE TABLE Reviews (userID INT, bookID INT, title TEXT, content TEXT, date TEXT, anonymous BOOLEAN)"
   );
 
-  let stmt = db.prepare("INSERT INTO Reviews VALUES (?,?,?,?,?)");
+  let stmt = db.prepare("INSERT INTO Reviews VALUES (?,?,?,?,?,?)");
 
   // example data
   stmt.run(
-    0,
-    0,
+    1,
+    17,
+    "nice",
     "This is a review book was good groetjes.",
     "2019-06-17 16:21:23",
     0
   );
   stmt.run(
     1,
-    1,
+    17,
+    "not so good",
     "Another review didn't like the book so I want to be ananymous",
     "2011-08-42 12:26:21",
     1

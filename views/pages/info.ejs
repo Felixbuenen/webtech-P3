@@ -70,34 +70,41 @@
       <section>
         <h2>Reviews</h2>
         <section id="reviews-section">
+          <% if(reviews.length == 0) { %> <p>There are currently no reviews for this book.</p> <% }%>
           <section id="reviews-left">
-            <article class="book-review">
-              <article class="star-rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </article>
-              <h3>"Meh..."</h3>
-              <h4>Anonymous, 22 February 2018</h4>
-              <p>Ik vond niet zo leuk.</p>
-            </article>
+              <% for(var i = 0; i < reviews.length; i += 2) {%>
+                <article class="book-review">
+                  <article class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </article>
+                  <h3><%= reviews[i].title%></h3>
+                  <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
+                  <% if(!reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
+                  <p><%= reviews[i].content %></p>
+                </article>
+                <% }%>
           </section>
           
           <section id="reviews-right">
-            <article class="book-review">
-              <article class="star-rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-              </article>
-              <h3>"Very nice"</h3>
-              <h4>Dirk, 12 April 2014</h4>
-              <p>Super duper</p>
-            </article>
+              <% for(var i = 1; i < reviews.length; i += 2) {%>
+                <article class="book-review">
+                  <article class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </article>
+                  <h3><%= reviews[i].title%></h3>
+                  <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
+                  <% if(!reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
+                  <p><%= reviews[i].content %></p>
+                </article>
+                <% }%>
           </section>
         </section>
         

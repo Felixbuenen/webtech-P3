@@ -32,7 +32,7 @@ function setupPage() {
   setupFilterChangeEvent();
   
   // get all books (no filters by default)
-  getBooks({ /* "filters":["authors", "books"] */ });
+  getBooks({ });
 }
 
 // displays the correct header titles
@@ -139,6 +139,7 @@ function getBooks(searchMethod) {
   xhttp.send("search=" + search + "&searchMethod=" + JSON.stringify(searchMethod) + "&filters=" + JSON.stringify(filters) + "&index=" + currentPage);
 }
 
+// function which takes care of the HTML presentation of books
 function showBooks(books, authors) {
   setupPageTitle();
 
@@ -199,6 +200,7 @@ function deleteAllBooks() {
   }
 }
 
+// takes care for HTML representation for when there are no books to show
 function showNoResults(query) {
   let bookSection = document.getElementById("book-results-main");
   let header = bookSection.getElementsByTagName("h1")[0];
@@ -216,6 +218,7 @@ function showNoResults(query) {
   filterButton.style.visibility = "hidden";
 }
 
+// creates the correct book navigation (bottom of page) event listeners elements
 function setupBookNavigation(numBooks) {
 
   // setup left click button
@@ -234,6 +237,7 @@ function setupBookNavigation(numBooks) {
 
 }
 
+// creates the correct book navigation (bottom of page) HTML elements
 function evaluateBookNavigation(numBooks) {
 
   let leftButton = document.getElementById("search-result-page-menu__left");

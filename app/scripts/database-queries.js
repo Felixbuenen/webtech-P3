@@ -76,4 +76,23 @@
     });
  }
 
- module.exports = {getBookData, getAuthorData, getPublisherData, getMultipleAuthorData}
+ function getReviewData(bookID, func) {
+     let reviews = [];
+     db.each("SELECT Reviews.*, Users.firstName, Users.lastName FROM Reviews, Users WHERE bookID=? AND Reviews.userID = Users.rowid", 
+     [bookID], (err, row) => {
+         reviews.push(row);
+     }, (err, rows) => {
+         func(reviews);
+     })
+ }
+
+ function getRatingData(bookID, func) {
+    let ratings = [];
+    db.each("SELECT * FROM Ratings WHERE bookID=?", [bookID], (err, row) => {
+        ratings.push(row);
+    }, (err, rows) => {
+        func(ratings);
+    })
+ }
+
+ module.exports = {getBookData, getAuthorData, getPublisherData, getMultipleAuthorData, getReviewData, getRatingData}

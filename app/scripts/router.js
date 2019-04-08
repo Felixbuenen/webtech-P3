@@ -5,7 +5,7 @@
 const express = require("express");
 const router = express.Router();
 const Book = require('./database-store').Book;
-const {getBookData, getAuthorData, getPublisherData} = require('./database-queries');
+const {getBookData, getAuthorData, getPublisherData, getReviewData, getRatingData} = require('./database-queries');
 
 // set EJS variables
 router.use((req, res, next) => {
@@ -46,6 +46,8 @@ router.get("/info.html", (req, res) => {
   let book;
   let author;
   let publisher;
+  let reviews;
+  let ratings;
   
   // request all book info
   getBookData(bookID, (data) => {
@@ -54,13 +56,25 @@ router.get("/info.html", (req, res) => {
       author = data;
       getPublisherData(book.publisherID, (data) => {
         publisher = data;
+        getReviewData(bookID, (data) => {
+          reviews = data;
+          getRatingData(bookID, (data) => {
+            ratings = data;
+            
+            // all data acquired, send to client
+            req.pageVars.book = book;
+            req.pageVars.author = author;
+            req.pageVars.publisher = publisher;
+            req.pageVars.reviews = reviews;
+            req.pageVars.ratings = ratings;
 
-        // all data acquired, send to client
-        req.pageVars.book = book;
-        req.pageVars.author = author;
-        req.pageVars.publisher = publisher;
+            console.log(reviews);
+            console.log(ratings);
 
-        res.render("pages/info", req.pageVars);
+            res.render("pages/info", req.pageVars);
+          })
+        })
+
       })
     })
   });
