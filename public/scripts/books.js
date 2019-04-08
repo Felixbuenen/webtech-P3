@@ -1,5 +1,24 @@
 window.addEventListener("load", setupPage, false);
 
+// NOTE: tightly coupled with CSS
+window.matchMedia("(min-width: 992px)").addListener(setFilterMenu)
+
+// correctly displays filter menu based on screen size
+function setFilterMenu(mediaQuery) {
+  alert("function called");
+  if(mediaQuery.matches) {
+    let panel = document.getElementById("search-filter-menu");
+    panel.style.display = "block";
+    alert("big screen");
+  }
+  
+  else {
+    alert("small screen");
+    closeFilterMenu();
+  }
+}
+
+// sets up all events and displays the correct books
 function setupPage() {
   setupFilterWindowEvent();
 
@@ -40,16 +59,13 @@ function getBooks(search, filter) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
-      // DEBUG COMMENT: dit is het stuk waar de AJAX request succesvol beantwoord is. Voor nu heb
-      //  ik debug code neergezet zodat je kan zien wat het antwoord is van de server op het request.
       let ajaxData = JSON.parse(this.responseText);
 
       //alert("ajaxData: " + ajaxData);
-      alert("Nr of books: " + ajaxData.nrBooks);
-      alert("Nr of authors: " + ajaxData.showAuthors.length);
-      alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
-      alert("Array length: " + ajaxData.showBooks.length);
+      //alert("Nr of books: " + ajaxData.nrBooks);
+      //alert("Nr of authors: " + ajaxData.showAuthors.length);
+      //alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
+      //alert("Array length: " + ajaxData.showBooks.length);
 
       showBooks(ajaxData.showBooks, ajaxData.showAuthors);
     }
@@ -60,11 +76,7 @@ function getBooks(search, filter) {
 }
 
 function showBooks(books, authors) {
-  // DEBUG COMMENT: functie die een lijst boeken krijgt en deze in een loop parset naar HTML code
-  // In de book data staat ook de rowID. Deze hoef je niet te gebruiken voor visualisatie, maar kan gebruikt worden in de router.
-  // Bijv. Harry Potter heeft rowid=1. Als we hier op klikken, stuurt de client dus een request voor info.html/bookID=1 .
-  // De router kan dan uitzoeken dat de client Harry Potter wil zien en dit doorsturen.
-  
+
   let bookItem = document.getElementsByClassName("book-item")[0];
   let bookResults = document.getElementById("book-results-main");
 

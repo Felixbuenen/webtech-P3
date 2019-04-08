@@ -101,7 +101,7 @@ function initRatings() {
 
 function initReviews() {
   db.run(
-    "CREATE TABLE Reviews (userID INT, bookID INT, content TEXT, date DATETIME, ananymous BOOLEAN)"
+    "CREATE TABLE Reviews (userID INT, bookID INT, content TEXT, date TEXT, ananymous BOOLEAN)"
   );
 
   let stmt = db.prepare("INSERT INTO Reviews VALUES (?,?,?,?,?)");
