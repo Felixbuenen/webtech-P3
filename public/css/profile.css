@@ -1,3 +1,5 @@
+/* This is the css file for profile.ejs. It's first made for mobile and after that is for pc. */
+
 .user-profile-container {
     padding: 5px;
     border: 1px solid rgb(126, 126, 126);
@@ -91,6 +93,8 @@
 .checked {
     color: rgb(219, 231, 45);
 }
+
+/* for pc */
 
 @media only screen and (min-width: 992px) {
 

@@ -1,3 +1,5 @@
+/* This is the css file for books.ejs. It's first made for mobile and after that is for pc. */
+
 #filter-btn {
   display: inline-block;
   background-color: rgb(135, 135, 182);
@@ -196,6 +198,8 @@
 .current-search-page {
   background-color: white !important;
 }
+
+/* for pc */
 
 @media only screen and (min-width: 992px) {
   #filter-btn {

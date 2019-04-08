@@ -1,3 +1,5 @@
+/* This is the js file for books.ejs. */
+
 let filters = {
   maxPrice: 0,
   genre: [],

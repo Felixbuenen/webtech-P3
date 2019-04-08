@@ -1,3 +1,5 @@
+/* This is the css file for info.ejs. It's first made for mobile and after that is for pc. */
+
 .bordered-div {
     border-top: 1px solid rgb(107, 107, 107);
     border-bottom: 1px solid rgb(107, 107, 107);
@@ -23,17 +25,11 @@
 #book-header-info {
     height: 100%;
     width: 100%;
-    /* background-color: rgb(228, 250, 239);
-    padding: 5%;
-    position: relative; */
     overflow: hidden;
-    /*vertical-align: middle;
-    box-sizing: border-box; */
 }
 
 #book-header__content {
     margin: auto;
-    /* min-width: 500px; */
     text-align: center;
     display: block;
 }
@@ -105,7 +101,6 @@
     text-align: center;
     overflow: hidden;
     display: block;
-    /* height: 200px; */
 }
 
 #reviews-left {
@@ -161,6 +156,8 @@
     border: 1px solid #AFC2D5;
 }
 
+/* For pc */
+
 @media only screen and (min-width: 992px) {
     #book-header {
         vertical-align: top;
@@ -195,22 +192,11 @@
 
     #purchase-content {
         width: 22%;
-        /* background-color: rgb(255, 255, 255);
-        padding: 5%;
-        position: relative; 
-        align-content: right; */
-        /* vertical-align: middle; */
         float: right;
-        /* box-sizing: border-box; */
     }
 
     #book-header-info {
         width: 78%;
-        /* background-color: rgb(228, 250, 239);
-        padding: 5%;
-        position: relative; */
         float: left;
-        /*vertical-align: middle;
-        box-sizing: border-box; */
     }
 }
