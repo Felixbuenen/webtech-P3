@@ -147,7 +147,7 @@ router.post("/books", (req, res) => {
   let params = [];
 
   const db = require("./database-init");
-  query = "SELECT Books.rowid, Books.* FROM Books, Authors WHERE Books.title LIKE ? " +
+  query = "SELECT DISTINCT Books.rowid, Books.* FROM Books, Authors WHERE Books.title LIKE ? " +
           "OR ((Authors.firstName || ' ' || Authors.lastName) LIKE ? AND Authors.rowid = Books.authorID)"; 
 
   if(search == "null" || search == "") {
@@ -165,10 +165,8 @@ router.post("/books", (req, res) => {
   let indexCounter = 0;
   let bookCounter = 0;
 
-  console.log("Searching for: " + query);
   // get all books
   db.each(query, params, (err, row) => {
-      console.log("found " + row);
       // only add books to the list that we want to show
       if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
         books.push(row);
@@ -182,11 +180,8 @@ router.post("/books", (req, res) => {
 
       let authorIDs = [];
       books.forEach(book => {
-        console.log("first");
         authorIDs.push(book.authorID);
       });
-
-      console.log("next");
 
     // get all corresponding authors
     getMultipleAuthorData(authorIDs, (authors) => {

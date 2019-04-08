@@ -21,10 +21,7 @@ function setFilterMenu(mediaQuery) {
 // sets up all events and displays the correct books
 function setupPage() {
   setupFilterWindowEvent();
-  
-  //let searchBarInput = document.getElementById("search-form__input").value;   // Get input from Search bar
-  //let searchFilterForm = document.getElementById("search-form__filter-menu"); // Get applied filter
-  
+
   // get search query
   let linkQuery = new URLSearchParams(window.location.search);
   //alert("linkQuery: " + linkQuery);
@@ -109,7 +106,7 @@ function createBookItem(element, parent, book, author) {
     priceElement.innerHTML = "€" + book.price;
 
     let star = ratingElement.getElementsByClassName("fa fa-star checked")[0];
-    let emElement = star.getElementsByTagName("em")[0];
+    let emElement = ratingElement.getElementsByTagName("em")[0];
     
     // correctly display the ratings of books
     if(book.nrRatings > 0) {
