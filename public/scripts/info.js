@@ -1,3 +1,5 @@
+/* This is the js file for info.ejs. */
+
 window.addEventListener("load", setup, false);
 
 function setup() {

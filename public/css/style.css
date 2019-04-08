@@ -1,3 +1,5 @@
+/* This is the css file for all ejs files. It's first made for mobile and after that is for pc. */
+
 html {
   font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text",
     "Times New Roman", serif;
@@ -165,9 +167,6 @@ input[type=text], input[type=email], input[type=password] {
   margin-top: 25px;
 }
 
-.search-form__filter-menu__item {
-}
-
 #account-section {
   position: absolute;
   right: 0px;
@@ -279,6 +278,8 @@ input[type=text], input[type=email], input[type=password] {
   line-height: 25px;
   text-align: center;
 }
+
+/* for pc */
 
 @media only screen and (min-width: 992px) {
   html {
