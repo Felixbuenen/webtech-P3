@@ -140,25 +140,21 @@ router.post("/purchase", (req, res) => {
 // DEBUG COMMENT: dit is waar de ajax request afgehandeld wordt. Hier wil je server side dingen regelen (zoals db queries)
 router.post("/books", (req, res) => {
   
-  let search = req.body.search;
+  let search = decodeURIComponent(req.body.search);
   let filter = req.body.filter;
   let pageIndex = req.body.index;
   let query;
+  let params = [];
 
   const db = require("./database-init");
-  console.log("Search: " + search);
+  query = "SELECT Books.rowid, Books.* FROM Books, Authors WHERE Books.title LIKE ? " +
+          "OR ((Authors.firstName || ' ' || Authors.lastName) LIKE ? AND Authors.rowid = Books.authorID)"; 
+
   if(search == "null" || search == "") {
-    query = "SELECT rowid, * FROM Books";
+    params = ['%', '%'];
   }
   else {
-  /**
-   * DEBUG COMMENT:
-   * De '?' wordt vervangen
-    * door een parameter die je in de parameter lijst bij db.all(*query*, [search]) opgeeft (dit is goed tegen injectie).
-    * De query is uiteraard nog niet goed, er moet namelijk ook gezocht kunnen worden op auteur. Voor nu kunnen we de zoekopdracht altijd
-    * toepassen op boek titel en auteur, daarna kunnen we dit optioneel maken. Ook moet er nog gefilterd kunnen worden.
-   */
-    query = "SELECT rowid, * FROM Books WHERE title = '?'", [search];
+    params = ['%' + search + '%', '%' + search + '%'];
   }
 
   let books = []; // books that will be sent to the client
@@ -169,8 +165,10 @@ router.post("/books", (req, res) => {
   let indexCounter = 0;
   let bookCounter = 0;
 
+  console.log("Searching for: " + query);
   // get all books
-  db.each(query, (err, row) => {
+  db.each(query, params, (err, row) => {
+      console.log("found " + row);
       // only add books to the list that we want to show
       if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
         books.push(row);

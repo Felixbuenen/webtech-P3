@@ -36,7 +36,15 @@
 
  // returns a list of authors, given a list of ID's
  function getMultipleAuthorData(authorIDs, doneFunc) {
-     let length = authorIDs.length;
+    let length = authorIDs.length;
+    
+    if(length == 0) {
+        // no search results, send back empty array
+        doneFunc([]);
+        return;
+    }
+
+
      let authors = [];
      let i = 0;
 

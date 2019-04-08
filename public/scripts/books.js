@@ -22,14 +22,14 @@ function setFilterMenu(mediaQuery) {
 function setupPage() {
   setupFilterWindowEvent();
   
-  let searchBarInput = document.getElementById("search-form__input").value;   // Get input from Search bar
-  let searchFilterForm = document.getElementById("search-form__filter-menu"); // Get applied filter
+  //let searchBarInput = document.getElementById("search-form__input").value;   // Get input from Search bar
+  //let searchFilterForm = document.getElementById("search-form__filter-menu"); // Get applied filter
   
   // get search query
   let linkQuery = new URLSearchParams(window.location.search);
   //alert("linkQuery: " + linkQuery);
   let bookQuery = linkQuery.get("search");
-  //alert("bookQuery: " + bookQuery);
+  alert("bookQuery: " + bookQuery);
   
   // get all books (no filters by default)
   getBooks(bookQuery, { /* "filters":["authors", "books"] */ });
@@ -64,6 +64,12 @@ function getBooks(search, filter) {
       //alert("Nr of authors: " + ajaxData.showAuthors.length);
       //alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
       //alert("Array length: " + ajaxData.showBooks.length);
+      
+      // no results
+      if(ajaxData.showBooks.length == 0) {
+        showNoResults(search);
+        return;
+      }
 
       showBooks(ajaxData.showBooks, ajaxData.showAuthors);
     }
@@ -118,4 +124,21 @@ function createBookItem(element, parent, book, author) {
     element.addEventListener("click", () => {window.location = "./info.html?bookID=" + book.rowid});
 
     parent.appendChild(element);
+}
+
+function showNoResults(query) {
+  let bookSection = document.getElementById("book-results-main");
+  let header = bookSection.getElementsByTagName("h1")[0];
+  let subheader = bookSection.getElementsByTagName("h2")[0];
+
+  header.innerHTML = "No results found for:";
+  subheader.innerHTML = query;
+
+  // hide template book
+  let bookTemplate = bookSection.getElementsByClassName("book-item")[0];
+  bookTemplate.style.display = "none";
+
+  // hide filter button
+  let filterButton = document.getElementById("filter-btn");
+  filterButton.style.display = "none";
 }
