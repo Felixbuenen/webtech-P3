@@ -13,11 +13,11 @@ function setFilterMenu(mediaQuery) {
   if(mediaQuery.matches) {
     let panel = document.getElementById("search-filter-menu");
     panel.style.display = "block";
-    alert("big screen");
+    //alert("big screen");
   }
   
   else {
-    alert("small screen");
+    //alert("small screen");
     closeFilterMenu();
   }
 }
@@ -94,14 +94,14 @@ function getBooks(searchMethod) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let ajaxData = JSON.parse(this.responseText);
-      alert(ajaxData.showBooks);
+      //alert(ajaxData.showBooks);
       // no results
       if(ajaxData.showBooks.length == 0) {
         showNoResults(search);
         return;
       }
 
-      showBooks(ajaxData.showBooks, ajaxData.showAuthors);
+      showBooks(search, ajaxData.showBooks, ajaxData.showAuthors);
     }
   };
 
@@ -110,8 +110,18 @@ function getBooks(searchMethod) {
   xhttp.send("search=" + search + "&searchMethod=" + JSON.stringify(searchMethod) + "&filters=" + JSON.stringify(filters) + "&index=1");
 }
 
-function showBooks(books, authors) {
+function showBooks(search, books, authors) {
+  let bookSection = document.getElementById("book-results-main");
+  let header = bookSection.getElementsByTagName("h1")[0];
+  let subheader = bookSection.getElementsByTagName("h2")[0];
+
+  header.innerHTML = "Results for:";
+  subheader.innerHTML = search;
+
+  let filterButton = document.getElementById("filter-btn");
+  filterButton.style.visibility = "visible";
   let bookItem = document.getElementsByClassName("book-item")[0];
+  bookItem.style.visibility = "visible";
   let bookResults = document.getElementById("book-results-main");
 
   // first book HTML elements doesn't have to be cloned
@@ -164,7 +174,7 @@ function deleteAllBooks() {
     bookItems[i].remove();
   }
 
-  alert(document.getElementsByClassName("book-item").length);
+  //alert(document.getElementsByClassName("book-item").length);
 }
 
 function showNoResults(query) {
@@ -177,9 +187,9 @@ function showNoResults(query) {
 
   // hide template book
   let bookTemplate = bookSection.getElementsByClassName("book-item")[0];
-  bookTemplate.style.display = "none";
+  bookTemplate.style.visibility = "hidden";
 
   // hide filter button
   let filterButton = document.getElementById("filter-btn");
-  filterButton.style.display = "none";
+  filterButton.style.visibility = "hidden";
 }
