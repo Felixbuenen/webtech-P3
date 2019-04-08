@@ -108,17 +108,22 @@
         </section>
       </section>
 
+      <%if(loggedIn) {%>
       <section id="write-review-section">
         <h2>Rate this book</h2>
         <form id="write-review-form">
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title..." required autofocus />
             <label for="content">Your review:</label>
-            <textarea rows = "10" cols = "30" name="content">
+            <textarea rows = "10" cols = "30" name="content" required>
             </textarea>
-            <input type="submit" value="Submit" />
+            <label for="anon">Stay anonymous?</label>
+            <input type="checkbox" name="anon" id="anon" value="Anonymous"/>
+            <input type="submit" value="Submit">
           </form>
+          <p id="successful-review-submit"></p>
       </section>
+      <% } %>
     </main>
     <footer>
       <% include ../partials/footer %>

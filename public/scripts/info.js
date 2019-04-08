@@ -2,8 +2,10 @@ window.addEventListener("load", setup, false);
 
 function setup() {
     let buyBtn = document.getElementById("buy-btn");
+    let reviewForm = document.getElementById("write-review-form");
 
     buyBtn.addEventListener("click", handleBuy, false);
+    reviewForm.addEventListener("submit", event => handleSendReview(event, reviewForm), false);
 }
 
 function handleBuy() {
@@ -13,11 +15,23 @@ function handleBuy() {
     if(confirmed) {
         // get book id and send ajax request
         let ID = window.location.search.replace(/^.*?\=/, '');
-        sendAjaxRequest(bookTitle, ID);
+        sendPurchaseRequest(bookTitle, ID);
     }
 }
 
-function sendAjaxRequest(bookTitle, bookID) {
+function handleSendReview(event, form) {
+  event.preventDefault();
+  let ID = window.location.search.replace(/^.*?\=/, '');
+
+  let inputs = form.elements;
+  let title = inputs['title'];
+  let content = inputs['content'];
+  let anonymous = inputs['anon'];
+
+  sendReview(ID, title, content, anonymous);
+}
+
+function sendPurchaseRequest(bookTitle, bookID) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -31,6 +45,20 @@ function sendAjaxRequest(bookTitle, bookID) {
 
     xhttp.open("POST", "ajax/purchase", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
     xhttp.send("bookID=" + bookID);
+}
+
+function sendReview(bookID, reviewTitle, content, anonymous) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let msg = document.getElementById("successful-review-submit");
+      msg.innerHTML = "Your review was processed! You may have to refresh your browser to see your review on the webpage.";
+      msg.style.color = "green";
+    }
+  };
+
+  xhttp.open("POST", "ajax/review", false);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("bookID=" + bookID + "&title=" + reviewTitle + "&content=" + content + "&anonymous=" + anonymous);
 }

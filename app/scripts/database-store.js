@@ -58,6 +58,14 @@ class Publisher {
   }
 }
 
+class Review {
+  constructor(title, content, anonymous) {
+    this.title = title;
+    this.content = content;
+    this.anonymous = anonymous;
+  }
+}
+
 function storeUser(user) {
   let stmt = db.prepare("INSERT INTO Users VALUES (?,?,?,?)");
 
@@ -132,4 +140,14 @@ function getFormattedDate() {
   return `${dd} ${month} ${yyyy}`;
 }
 
-module.exports = { storeUser, updateUser, storePurchase, User, Book, Author, Publisher };
+function storeReview(review, userID, bookID) {
+    // insert data into purchase table
+    let stmt = db.prepare(
+      "INSERT INTO Reviews VALUES (?, ?, ?, ?, ?, ?)"
+    );
+
+    let date = getFormattedDate();
+    stmt.run(userID, bookID, review.title, review.content, date, review.anonymous);
+}
+
+module.exports = { storeUser, updateUser, storePurchase, storeReview, User, Book, Author, Publisher, Review };

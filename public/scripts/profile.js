@@ -32,7 +32,6 @@ function setup() {
   };
   xhttp.open("POST", "ajax/profileData", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("data=dit is wat je moet zien");
 }
 
 function createPurchaseElement(element, parent, book) {

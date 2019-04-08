@@ -6,8 +6,10 @@ const express = require("express");
 const router = express.Router();
 const storePurchase = require("./database-store").storePurchase;
 const updateUser = require("./database-store").updateUser;
+const storeReview = require("./database-store").storeReview;
 const User = require("./database-store").User;
 const Author = require("./database-store").Author;
+const Review = require("./database-store").Review;
 const getMultipleAuthorData = require("./database-queries").getMultipleAuthorData;
 
 router.post("/settings", (req, res) => {
@@ -254,5 +256,21 @@ function applyFilters(query, params, filters) {
 
   return {query, params};
 }
+
+router.post("/review", (req, res) => {
+  let title = req.body.tilte;
+  let content = req.body.content;
+  let anonymous = req.body.anonymous;
+  let userID;
+
+  const db = require("./database-init");
+  db.get("SELECT rowid FROM Users WHERE email=?", [req.session.email], (err, row) => {
+    userID = row.rowid;
+  })
+
+  storeReview(new Review(title, content, anonymous), userID, req.body.bookID);
+
+  res.sendStatus(200);
+});
 
 module.exports = router;
