@@ -2,8 +2,12 @@ window.addEventListener("load", setup, false);
 
 function setup() {
     let buyBtn = document.getElementById("buy-btn");
-
     buyBtn.addEventListener("click", handleBuy, false);
+    
+    let reviewStarsArray = document.getElementById("write-review-stars").getElementsByTagName("span");
+    for(let i = 0; i < reviewStarsArray.length; i++) {
+        reviewStarsArray[i].onclick = function() { selectReviewStars(i) };
+    }
 }
 
 function handleBuy() {
@@ -33,4 +37,14 @@ function sendAjaxRequest(bookTitle, bookID) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     xhttp.send("bookID=" + bookID);
+}
+
+function selectReviewStars(rating) {
+    let reviewStarsArray = document.getElementById("write-review-stars").getElementsByTagName("span");
+    for(let i = 0; i <= rating; i++) {
+        reviewStarsArray[i].className = "fa fa-star checked";
+    }
+    for(let i = rating + 1; i < 5; i++) {
+        reviewStarsArray[i].className = "fa fa-star";
+    }
 }
