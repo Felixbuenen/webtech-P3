@@ -27,20 +27,31 @@
         <img src="./images/shopping-bag.png" alt="shopping cart"/>
         <span>0</span>
       </button>
-      <section id="book-header" class="bordered-div">
-        
-        <section id="book-header__content">
-          <img src= <%= book.image %> alt="<%= book.title %>"/>
-          <section>
-            <span id="book-title"><%= book.title %></span>
-            <span id="book-author"><%= author.firstName + " " + author.lastName %></span>
+      
+      <section id="book-header">
+        <section id="book-header-info">
+          <section id="book-header__content">
+            <section id="book-header__content-left">
+              <img src= <%= book.image %> alt="<%= book.title %>"/>
+            </section>
+            <section id=book-header__content-right>
+              <span id="book-title"><%= book.title %></span>
+              <span id="book-author"><%= author.firstName + " " + author.lastName %></span>
+            </section>
           </section>
         </section>
+      
+        <section id="purchase-content">
+          <% if(loggedIn) { %> <button id="buy-btn">Buy</button> <% } %>
+          <% if(!loggedIn) { %> <h3 id="not-logged-in-purchase-msg">Please log in to purchase this item.</h3> <% } %>
+        </section>
       </section>
-
+      
+      <!--
       <% if(loggedIn) { %> <button id="buy-btn">Buy</button> <% } %>
       <% if(!loggedIn) { %> <h3 id="not-logged-in-purchase-msg">You need to be logged in in order to make a purchase.</h3> <% } %>
-
+      -->
+      
       <p id="buy-response-msg"></p>
 
       <section id="book-more-info" class="bordered-div">
@@ -56,33 +67,40 @@
           </figure>
       </section>
 
-      <section class="bordered-div">
+      <section>
         <h2>Reviews</h2>
-        <article class="book-review">
-          <article class="star-rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-          </article>
-          <h3>"Meh..."</h3>
-          <h4>Anonymous, 22 February 2018</h4>
-          <p>Ik vond niet zo leuk.</p>
-        </article>
-
-        <article class="book-review">
-          <article class="star-rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </article>
-          <h3>"Very nice"</h3>
-          <h4>Dirk, 12 April 2014</h4>
-          <p>Super duper</p>
-        </article>
+        <section id="reviews-section">
+          <section id="reviews-left">
+            <article class="book-review">
+              <article class="star-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </article>
+              <h3>"Meh..."</h3>
+              <h4>Anonymous, 22 February 2018</h4>
+              <p>Ik vond niet zo leuk.</p>
+            </article>
+          </section>
+          
+          <section id="reviews-right">
+            <article class="book-review">
+              <article class="star-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+              </article>
+              <h3>"Very nice"</h3>
+              <h4>Dirk, 12 April 2014</h4>
+              <p>Super duper</p>
+            </article>
+          </section>
+        </section>
+        
       </section>
     </main>
     <footer>

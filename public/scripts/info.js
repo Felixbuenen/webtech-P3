@@ -7,7 +7,7 @@ function setup() {
 }
 
 function handleBuy() {
-    let bookTitle = document.getElementById("book-header").getElementsByTagName("H1")[0].innerHTML;
+    let bookTitle = document.getElementById("book-header-info").getElementsByTagName("span")[0].innerHTML;
     let confirmed = confirm("Are you sure you want to buy " + bookTitle + "?");
 
     if(confirmed) {
@@ -21,6 +21,9 @@ function sendAjaxRequest(bookTitle, bookID) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        let buyButton = document.getElementById("buy-btn");
+        buyButton.innerHTML = "Purchased.";
+        
         let responseMsg = document.getElementById("buy-response-msg");
         responseMsg.innerHTML = "You just bought " + bookTitle + ". Have fun reading!";
       }
