@@ -10,30 +10,22 @@
     background-color: rgb(228, 250, 239);
     padding: 2%;
     position: relative;
-    vertical-align: top;
+    display: block;
     box-sizing: border-box;
 }
 
 #purchase-content {
     height: 100%;
-    width: 22%;
-    /* background-color: rgb(255, 255, 255);
-    padding: 5%;
-    position: relative; 
-    align-content: right; */
-    /* vertical-align: middle; */
-    float: right;
-    /* box-sizing: border-box; */
+    width: 100%;
+    margin-top: 5px;
 }
 
 #book-header-info {
     height: 100%;
-    width: 78%;
+    width: 100%;
     /* background-color: rgb(228, 250, 239);
     padding: 5%;
     position: relative; */
-    align-content: left;
-    float: left;
     overflow: hidden;
     /*vertical-align: middle;
     box-sizing: border-box; */
@@ -42,25 +34,15 @@
 #book-header__content {
     margin: auto;
     /* min-width: 500px; */
-    align-content: left;
     text-align: center;
     display: block;
 }
 
 #book-header__content-left {
     align-content: center;
-    width: 30%;
-}
-
-#book-header__content-right {
-    width: 60%;
-    margin-right: 10%;
-    float: right;    
 }
 
 #book-header-info img {
-    display: inline-flex;
-    float: left;
     min-width: 80px;
     max-width: 165px;
     object-fit: contain;
@@ -96,10 +78,10 @@
     margin: 15px 0px;
 }
 
-#author-img-figure {
+#author-img-figure img {
     margin-top: 5px;
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 #not-logged-in-purchase-msg {
@@ -172,7 +154,23 @@
 
 
 @media only screen and (min-width: 992px) {
-    #book-header img {
+    #book-header {
+        vertical-align: top;
+    }
+
+    #book-header__content-left {
+        width: 30%;
+    }
+
+    #book-header__content-right {
+        width: 60%;
+        margin-right: 10%;
+        float: right;    
+    }
+
+    #book-header-info img {
+        display: inline-flex;
+        float: left;
         max-height: 250px;
     }
 
@@ -185,5 +183,26 @@
         width: 100%;
         height: 50%;
         box-sizing: border-box;
+    }
+
+    #purchase-content {
+        width: 22%;
+        /* background-color: rgb(255, 255, 255);
+        padding: 5%;
+        position: relative; 
+        align-content: right; */
+        /* vertical-align: middle; */
+        float: right;
+        /* box-sizing: border-box; */
+    }
+
+    #book-header-info {
+        width: 78%;
+        /* background-color: rgb(228, 250, 239);
+        padding: 5%;
+        position: relative; */
+        float: left;
+        /*vertical-align: middle;
+        box-sizing: border-box; */
     }
 }
