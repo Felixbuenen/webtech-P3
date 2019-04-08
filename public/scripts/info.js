@@ -22,7 +22,7 @@ function sendAjaxRequest(bookTitle, bookID) {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         let buyButton = document.getElementById("buy-btn");
-        buyButton.innerHTML = "Purchased.";
+        buyButton.innerHTML = "Purchased";
         
         let responseMsg = document.getElementById("buy-response-msg");
         responseMsg.innerHTML = "You just bought " + bookTitle + ". Have fun reading!";
