@@ -4,8 +4,13 @@ function setup() {
     let buyBtn = document.getElementById("buy-btn");
     let reviewForm = document.getElementById("write-review-form");
 
-    buyBtn.addEventListener("click", handleBuy, false);
     reviewForm.addEventListener("submit", event => handleSendReview(event, reviewForm), false);
+    buyBtn.addEventListener("click", handleBuy, false);
+    
+    let reviewStarsArray = document.getElementById("write-review-stars").getElementsByTagName("span");
+    for(let i = 0; i < reviewStarsArray.length; i++) {
+        reviewStarsArray[i].onclick = function() { selectReviewStars(i) };
+    }
 }
 
 function handleBuy() {
@@ -61,4 +66,14 @@ function sendReview(bookID, reviewTitle, content, anonymous) {
   xhttp.open("POST", "ajax/review", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("bookID=" + bookID + "&title=" + reviewTitle + "&content=" + content + "&anonymous=" + anonymous);
+
+}
+function selectReviewStars(rating) {
+    let reviewStarsArray = document.getElementById("write-review-stars").getElementsByTagName("span");
+    for(let i = 0; i <= rating; i++) {
+        reviewStarsArray[i].className = "fa fa-star checked";
+    }
+    for(let i = rating + 1; i < 5; i++) {
+        reviewStarsArray[i].className = "fa fa-star";
+    }
 }
