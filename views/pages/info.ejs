@@ -24,15 +24,16 @@
     </nav>
     <main>
       <button id="shopping-bag-btn">
-        <img src="../images/shopping-bag.png" />
+        <img src="./images/shopping-bag.png" alt="shopping cart"/>
         <span>0</span>
       </button>
       <section id="book-header" class="bordered-div">
+        
         <section id="book-header__content">
-          <img src= <%= book.image %> alt=<%= book.title %>/>
+          <img src= <%= book.image %> alt="<%= book.title %>"/>
           <section>
-            <h1><%= book.title %></h1>
-            <h2><%= author.firstName + " " + author.lastName %></h2>
+            <span id="book-title"><%= book.title %></span>
+            <span id="book-author"><%= author.firstName + " " + author.lastName %></span>
           </section>
         </section>
       </section>
@@ -49,10 +50,10 @@
             <li><strong>Publisher:</strong> <%= publisher.name + " (" + publisher.country + ", " + publisher.city + ")" %></li>
             <li><strong>Genre:</strong> <%= book.genre %></li>
           </ul>
-          <section id="author-img-section">
+          <figure id="author-img-figure">
               <img src= <%= author.image %> alt="<%= author.firstName + " " + author.lastName %>" />
-              <p><%= author.firstName + " " + author.lastName %> </p>
-          </section>
+              <figcaption><%= author.firstName + " " + author.lastName %> </figcaption>
+          </figure>
       </section>
 
       <section class="bordered-div">
