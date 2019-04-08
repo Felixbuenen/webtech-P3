@@ -23,42 +23,27 @@
     </nav>
     <main>
       <h1><%= fname + " " + lname %></h1>
-      <h2 id="user-purchases-title">Your purchases (1)</h2>
+      <h2 id="user-purchases-title"><%= 'Your purchases (' + purchases.length + ')'%></h2>
       <section id="user-purchase-container" class="user-profile-container">
+        <% for(let x = 0; x < purchases.length; x++) { %>
         <article class="user-profile-container__purchase">
           <section>
-            <h3></h3>
-            <h4></h4>
+            <h3><%= purchases[x].title %></h3>
+            <h4><%= purchases[x].date %></h4>
           </section>
-          <img />
+          <img src= <%=  purchases[x].image %> >
         </article>
+        <% } %>
       </section>
-      <h2>Your reviews (2)</h2>
+      <h2><%= 'Your reviews (' + reviews.length + ')'%></h2>
       <section class="user-profile-container">
+        <% for(let x = 0; x < reviews.length; x++) { %>
         <article class="user-profile-container__review">
-          <h3>Harry Potter and the Philosopher's Stone</h3>
-          <h4>22 February 2018</h4>
-          <article class="star-rating">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </article>
-          <p>Ik vond niet zo leuk. Dit is een wat langere review zodat we kunnen testen hoe de overflow is als de review erg lang is.</p>
+          <h3><%= reviews[x].bookTitle %></h3>
+          <h4><%= reviews[x].date %></h4>
+          <p><%= reviews[x].content  %></p>
         </article>
-        <article class="user-profile-container__review">
-            <h3>Dune</h3>
-            <h4>27 May 2019</h4>
-            <article class="star-rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </article>
-            <p>Ik vond niet zo leuk. Dit is een wat langere review zodat we kunnen testen hoe de overflow is als de review erg lang is.</p>
-        </article>
+        <% } %>
       </section>
     </main>
     <footer>

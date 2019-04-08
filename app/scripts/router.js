@@ -104,7 +104,30 @@ router.get("/register.html", (req, res) => {
 });
 router.get("/profile.html", (req, res) => {
   if (req.pageVars.loggedIn) {
-    res.render("pages/profile", req.pageVars);
+
+    let purchases = [];
+    let reviews = [];
+    let userID;
+    // get purchase data
+    const db = require('./database-init');
+    db.get("SELECT rowid FROM Users WHERE email=?", [req.session.email], (err, row) => {
+      userID = row.rowid;
+      db.each("SELECT Books.rowid, Books.title as bookTitle, Books.image as image, Purchases.* FROM Books, Purchases WHERE Purchases.userID=? AND Purchases.bookID=Books.rowid", [userID], (err, row) => {
+        purchases.push({title: row.bookTitle, date: row.date, image: row.image});
+      }, (err, rows) => {
+
+        // get review data
+        db.each("SELECT Books.title as bookTitle, Reviews.date as date, Reviews.content as content FROM Books, Reviews WHERE Reviews.userID=? AND Reviews.bookID=Books.rowid", [userID], (err, row) => {
+          reviews.push({bookTitle: row.bookTitle, date: row.date, content: row.content});
+        }, (err, rows) => {
+
+          req.pageVars.purchases = purchases;
+          req.pageVars.reviews = reviews;
+          res.render("pages/profile", req.pageVars);
+        })
+        
+      })
+    })
   } else {
     res.redirect("/");
   }

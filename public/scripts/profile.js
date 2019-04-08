@@ -1,4 +1,4 @@
-window.addEventListener("load", setup, false);
+//window.addEventListener("load", setup, false);
 
 function setup() {
   let purchaseContainer = document.getElementById("user-purchase-container");
