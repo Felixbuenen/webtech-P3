@@ -76,11 +76,10 @@ function getBooks(search, filter) {
 }
 
 function showBooks(books, authors) {
-
   let bookItem = document.getElementsByClassName("book-item")[0];
   let bookResults = document.getElementById("book-results-main");
 
-  // first one doesn't have to be cloned
+  // first book HTML elements doesn't have to be cloned
   createBookItem(bookItem, bookResults, books[0], authors[0]);
   
   for(let i = 1; i < books.length; i++) {
@@ -89,6 +88,7 @@ function showBooks(books, authors) {
   }
 }
 
+// create HTML for book item
 function createBookItem(element, parent, book, author) {
     
     let imgElement = element.getElementsByTagName("img")[0];
@@ -105,6 +105,7 @@ function createBookItem(element, parent, book, author) {
     let star = ratingElement.getElementsByClassName("fa fa-star checked")[0];
     let emElement = star.getElementsByTagName("em")[0];
     
+    // correctly display the ratings of books
     if(book.nrRatings > 0) {
       emElement.innerHTML = book.rating + " (" + book.nrRatings + " ratings)";
     }
@@ -114,12 +115,7 @@ function createBookItem(element, parent, book, author) {
       star.style.display = "none";
     }
 
-    //Declare rating display
-    if(book.nrRatings <= 0) {
-        for(let i = 0; i < book.rating; i++) {
-            //ratingElement.getElementsByClassName("fa fa-star")[i].setAttribute("className", "fa fa-star checked");
-        }
-    }
-    
+    element.addEventListener("click", () => {window.location = "./info.html?bookID=" + book.rowid});
+
     parent.appendChild(element);
 }
