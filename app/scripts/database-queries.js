@@ -44,20 +44,24 @@
         return;
     }
 
-
-     let authors = [];
-     let i = 0;
-
-     authorIDs.forEach(id => {
-         getAuthorData(id, (author) => {
-             authors.push(author);
-             if(i == length - 1) {
-                 doneFunc(authors);
-             }
-             i++;
-         }) 
-     });
- } 
+    let authors = [];
+    getMultipleAuthorDataHelper(authorIDs[0], authorIDs, authors, 0, length, doneFunc);
+    
+ }
+ 
+ function getMultipleAuthorDataHelper(id, authorIDs, authors, counter, max, doneFunc) {
+    getAuthorData(id, (author) => {
+        if(counter == max) {
+            doneFunc(authors);
+            return;
+        }else {
+            console.log("Pushing new author..." + author.firstName);
+            authors.push(author);
+            counter++;
+            getMultipleAuthorDataHelper(authorIDs[counter], authorIDs, authors, counter, max, doneFunc);
+        }
+    }) 
+ }
 
  function getPublisherData(publisherID, func) {
     db.get("SELECT * FROM Publishers WHERE Publishers.rowid = ?", [publisherID], (err, row) => {

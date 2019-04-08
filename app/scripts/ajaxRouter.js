@@ -90,7 +90,6 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const pass = req.body.password;
 
-  //console.log(email + " " + pass);
   let success = false;
 
   const db = require("./database-init");
@@ -137,25 +136,34 @@ router.post("/purchase", (req, res) => {
 });
 
 
-// DEBUG COMMENT: dit is waar de ajax request afgehandeld wordt. Hier wil je server side dingen regelen (zoals db queries)
+
 router.post("/books", (req, res) => {
   
   let search = decodeURIComponent(req.body.search);
-  let filter = req.body.filter;
+  let searchMethod = req.body.searchMethod;
+  let filters = JSON.parse(req.body.filters);
   let pageIndex = req.body.index;
   let query;
   let params = [];
 
-  const db = require("./database-init");
-  query = "SELECT DISTINCT Books.rowid, Books.* FROM Books, Authors WHERE Books.title LIKE ? " +
-          "OR ((Authors.firstName || ' ' || Authors.lastName) LIKE ? AND Authors.rowid = Books.authorID)"; 
+  console.log(filters.maxPrice);
 
+  const db = require("./database-init");
+  query = "SELECT DISTINCT Books.rowid, Books.* FROM Books, Authors WHERE (Books.title LIKE ? " +
+          "OR ((Authors.firstName || ' ' || Authors.lastName) LIKE ? AND Authors.rowid = Books.authorID))"; 
+
+  // check if search
   if(search == "null" || search == "") {
     params = ['%', '%'];
   }
   else {
     params = ['%' + search + '%', '%' + search + '%'];
   }
+
+  // apply filters
+  filtered = applyFilters(query, params, filters);
+  query = filtered.query;
+  params = filtered.params;
 
   let books = []; // books that will be sent to the client
   let authors = []; // authors (index corresponding to books indices) 
@@ -166,6 +174,8 @@ router.post("/books", (req, res) => {
   let bookCounter = 0;
 
   // get all books
+  console.log(query);
+  console.log(params);
   db.each(query, params, (err, row) => {
       // only add books to the list that we want to show
       if(indexCounter == bookIndex && bookCounter < bookShowLimit) {
@@ -180,11 +190,16 @@ router.post("/books", (req, res) => {
 
       let authorIDs = [];
       books.forEach(book => {
+        console.log(book.authorID);
         authorIDs.push(book.authorID);
       });
 
     // get all corresponding authors
     getMultipleAuthorData(authorIDs, (authors) => {
+      authors.forEach(author => {
+        console.log(author);
+        
+      });
       // send book data back to the client
       res.send(JSON.stringify({
         nrBooks: rows,
@@ -197,5 +212,46 @@ router.post("/books", (req, res) => {
 
 
 })
+
+// helper function for book queries, which applies the user-specified filters
+function applyFilters(query, params, filters) {
+  // check price filter
+  let maxPrice = filters.maxPrice;
+  if(maxPrice > 0) {
+    console.log(" Higher then 0");
+    query += " AND Books.price < ?";
+    params.push(maxPrice);
+  }
+
+  // check genre filters
+  let genres = filters.genre;
+  if(genres.length > 0) {
+    query += " AND (";
+
+    for(let i = 0; i < genres.length - 1; i++) {
+      query += " Books.genre LIKE ? OR";
+      params.push(genres[i]);
+    };
+
+    query += " Books.genre LIKE ?)";
+    params.push(genres[genres.length-1]);
+  }
+
+  // check publisher filter
+  let publishers = filters.publisher;
+  if(publishers.length > 0) {
+    query += " AND (";
+
+    for(let i = 0; i < publishers.length - 1; i++) {
+      query += " Books.publisherID = ? OR";
+      params.push(publishers[i]);
+    };
+
+    query += " Books.publisherID = ?)";
+    params.push(publishers[publishers.length-1]);
+  }
+
+  return {query, params};
+}
 
 module.exports = router;

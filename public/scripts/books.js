@@ -1,3 +1,8 @@
+let filters = {
+  maxPrice: 0,
+  genre: [],
+  publisher: []
+}
 window.addEventListener("load", setupPage, false);
 
 // NOTE: tightly coupled with CSS
@@ -5,7 +10,6 @@ window.matchMedia("(min-width: 992px)").addListener(setFilterMenu)
 
 // correctly displays filter menu based on screen size
 function setFilterMenu(mediaQuery) {
-  alert("function called");
   if(mediaQuery.matches) {
     let panel = document.getElementById("search-filter-menu");
     panel.style.display = "block";
@@ -22,14 +26,11 @@ function setFilterMenu(mediaQuery) {
 function setupPage() {
   setupFilterWindowEvent();
 
-  // get search query
-  let linkQuery = new URLSearchParams(window.location.search);
-  //alert("linkQuery: " + linkQuery);
-  let bookQuery = linkQuery.get("search");
-  alert("bookQuery: " + bookQuery);
+  // filter change events
+  setupFilterChangeEvent();
   
   // get all books (no filters by default)
-  getBooks(bookQuery, { /* "filters":["authors", "books"] */ });
+  getBooks({ /* "filters":["authors", "books"] */ });
 }
 
 function setupFilterWindowEvent() {
@@ -49,19 +50,51 @@ function closeFilterMenu() {
   panel.style.display = "none";
 }
 
+function setupFilterChangeEvent() {
+  let filterElements = document.getElementsByClassName("search-filter-menu__content__filter");
+  let priceFilterSection = filterElements[0];
+  let genreFilterSection = filterElements[1];
+  let publisherFilterSection = filterElements[2];
+
+  priceFilterSection.addEventListener("change", (event) => {
+    filters.maxPrice = event.target.value;
+    getBooks({});
+  })
+  genreFilterSection.addEventListener("change", (event) => {
+    applyFilterListChange(filters.genre, event.target);
+    getBooks({});
+  })
+  publisherFilterSection.addEventListener("change", (event) => {
+    applyFilterListChange(filters.publisher, event.target);
+    getBooks({});
+  })
+}
+
+// checks if filter is already in list and acts accordingly
+function applyFilterListChange(list, radioButton) {
+  if(radioButton.checked) {
+    // filter already in list, remove it
+    list.push(radioButton.value);
+  }
+  else {
+    // filter not in list, add it
+    list.splice(list.indexOf(radioButton.value), 1);    
+  }
+}
+
 // sends AJAX query and lists all books on the page, given a search query and filter object
-function getBooks(search, filter) {
+function getBooks(searchMethod) {
+  deleteAllBooks();
+
+  // get search query
+  let linkQuery = new URLSearchParams(window.location.search);
+  let search = linkQuery.get("search");
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let ajaxData = JSON.parse(this.responseText);
-
-      //alert("ajaxData: " + ajaxData);
-      //alert("Nr of books: " + ajaxData.nrBooks);
-      //alert("Nr of authors: " + ajaxData.showAuthors.length);
-      //alert("First book to show: " + ajaxData.showBooks[0].title); // dit werkt
-      //alert("Array length: " + ajaxData.showBooks.length);
-      
+      alert(ajaxData.showBooks);
       // no results
       if(ajaxData.showBooks.length == 0) {
         showNoResults(search);
@@ -71,11 +104,10 @@ function getBooks(search, filter) {
       showBooks(ajaxData.showBooks, ajaxData.showAuthors);
     }
   };
+
   xhttp.open("POST", "ajax/books", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  //alert("Search=" + search + "&filter=" + JSON.stringify(filter));
-  xhttp.send("search=" + search + "&filter=" + JSON.stringify(filter) + "&index=1");
-  
+  xhttp.send("search=" + search + "&searchMethod=" + JSON.stringify(searchMethod) + "&filters=" + JSON.stringify(filters) + "&index=1");
 }
 
 function showBooks(books, authors) {
@@ -121,6 +153,18 @@ function createBookItem(element, parent, book, author) {
     element.addEventListener("click", () => {window.location = "./info.html?bookID=" + book.rowid});
 
     parent.appendChild(element);
+}
+
+// refreshes the screen
+function deleteAllBooks() {
+  let bookItems = document.getElementsByClassName("book-item");
+  
+  // delete all books except the first (keep as a template)
+  for(let i = bookItems.length - 1; i >= 1; i--) {
+    bookItems[i].remove();
+  }
+
+  alert(document.getElementsByClassName("book-item").length);
 }
 
 function showNoResults(query) {
