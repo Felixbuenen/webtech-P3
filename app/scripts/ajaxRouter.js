@@ -258,19 +258,20 @@ function applyFilters(query, params, filters) {
 }
 
 router.post("/review", (req, res) => {
-  let title = req.body.tilte;
+  let title = req.body.title;
   let content = req.body.content;
   let anonymous = req.body.anonymous;
+  let bookID = req.body.bookID;
   let userID;
 
   const db = require("./database-init");
   db.get("SELECT rowid FROM Users WHERE email=?", [req.session.email], (err, row) => {
     userID = row.rowid;
+
+    storeReview(new Review(title, content, anonymous), userID, bookID);
+
+    res.sendStatus(200);
   })
-
-  storeReview(new Review(title, content, anonymous), userID, req.body.bookID);
-
-  res.sendStatus(200);
 });
 
 module.exports = router;

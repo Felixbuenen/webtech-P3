@@ -29,9 +29,9 @@ function handleSendReview(event, form) {
   let ID = window.location.search.replace(/^.*?\=/, '');
 
   let inputs = form.elements;
-  let title = inputs['title'];
-  let content = inputs['content'];
-  let anonymous = inputs['anon'];
+  let title = inputs['title'].value;
+  let content = inputs['content'].value;
+  let anonymous = inputs['anon'].checked;
 
   sendReview(ID, title, content, anonymous);
 }

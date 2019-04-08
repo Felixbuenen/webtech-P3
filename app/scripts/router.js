@@ -82,6 +82,7 @@ router.get("/info.html", (req, res) => {
             }
 
             req.pageVars.reviews = reviews;
+            console.log(reviews.length);
 
             res.render("pages/info", req.pageVars);
           })

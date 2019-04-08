@@ -148,6 +148,19 @@ function storeReview(review, userID, bookID) {
 
     let date = getFormattedDate();
     stmt.run(userID, bookID, review.title, review.content, date, review.anonymous);
+
+    db.each("SELECT rowid, * FROM Reviews", (err, row) => {
+      console.log(
+        row.rowid +
+          ": " +
+          row.title +
+          " " +
+          row.content +
+          " " +
+          row.bookID + 
+          " " +  row.userID
+      );
+    });
 }
 
 module.exports = { storeUser, updateUser, storePurchase, storeReview, User, Book, Author, Publisher, Review };

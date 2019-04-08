@@ -79,8 +79,8 @@
                       <% } %>
                   </article>
                   <h3><%= reviews[i].title%></h3>
-                  <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
-                  <% if(!reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
+                  <% if(!reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
+                  <% if(reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
                   <p><%= reviews[i].content %></p>
                 </article>
                 <% }%>
@@ -99,8 +99,8 @@
                       <% } %>
                   </article>
                   <h3><%= reviews[i].title%></h3>
-                  <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
-                  <% if(!reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
+                  <% if(!reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
+                  <% if(reviews[i].anonymous) {%><h4><%= reviews[i].firstName + " " + reviews[i].lastName + ", " + reviews[i].date%></h4> <% } %>
                   <p><%= reviews[i].content %></p>
                 </article>
                 <% }%>
