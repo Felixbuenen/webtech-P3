@@ -151,7 +151,15 @@
     color: rgb(219, 231, 45);
 }
 
+#write-review-form label {
+    display: block;
+}
 
+#write-review-form textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid #AFC2D5;
+}
 
 @media only screen and (min-width: 992px) {
     #book-header {
