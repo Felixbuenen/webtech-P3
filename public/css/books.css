@@ -177,6 +177,15 @@
   border-radius: 30%;
 }
 
+.star-rating {
+    display: inline;
+    margin-right: 5px;
+}
+
+.checked {
+    color: rgb(219, 231, 45);
+}
+
 .current-search-page {
   background-color: white !important;
 }

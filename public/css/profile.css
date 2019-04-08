@@ -7,23 +7,21 @@
 
 .user-profile-container__review {
     display: inline-block;
-    width: 150px;
-    height: 150px;
+    width: 95%;
+    height: 100%;
     border: 2px solid black;
     border-radius: 3px;
     text-align: left;
     padding: 10px;
     margin: 10px 0px;
-    overflow: hidden;
+    box-sizing: border-box;
+    vertical-align: top;
 }
 
 .user-profile-container__review h3 {
     display: block;
-    max-height: 50px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
     margin: 0px;
+    white-space: normal;
 }
 
 .user-profile-container__review h4 {
@@ -43,15 +41,18 @@
 
 .user-profile-container__purchase {
     display: inline-block;
-    width: 250px;
-    height: 150px;
     border: 2px solid black;
     border-radius: 3px;
     text-align: left;
     padding: 10px;
     margin: 10px 5px;
-    overflow: hidden;
     position: relative;
+    height: 100%;
+    min-height: 150px;
+    width: 95%;
+    min-width: 250px;
+    box-sizing: border-box;
+    vertical-align: top;
 }
 
 .user-profile-container__purchase section {
@@ -70,11 +71,16 @@
 }
 
 .user-profile-container__purchase h3 {
-    display: block;
     max-height: 50%;
-    text-overflow: ellipsis;
     overflow: hidden;
+    text-overflow: ellipsis;
     margin: 0px;
+    box-sizing: border-box;
+}
+
+.user-profile-container__purchase h3:hover {
+    overflow: auto;
+    text-overflow: initial;
 }
 
 .user-profile-container__purchase h4 {
@@ -84,4 +90,15 @@
 
 .checked {
     color: rgb(219, 231, 45);
+}
+
+@media only screen and (min-width: 992px) {
+
+    .user-profile-container__review {
+        width: 50%;
+    }
+
+    .user-profile-container__purchase {
+        width: 50%;
+    }
 }

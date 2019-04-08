@@ -4,46 +4,45 @@
 }
 
 #book-header {
-    height: 320px;
+    height: 100%;
+    width: 100%;
     background-color: rgb(228, 250, 239);
     padding: 5%;
     position: relative;
     align-content: center;
     vertical-align: middle;
+    box-sizing: border-box;
 }
 
 #book-header__content {
-    height: 90%;
-    width: 90%;
     margin: auto;
     text-align: center;
     display: block;
 }
 
 #book-header img {
-    display: inline-block;
+    display: inline-flex;
     max-height: 75%;
-    max-width: 40%;
+    max-width: 50%;
     object-fit: contain;
-    margin-right: 15px;
+    box-sizing: border-box;
 }
 
 #book-header section {
     display: inline-block;
+    text-align: center;
 }
-#book-header h1 {
+#book-title {
     font-size: 1.8em;
-    text-align: left;
-    max-height: 90%;
-    overflow: hidden;
-    margin-top: 0px;
+    position: relative;
+    margin: 5px;
+    display: inline-block;
 }
 
-#book-header h2 {
+#book-author {
     color: rgb(121, 121, 121);
     font-size: 1em;
-    text-align: left;
-    bottom: 0px;
+    display: block;
 }
 
 #book-more-info {
@@ -60,10 +59,8 @@
     max-height: 75%;
 }
 
-#author-img-section p {
+#author-img-figure {
     margin-top: 5px;
-    display: block;
-
 }
 
 #not-logged-in-purchase-msg {
@@ -73,10 +70,9 @@
 
 #buy-btn {
     width: 100%;
-    background: white;
-	border: none;
+    background: rgb(243, 255, 73);
     cursor: pointer;
-
+    border: 1px solid #666363;
     margin: 25px auto;
     padding: 15px;
 }
@@ -113,5 +109,18 @@
 
 
 @media only screen and (min-width: 992px) {
+    #book-header img {
+        max-height: 400px;
+    }
 
+    #book-header section {
+        vertical-align: top
+    }
+
+    #book-title {
+        margin-top: 30%;
+        width: 50%;
+        height: 25%;
+        box-sizing: border-box;
+    }
 }
