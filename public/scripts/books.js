@@ -3,6 +3,8 @@ let filters = {
   genre: [],
   publisher: []
 }
+let currentPage = 1;
+
 window.addEventListener("load", setupPage, false);
 
 // NOTE: tightly coupled with CSS
@@ -13,24 +15,48 @@ function setFilterMenu(mediaQuery) {
   if(mediaQuery.matches) {
     let panel = document.getElementById("search-filter-menu");
     panel.style.display = "block";
-    //alert("big screen");
   }
   
   else {
-    //alert("small screen");
     closeFilterMenu();
   }
 }
 
 // sets up all events and displays the correct books
 function setupPage() {
+  setupPageTitle();
   setupFilterWindowEvent();
+  setupBookNavigation();
 
   // filter change events
   setupFilterChangeEvent();
   
   // get all books (no filters by default)
   getBooks({ /* "filters":["authors", "books"] */ });
+}
+
+// displays the correct header titles
+function setupPageTitle() {
+    // get search query
+    let linkQuery = new URLSearchParams(window.location.search);
+    let search = linkQuery.get("search");
+
+    // get html data
+    let bookResultsSection = document.getElementById("book-results-main");
+    let headerResults = bookResultsSection.getElementsByTagName("h1")[0];
+    let searchMethod = bookResultsSection.getElementsByTagName("h2")[0];
+    headerResults.style.visibility = "visible";
+    searchMethod.style.visibility = "visible";
+
+    // provide the right text elements
+    if(search != null) {
+      headerResults.innerHTML = 'Results for: "' + search + '"';
+      searchMethod.innerHTML = "In: All";
+    }
+    else {
+      headerResults.innerHTML = "All books"
+      searchMethod.innerHTML = "";
+    } 
 }
 
 function setupFilterWindowEvent() {
@@ -57,14 +83,17 @@ function setupFilterChangeEvent() {
   let publisherFilterSection = filterElements[2];
 
   priceFilterSection.addEventListener("change", (event) => {
+    currentPage = 1;
     filters.maxPrice = event.target.value;
     getBooks({});
   })
   genreFilterSection.addEventListener("change", (event) => {
+    currentPage = 1;
     applyFilterListChange(filters.genre, event.target);
     getBooks({});
   })
   publisherFilterSection.addEventListener("change", (event) => {
+    currentPage = 1;
     applyFilterListChange(filters.publisher, event.target);
     getBooks({});
   })
@@ -94,29 +123,24 @@ function getBooks(searchMethod) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let ajaxData = JSON.parse(this.responseText);
-      //alert(ajaxData.showBooks);
       // no results
       if(ajaxData.showBooks.length == 0) {
         showNoResults(search);
         return;
       }
 
-      showBooks(search, ajaxData.showBooks, ajaxData.showAuthors);
+      evaluateBookNavigation(ajaxData.nrBooks);
+      showBooks(ajaxData.showBooks, ajaxData.showAuthors);
     }
   };
 
   xhttp.open("POST", "ajax/books", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("search=" + search + "&searchMethod=" + JSON.stringify(searchMethod) + "&filters=" + JSON.stringify(filters) + "&index=1");
+  xhttp.send("search=" + search + "&searchMethod=" + JSON.stringify(searchMethod) + "&filters=" + JSON.stringify(filters) + "&index=" + currentPage);
 }
 
-function showBooks(search, books, authors) {
-  let bookSection = document.getElementById("book-results-main");
-  let header = bookSection.getElementsByTagName("h1")[0];
-  let subheader = bookSection.getElementsByTagName("h2")[0];
-
-  header.innerHTML = "Results for:";
-  subheader.innerHTML = search;
+function showBooks(books, authors) {
+  setupPageTitle();
 
   let filterButton = document.getElementById("filter-btn");
   filterButton.style.visibility = "visible";
@@ -173,8 +197,6 @@ function deleteAllBooks() {
   for(let i = bookItems.length - 1; i >= 1; i--) {
     bookItems[i].remove();
   }
-
-  //alert(document.getElementsByClassName("book-item").length);
 }
 
 function showNoResults(query) {
@@ -192,4 +214,45 @@ function showNoResults(query) {
   // hide filter button
   let filterButton = document.getElementById("filter-btn");
   filterButton.style.visibility = "hidden";
+}
+
+function setupBookNavigation(numBooks) {
+
+  // setup left click button
+  let leftButton = document.getElementById("search-result-page-menu__left");
+  leftButton.addEventListener("click", () => {
+    currentPage--;
+    getBooks({});
+  });
+  
+  // setup right click button
+  let rightButton = document.getElementById("search-result-page-menu__right");
+    rightButton.addEventListener("click", () => {
+      currentPage++;
+      getBooks({});
+    });
+
+}
+
+function evaluateBookNavigation(numBooks) {
+
+  let leftButton = document.getElementById("search-result-page-menu__left");
+  if(currentPage == 1) {
+    leftButton.style.visibility = "hidden";
+  }
+  else {
+    leftButton.style.visibility = "visible";
+  }
+
+  // setup right click button
+  let rightButton = document.getElementById("search-result-page-menu__right");
+  if(numBooks / 10 < currentPage) {
+    rightButton.style.visibility = "hidden";
+  }
+  else {
+    rightButton.style.visibility = "visible";
+  }
+
+  // set correct page number
+  document.getElementById("current-search-page").innerHTML = currentPage;
 }
