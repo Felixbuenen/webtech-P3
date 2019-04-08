@@ -182,6 +182,12 @@
     margin-right: 5px;
 }
 
+.star-rating em {
+  margin-left: 5px;
+  color: black;
+  font-size: 1em;
+}
+
 .checked {
     color: rgb(219, 231, 45);
 }

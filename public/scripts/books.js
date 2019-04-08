@@ -27,9 +27,9 @@ function setupPage() {
   
   // get search query
   let linkQuery = new URLSearchParams(window.location.search);
-  alert("linkQuery: " + linkQuery);
+  //alert("linkQuery: " + linkQuery);
   let bookQuery = linkQuery.get("search");
-  alert("bookQuery: " + bookQuery);
+  //alert("bookQuery: " + bookQuery);
   
   // get all books (no filters by default)
   getBooks(bookQuery, { /* "filters":["authors", "books"] */ });
@@ -70,7 +70,7 @@ function getBooks(search, filter) {
   };
   xhttp.open("POST", "ajax/books", false);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  alert("Search=" + search + "&filter=" + JSON.stringify(filter));
+  //alert("Search=" + search + "&filter=" + JSON.stringify(filter));
   xhttp.send("search=" + search + "&filter=" + JSON.stringify(filter) + "&index=1");
   
 }
@@ -101,7 +101,19 @@ function createBookItem(element, parent, book, author) {
     authorName.innerHTML = author.firstName + " " + author.lastName;
     titleElement.innerHTML = book.title;
     priceElement.innerHTML = "€" + book.price;
+
+    let star = ratingElement.getElementsByClassName("fa fa-star checked")[0];
+    let emElement = star.getElementsByTagName("em")[0];
     
+    if(book.nrRatings > 0) {
+      emElement.innerHTML = book.rating + " (" + book.nrRatings + " ratings)";
+    }
+    else {
+      ratingElement.appendChild(emElement);
+      emElement.innerHTML = "No ratings";
+      star.style.display = "none";
+    }
+
     //Declare rating display
     if(book.nrRatings <= 0) {
         for(let i = 0; i < book.rating; i++) {
