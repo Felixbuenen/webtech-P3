@@ -76,22 +76,26 @@ function closeFilterMenu() {
   panel.style.display = "none";
 }
 
+// registers all the events that are called when a user adds a new filter
 function setupFilterChangeEvent() {
   let filterElements = document.getElementsByClassName("search-filter-menu__content__filter");
   let priceFilterSection = filterElements[0];
   let genreFilterSection = filterElements[1];
   let publisherFilterSection = filterElements[2];
 
+  // add 'max price' event listener
   priceFilterSection.addEventListener("change", (event) => {
     currentPage = 1;
     filters.maxPrice = event.target.value;
     getBooks({});
   })
+  // add 'genre' event listener  
   genreFilterSection.addEventListener("change", (event) => {
     currentPage = 1;
     applyFilterListChange(filters.genre, event.target);
     getBooks({});
   })
+  // add 'publisher' event listener
   publisherFilterSection.addEventListener("change", (event) => {
     currentPage = 1;
     applyFilterListChange(filters.publisher, event.target);
@@ -206,8 +210,8 @@ function showNoResults(query) {
   let header = bookSection.getElementsByTagName("h1")[0];
   let subheader = bookSection.getElementsByTagName("h2")[0];
 
-  header.innerHTML = "No results found for:";
-  subheader.innerHTML = query;
+  header.innerHTML = "No results found";
+  if(query) header.innerHTML += ' for "'  + query + '"'; 
 
   // hide template book
   let bookTemplate = bookSection.getElementsByClassName("book-item")[0];
