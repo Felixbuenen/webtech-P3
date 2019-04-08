@@ -62,13 +62,12 @@
     display: inline-flex;
     float: left;
     min-width: 80px;
-    width: 68%;
+    max-width: 165px;
     object-fit: contain;
     box-sizing: border-box;
 }
 
 #book-header-info section {
-    display: inline-block;
     text-align: center;
 }
 #book-title {
@@ -174,7 +173,7 @@
 
 @media only screen and (min-width: 992px) {
     #book-header img {
-        max-height: 300px;
+        max-height: 250px;
     }
 
     #book-header section {
