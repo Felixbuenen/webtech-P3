@@ -78,7 +78,7 @@
 
  function getReviewData(bookID, func) {
      let reviews = [];
-     db.each("SELECT Reviews.*, Users.firstName, Users.lastName FROM Reviews, Users WHERE bookID=? AND Reviews.userID = Users.rowid", 
+     db.each("SELECT Reviews.*, Users.firstName, Users.lastName FROM Reviews, Users WHERE bookID=? AND Reviews.userID = Users.rowid AND Users.rowid=Reviews.userID ", 
      [bookID], (err, row) => {
          reviews.push(row);
      }, (err, rows) => {

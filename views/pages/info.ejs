@@ -75,11 +75,13 @@
               <% for(var i = 0; i < reviews.length; i += 2) {%>
                 <article class="book-review">
                   <article class="star-rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                      <% if(!reviews[i].rating) { reviews[i].rating = 0; } %>
+                      <%for(var j = 0; j < reviews[i].rating; j++) { %>
+                      <span class="fa fa-star checked"></span>
+                      <% } %>
+                      <%for(var k = 5; k > reviews[i].rating; k--) {%>
+                        <span class="fa fa-star"></span>
+                      <% } %>
                   </article>
                   <h3><%= reviews[i].title%></h3>
                   <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
@@ -93,11 +95,13 @@
               <% for(var i = 1; i < reviews.length; i += 2) {%>
                 <article class="book-review">
                   <article class="star-rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                      <% if(!reviews[i].rating) { reviews[i].rating = 0; } %>
+                      <%for(var j = 0; j < reviews[i].rating; j++) { %>
+                      <span class="fa fa-star checked"></span>
+                      <% } %>
+                      <%for(var k = 5; k > reviews[i].rating; k--) {%>
+                        <span class="fa fa-star"></span>
+                      <% } %>
                   </article>
                   <h3><%= reviews[i].title%></h3>
                   <% if(reviews[i].anonymous) {%><h4>Anonymous, <%= reviews[i].date%></h4> <% } %>
@@ -107,7 +111,18 @@
                 <% }%>
           </section>
         </section>
-        
+      </section>
+
+      <section id="write-review-section">
+        <h2>Rate this book</h2>
+        <form id="write-review-form">
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Title..." required autofocus />
+            <label for="content">Your review:</label>
+            <textarea rows = "10" cols = "30" name="content">
+            </textarea>
+            <input type="submit" value="Submit" />
+          </form>
       </section>
     </main>
     <footer>

@@ -65,11 +65,23 @@ router.get("/info.html", (req, res) => {
             req.pageVars.book = book;
             req.pageVars.author = author;
             req.pageVars.publisher = publisher;
-            req.pageVars.reviews = reviews;
             req.pageVars.ratings = ratings;
 
-            console.log(reviews);
-            console.log(ratings);
+            // couple rating with review if applicable
+            for(let i = 0; i < reviews.length; i++) {
+              let userID = reviews[i].userID;
+
+              for(let j = 0; j < ratings.length; j++) {
+                if(userID == ratings[j].userID) {
+                  reviews[i].rating = ratings[j].rating;
+                  continue;
+                }
+                else {
+                }
+              }
+            }
+
+            req.pageVars.reviews = reviews;
 
             res.render("pages/info", req.pageVars);
           })

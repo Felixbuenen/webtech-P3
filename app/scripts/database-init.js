@@ -71,6 +71,8 @@ function initUserTable() {
 
   // example data
   stmt.run("Felix", "Buenen", "felix@gmail.com", "felix");
+  stmt.run("Rick", "Waarden", "rick@gmail.com", "rick");
+
 }
 
 function initPurchasesTable() {
@@ -91,8 +93,8 @@ function initRatings() {
   let stmt = db.prepare("INSERT INTO Ratings VALUES (?,?,?)");
 
   // example data
-  stmt.run(0, 0, 5);
-  stmt.run(0, 1, 4);
+  stmt.run(1, 0, 5);
+  stmt.run(1, 17, 4);
   stmt.run(1, 0, 5);
   stmt.run(1, 1, 2);
 
@@ -117,6 +119,15 @@ function initReviews() {
   );
   stmt.run(
     1,
+    17,
+    "not so good",
+    "Another review didn't like the book so I want to be ananymous",
+    "2011-08-42 12:26:21",
+    1
+  );
+
+  stmt.run(
+    2,
     17,
     "not so good",
     "Another review didn't like the book so I want to be ananymous",
