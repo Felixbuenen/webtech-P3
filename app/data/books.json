@@ -230,7 +230,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp2.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -241,7 +241,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp3.jpeg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -252,7 +252,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp4.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -263,7 +263,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp5.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -274,7 +274,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp6.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -285,7 +285,7 @@
         "authorID": 1,
         "publisherID": 1,
         "genre": "Fantasy",
-        "image": "hp.png",
+        "image": "hp7.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -296,7 +296,7 @@
         "authorID": 3,
         "publisherID": 3,
         "genre": "Horror",
-        "image": "hp.jpeg",
+        "image": "shining.jpg",
         "price": 9.99,
         "nrRatings": 0,
         "rating": 0
@@ -307,7 +307,7 @@
         "authorID": 3,
         "publisherID": 3,
         "genre": "Horror",
-        "image": "hp.jpeg",
+        "image": "running.jpg",
         "price": 10.99,
         "nrRatings": 0,
         "rating": 0
@@ -318,7 +318,7 @@
         "authorID": 3,
         "publisherID": 3,
         "genre": "Horror",
-        "image": "hp.jpeg",
+        "image": "gerald.jpg",
         "price": 14.99,
         "nrRatings": 0,
         "rating": 0
@@ -329,7 +329,7 @@
         "authorID": 3,
         "publisherID": 3,
         "genre": "Horror",
-        "image": "hp.jpeg",
+        "image": "joyland.jpg",
         "price": 11.99,
         "nrRatings": 0,
         "rating": 0
@@ -340,7 +340,7 @@
         "authorID": 3,
         "publisherID": 3,
         "genre": "Horror",
-        "image": "hp.jpeg",
+        "image": "revival.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -351,7 +351,7 @@
         "authorID": 7,
         "publisherID": 7,
         "genre": "Mystery",
-        "image": "hp.jpeg",
+        "image": "origin.jpg",
         "price": 18.99,
         "nrRatings": 0,
         "rating": 0
@@ -362,7 +362,7 @@
         "authorID": 7,
         "publisherID": 7,
         "genre": "Mystery",
-        "image": "hp.jpeg",
+        "image": "inferno.jpg",
         "price": 13.99,
         "nrRatings": 0,
         "rating": 0
@@ -373,7 +373,7 @@
         "authorID": 7,
         "publisherID": 7,
         "genre": "Mystery",
-        "image": "hp.jpeg",
+        "image": "ad.jpg",
         "price": 8.99,
         "nrRatings": 0,
         "rating": 0
@@ -384,7 +384,7 @@
         "authorID": 7,
         "publisherID": 7,
         "genre": "Mystery",
-        "image": "hp.jpeg",
+        "image": "tls.jpg",
         "price": 12.99,
         "nrRatings": 0,
         "rating": 0
@@ -395,7 +395,7 @@
         "authorID": 7,
         "publisherID": 7,
         "genre": "Mystery",
-        "image": "hp.jpeg",
+        "image": "deception.jpg",
         "price": 12.99,
         "nrRatings": 0,
         "rating": 0
@@ -406,7 +406,7 @@
         "authorID": 14,
         "publisherID": 1,
         "genre": "Science Fiction",
-        "image": "hp.jpeg",
+        "image": "animal.jpg",
         "price": 6.80,
         "nrRatings": 0,
         "rating": 0
@@ -417,7 +417,7 @@
         "authorID": 14,
         "publisherID": 1,
         "genre": "Science Fiction",
-        "image": "hp.jpeg",
+        "image": "down.jpg",
         "price": 6.99,
         "nrRatings": 0,
         "rating": 0
@@ -428,7 +428,7 @@
         "authorID": 14,
         "publisherID": 1,
         "genre": "Science Fiction",
-        "image": "hp.jpeg",
+        "image": "aspidistra.jpg",
         "price": 4.89,
         "nrRatings": 0,
         "rating": 0
@@ -439,7 +439,7 @@
         "authorID": 14,
         "publisherID": 1,
         "genre": "Science Fiction",
-        "image": "hp.jpeg",
+        "image": "homage.jpg",
         "price": 6.89,
         "nrRatings": 0,
         "rating": 0
@@ -450,7 +450,7 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "clash.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -461,7 +461,7 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "asos1.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -472,7 +472,7 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "asos2.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -483,7 +483,7 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "feast.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -494,7 +494,7 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "adwd1.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
@@ -505,18 +505,18 @@
         "authorID": 20,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "adwd2.jpg",
         "price": 17.99,
         "nrRatings": 0,
         "rating": 0
     },
     
     {
-        "title": "WorShip",
+        "title": "Destination: Void",
         "authorID": 2,
         "publisherID": 2,
         "genre": "Science Fiction",
-        "image": "hp.jpeg",
+        "image": "destination.jpg",
         "price": 12.99,
         "nrRatings": 0,
         "rating": 0
@@ -527,7 +527,7 @@
         "authorID": 4,
         "publisherID": 4,
         "genre": "Drama",
-        "image": "hp.jpeg",
+        "image": "hamlet.jpg",
         "price": 12.99,
         "nrRatings": 0,
         "rating": 0
@@ -538,7 +538,7 @@
         "authorID": 5,
         "publisherID": 5,
         "genre": "Fantasy",
-        "image": "hp.jpeg",
+        "image": "charlie.jpg",
         "price": 8.99,
         "nrRatings": 0,
         "rating": 0
@@ -549,7 +549,7 @@
         "authorID": 6,
         "publisherID": 4,
         "genre": "War",
-        "image": "hp.jpeg",
+        "image": "rabbit.jpg",
         "price": 10.99,
         "nrRatings": 0,
         "rating": 0
@@ -560,7 +560,7 @@
         "authorID": 8,
         "publisherID": 8,
         "genre": "Romance",
-        "image": "hp.jpeg",
+        "image": "verbouwing.jpg",
         "price": 12.99,
         "nrRatings": 0,
         "rating": 0
@@ -571,7 +571,7 @@
         "authorID": 9,
         "publisherID": 9,
         "genre": "Drama",
-        "image": "hp.jpeg",
+        "image": "echo.jpg",
         "price": 13.89,
         "nrRatings": 0,
         "rating": 0
