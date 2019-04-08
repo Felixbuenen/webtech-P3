@@ -74,13 +74,12 @@ input[type=text], input[type=email], input[type=password] {
   background-color: rgba(0, 0, 0, 0.837);
   overflow-x: hidden;
   transition: 0.2s;
-  text-align: center;
 }
 
 #menu-overlay__content {
   margin: 120px 30px 50px 30px;
   position: relative;
-
+  font-size: 1.3em;
   color: rgb(182, 182, 182);
 }
 
@@ -89,6 +88,7 @@ input[type=text], input[type=email], input[type=password] {
   list-style: none;
   padding: 0;
   text-align: left;
+  text-align: center;
 }
 
 #menu-overlay__content ul li {
@@ -223,9 +223,12 @@ input[type=text], input[type=email], input[type=password] {
   border-top: 1px solid #D9F0FF;
 }
 
-#main-navigation ul li a {
+#main-navigation ul li a, #menu-overlay__content ul li a {
   color: white;
   text-decoration: none;
+}
+#menu-overlay__content ul li a:hover {
+  text-decoration: underline;
 }
 
 #main-navigation ul li a:hover {
